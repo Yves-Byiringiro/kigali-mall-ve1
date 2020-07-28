@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | oneclick ecommerce {% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}"><span style="color: orange; font-weight: 900;">ONE CLICK eCOMMERCE </span> <span style="color: #fff; font-family:sans-serif">&nbsp ADMINISTRATION</span></a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

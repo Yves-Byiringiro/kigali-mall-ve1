@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Smartphones' %}{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="result-title">{% trans 'Smartphones' %}</h2>
+        </div>
+    </div>
+    <div class="row">
+      {% for product in smartphones %}
+        <div class="col-md-3 col-xs-6">
+            <div class="product">
+                <div class="product-img">
+                    <img src="{{product.main_image.url}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name"><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h3>
+                    <h4 class="product-price">{{product.price}} RWF<del class="product-old-price">${{product.old_price}}</del></h4>
+                </div>
+                <div class="overlay">
+                    <button type="button" class="btn btn-secondary update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlist">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                    </button>
+                    <a href="{% url 'product_details' product.slug %}">
+                    <button type="button" class="btn btn-secondary" title="view details">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                    </a>
+                    <button data-product='{{product.id}}' data-action='add' type="button" class="btn btn-secondary update-cart" title="add to cart">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+    
+    </div>
+</div>
+{% endblock %}
+

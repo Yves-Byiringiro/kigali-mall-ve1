@@ -1,0 +1,68 @@
+{% extends 'users/account_base.html' %}
+
+{% load i18n %}
+{% block content %}
+
+    <div class="container dash-container">
+        <div class="overdue container register-notification">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
+                  {{ message }}
+                </div>
+            {% endfor %}
+          </div>
+        <div class="row">
+            <div class="col-md-3">
+                {% include "users/dashboard_sidebar.html" %}
+            </div>
+            <div class="col-md-9">
+                <h3 class="text-center">{% trans 'Account Information' %}</h3>
+                <form>
+                    <div class="form-row dash-account-info">
+                        <div class="form-group col-md-6">
+                            <label for="name">{% trans 'Name' %}</label>
+                            <input type="text" class="form-control" id="myName" value="{{user.name}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">{% trans 'Email' %}</label>
+                            <input type="email" class="form-control" id="myEmail" value="{{user.email}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="dateofbirth">{% trans 'Gender' %}</label>
+                            <input type="text" class="form-control" id="myGender" value="{{user.gender}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone">{% trans 'Phone' %}</label>
+                            <input type="text" class="form-control" id="myPhone" value="{{user.phone}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="city">{% trans 'City' %}</label>
+                            <input type="text" class="form-control" id="myCity" value="{{user.city}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="country">{% trans 'Country' %}</label>
+                            <input type="text" class="form-control" id="myCountry" value="{{user.country.name}}">
+                        </div>
+                    </div>
+                  </form>
+                    <div class="text-center mt-2">
+                        <a href="{% url 'update_profile' %}"> <button class="btn btn-lg btn-info dashb-accountinfo-btn">{% trans 'Update' %}</button> </a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+         document.getElementById("myCountry").disabled = true;
+         document.getElementById("myCity").disabled = true;
+         document.getElementById("myPhone").disabled = true;
+         document.getElementById("myGender").disabled = true;
+         document.getElementById("myEmail").disabled = true;
+         document.getElementById("myName").disabled = true;
+
+
+    </script>
+{% endblock  %}
+    
+    

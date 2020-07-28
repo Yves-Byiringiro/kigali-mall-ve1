@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Contact Us' %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="content">
+                <h3 class="typedtext"></h3>
+               </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+
+<div class="contact" id="contact">
+    <div class="container">
+        <div class="heading text-center">
+            <p>Kigali Mall application is built and supported by experienced developers who keep it safer and productive.
+                <br>We insure that our clients meet their needs and get satisfied.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="title">
+                    <h3>Contact detail</h3>
+                    <p>Contact us if you need a service or want more information.</p>
+                </div>
+                <div class="content2">
+                    <!-- Info-1 -->
+                    <div class="info">
+                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                        <h4 class="d-inline-block">{% trans 'PHONE' %} :
+                            <br>
+                            <span>+250-781-433-445</span></h4>
+                    </div>
+                    
+                    <!-- Info-2 -->
+                    <div class="info2">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <h4 class="d-inline-block">{% trans 'EMAIL' %} :
+                            <br>
+                            <span>kigalimall250@gmail.com</span></h4>
+                    </div>
+                    <!-- Info-3 -->
+                    <div class="info">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <h4 class="d-inline-block">{% trans 'ADDRESS' %} :<br>
+                            <span>Kigali/Rwanda</span></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{form.name}}
+                        </div>
+                        <div class="col-sm-6">
+                            {{form.email}}
+                        </div>
+                        <div class="col-sm-12">
+                            {{form.subject}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{form.message}}
+                    </div>
+
+                    <button id="btn-submit" class="btn btn-block" type="submit">{% trans 'Send Now!' %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

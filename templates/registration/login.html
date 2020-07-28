@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}{% trans 'Login' %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="overdue container register-notification">
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
+          {{ message }}
+        </div>
+    {% endfor %}
+  </div>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-7">
+      <div class="info-form">
+        <h1 class="display-4 text-center sign-welcm">{% trans 'Welcome Again!' %}</h1>
+        <p class="text-center sign-continue">{% trans 'Sign in to your account to continue' %}</p>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            {{ form.username|as_crispy_field }}
+          </div>
+          <div class="form-group">
+            {{ form.password|as_crispy_field }}
+            <a href="{% url 'password_reset' %}" class="tx-12 d-block" style="color: #20165d;">{% trans 'Forgot password?' %}</a>
+
+          </div>
+          <button type="submit" class="btn btn-primary btn-block sign-btn">{% trans 'Login' %}</button>
+          <div class="mt-3 mb-2 tx-12">{% trans "Don't have an account yet?" %} <a href="{% url 'register' %}?next={{ next }}">{% trans 'Sign Up' %}</a></div>
+
+        </form>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  password = document.getElementById('div_id_password')
+  password.style.marginBottom = '15px'
+</script>
+{% endblock %}
+
+

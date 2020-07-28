@@ -1,0 +1,96 @@
+{% extends 'users/account_base.html' %}
+{% load i18n %}
+{% block content %}
+  
+<div class="container dash-container">
+    <div class="row">
+        <div class="col-md-3">
+            {% include "users/dashboard_sidebar.html" %}
+        </div>
+        <div class="col-md-9">
+            <h3 class="text-center">{% trans 'Update Profile' %}</h3>
+        
+                <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="form-row dash-account-info">
+                    <div class="form-group col-md-6">
+                        <label for="name">{% trans 'Name' %}</label>
+                        {{form.name}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">{% trans 'Email' %}</label>
+                        {{form.email}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="gender">{% trans 'Gender' %}</label>
+                        {{form.gender}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone">{% trans 'Phone' %}</label>
+                        {{form.phone}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="city">{% trans 'City' %}</label>
+                        {{form.city}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="country">{% trans 'Country' %}</label>
+                        {{form.country}}
+                    </div>
+                </div>
+                    <button type="submit" class="btn btn-lg btn-info dashb-update-btn">{% trans 'Update' %}</button>
+                </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    updateName = document.getElementById('id_name');
+    updateEmail = document.getElementById('id_email');
+    updateGender = document.getElementById('id_gender');
+    updatePhone = document.getElementById('id_phone');
+    updateCity = document.getElementById('id_city');
+    updateCountry = document.getElementById('id_country');
+
+
+    updateName.classList.add('form-control');
+    updateEmail.classList.add('form-control');
+    updateGender.classList.add('form-control');
+    updatePhone.classList.add('form-control');
+    updateCity.classList.add('form-control');
+    updateCountry.classList.add('form-control');
+    
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-row dash-account-info">
+    <div class="form-group col-md-12">
+        <label for="name">Current Password</label>
+        {{form.old_password}}
+    </div>
+    <div class="form-group col-md-6">
+        <label for="email">New Password</label>
+        {{form.new_password1}}
+    </div>
+    <div class="form-group col-md-6">
+        <label for="phone">Confirm New Password</label>
+        {{form.new_password2}}
+    </div>
+</div>
+    <button type="submit" class="btn btn-lg btn-info dashb-change-btn">Change password</button>

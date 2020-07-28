@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Wishlist' %}{% endblock %}
+
+
+
+{% block content %}
+<div id="breadcrumb" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">{% trans 'Wishlist' %}</h3>
+                <ul class="breadcrumb-tree">
+                    <li><a href="{% url 'homepage' %}">{% trans 'Home' %}</a></li>
+                    <li class="active">{% trans 'Wishlist' %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">{% trans 'Image' %}</th>
+            <th scope="col">{% trans 'Name' %}</th>
+            <th scope="col">{% trans 'Price Unit' %}</th>
+            <th scope="col" style="float: right;">{% trans 'Action' %}</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for item in wishlists %}
+                <tr>
+                    <th scope="row"><img class="cart-image" src="{{item.product.main_image.url}}"/></th>
+                    <td>{{item.product.name}}</td>
+                    <td>${{item.product.price}}</td>
+                    <td style="float: right;">
+                        <button data-product={{item.product.id}} data-action='add' class="wishlist-btn update-cart">{% trans 'add to cart' %}</button>
+                        {% if request.user.is_authenticated %}
+                        <button data-product={{item.product.id}} data-action='add' class="wishlist-btn destroy-wishlist">{% trans 'remove' %}</button>
+                        {% endif %} 
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td class="text-center font-italic" colspan="4">{% trans "You don't have products in your wishlist!!!!!" %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

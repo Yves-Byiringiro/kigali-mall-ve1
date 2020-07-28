@@ -1,0 +1,170 @@
+{% load static %}
+{% load i18n %}
+{% url 'homepage' as home_url %}
+{% url 'smartphones' as smartphones_url %}
+{% url 'laptops' as laptops_url %}
+{% url 'cameras' as cameras_url %}
+{% url 'accessories' as accessories_url %}
+{% url 'about' as about_url %}
+{% url 'contact_us' as contact_us_url %}
+{% url 'help' as help_url %}
+
+<style>
+    .b{
+        background-color:#1E1F29;
+        color:aliceblue; 
+        padding:0;
+        font-weight: 500;
+        -webkit-transition: 0.2s color;
+        transition: 0.2s color;
+        font-size: small;
+        
+    }
+    input[type = "submit"]:hover {
+        color: #ff6a00;
+    }
+</style>
+
+
+<header>
+    <div id="top-header">
+        <div class="container">
+            <ul class="header-links pull-left">
+
+                <li><i class="fa fa-phone"></i>+250-781-433-445</li>
+                <li><i class="fa fa-envelope-o"></i>kigalimall250@gmail.com</li>
+                <li><i class="fa fa-map-marker"></i>Kigali / Rwanda</li>
+            </ul>
+            <ul class="header-links pull-right">
+                <li> 
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="language" type="hidden" value="rw"/>
+                        <img title="kinyarwanda" alt="kiny" src="/static/images/R.png" width="20px" height="16px"><input class="btn b" type="submit" value="kinyarwanda"/>
+                    </form>
+                </li>
+
+                <li> 
+                    <form action="{% url 'set_language' %}" method="post">
+                       {% csrf_token %}
+                      <input name="language" type="hidden" value="en-us"/>
+                      <img title="English" alt="en" src="/static/images/E.png" width="20px" height="20px"><input class="btn b"type="submit" value="English"/>
+                    </form> 
+                </li>
+                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+                <li class="logged-username">{% trans 'Welcome' %}  {{user.get_short_name}}</li>
+                <li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i>{% trans 'Logout' %} </a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="header-logo">
+                        <a href="{% url 'homepage' %}" class="logo">
+                            <img src="{% static 'images/k.png' %}" alt="" style="width: 5cm;">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="header-search">
+                        <form class="needs-validation" novalidate action="{% url 'products_results' %}" method="get">
+                            <select class="input-select" name="category_name">
+                                {% for category in  categories%}
+                                    <option>{{category.name}}</option>
+                                {% endfor %}
+                            </select>
+                            <input class="input" type="text" placeholder="Search here" name="product">
+                            <button class="search-btn" type="submit">{% trans 'Search'%}</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-3 clearfix">
+                    <div class="header-ctn">
+                        <div>
+                            <a href="{% url 'wishlist' %}">
+                                <i class="fa fa-heart-o"></i>
+                                <span>{% trans 'Your Wishlist' %}</span>
+                                <div class="qty">
+                                    {% if request.user.is_authenticated  %}
+                                        {{wishlists_counts}}                                
+                                    {% else %}
+                                        0
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>{% trans 'Your Cart' %}</span>
+                                <div class="qty">{{cartItems}}</div>
+                            </a>
+                            <div class="cart-dropdown">
+                                <div class="cart-list">
+
+                                    {% for item in items %}
+                                    <div class="product-widget">
+                                        <div class="product-img">
+                                            <img class="row-image" src="{{item.product.main_image.url}}">
+                                        </div>
+                                        <div class="product-body">
+                                            <h3 class="product-name">{{item.product.name}}</h3>
+                                            <h4 class="product-price"><span class="qty">{{item.quantity}}X </span>${{item.product.price|floatformat:2}}</h4>
+                                        </div>
+                                        <button class="delete"><i class="fa fa-close"></i></button>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                                <div class="cart-summary">
+                                    <small>{{order.get_cart_items}} Item(s) selected</small>
+                                    <h5>{% trans 'SUBTOTAL' %}: ${{order.get_cart_total}}</h5>
+                                </div>
+                                <div class="cart-btns">
+                                    <a href="{% url 'cart' %}">{% trans 'View Cart' %}</a>
+                                    <a href="{% url 'checkout' %}">{% trans 'Checkout' %}  <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-toggle">
+                            <a href="#">
+                                <i class="fa fa-bars"></i>
+                                <span>Menu</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<nav id="navigation">
+    <div class="container">
+        <div id="responsive-nav">
+            
+            <ul class="main-nav nav navbar-nav">
+                <li class=" {% if request.path == home_url %} active {% endif %}"><a href="{{home_url}}">{% trans 'Home' %}</a></li>
+                <li class="{% if request.path == shoes_url %} active {% endif %}"><a href="{{shoes_url}}">{% trans 'Shoes' %}</a></li>
+                <li class="{% if request.path == smartphones_url %} active {% endif %}"><a href="{{smartphones_url}}">{% trans 'Smartphones' %}</a></li>
+                <li class="{% if request.path == home_furnitures_url %} active {% endif %}"><a href="{{home_furnitures_url}}">{% trans 'Home Furnitures' %}</a></li>
+                <li class="{% if request.path == laptops_url %} active {% endif %}"><a href="{{laptops_url}}">{% trans 'Laptops' %}</a></li>
+                <li class="{% if request.path == cameras_url %} active {% endif %}"><a href="{{cameras_url}}">{% trans 'Cameras' %}</a></li>
+                <li class="{% if request.path == accessories_url %} active {% endif %}"><a href="{{accessories_url}}">{% trans 'Accessories' %}</a></li>
+                <li class="{% if request.path == about_url %} active {% endif %}"><a href="{{about_url}}">{% trans 'About' %}</a></li>
+                <li class="{% if request.path == contact_us_url %} active {% endif %}"><a href="{{contact_us_url}}">{% trans 'Contact' %}</a></li>
+                <li class="{% if request.path == help_url %} active {% endif %}"><a href="{{help_url}}">{% trans 'Help' %}</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

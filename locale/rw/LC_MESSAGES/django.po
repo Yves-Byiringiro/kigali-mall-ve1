@@ -1,0 +1,528 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-26 19:09+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: rootFolder/settings.py:150
+msgid "kinyarwanda"
+msgstr ""
+
+#: rootFolder/settings.py:151
+msgid "English"
+msgstr ""
+
+#: templates/about/about.html:3 templates/about/about.html:7
+#: templates/includes/header.html:170 templates/users/account_header.html:163
+msgid "About"
+msgstr "Abo turibo"
+
+#: templates/about/contact_us.html:3 templates/includes/footer.html:41
+msgid "Contact Us"
+msgstr "Twandikire"
+
+#: templates/about/contact_us.html:35
+msgid "PHONE"
+msgstr "Telephone"
+
+#: templates/about/contact_us.html:43
+msgid "EMAIL"
+msgstr "Imeri"
+
+#: templates/about/contact_us.html:50
+msgid "ADDRESS"
+msgstr "Aho Dukorera"
+
+#: templates/about/contact_us.html:75
+msgid "Send Now!"
+msgstr "Ohereza"
+
+#: templates/about/help.html:3 templates/about/help.html:7
+#: templates/includes/footer.html:39 templates/includes/header.html:172
+#: templates/users/account_header.html:165
+msgid "Help"
+msgstr "Ubufasha"
+
+#: templates/about/privacy_policy.html:6
+msgid "Privacy and Policy"
+msgstr "Amategeko ngenderwaho"
+
+#: templates/about/terms_conditions.html:6
+msgid "Terms and Conditions"
+msgstr "Amategeko n'amabwiriza"
+
+#: templates/admin/base.html:35
+msgid "welcome,"
+msgstr "Murakaza neza"
+
+#: templates/admin/base.html:40
+msgid "View site"
+msgstr "Sura urubuga"
+
+#: templates/admin/base.html:45
+msgid "Documentation"
+msgstr "dokimantasiyo"
+
+#: templates/admin/base.html:49 templates/users/change_password.html:30
+msgid "Change password"
+msgstr "Hindura ijambo ry'ibanga"
+
+#: templates/admin/base.html:51
+msgid "Log out"
+msgstr "Sohoka"
+
+#: templates/admin/base.html:61 templates/includes/header.html:163
+#: templates/store/cart.html:13 templates/store/wishlist.html:15
+#: templates/users/account_header.html:156
+msgid "Home"
+msgstr "Ahabanza"
+
+#: templates/admin/login.html:21
+msgid "Please correct the error below."
+msgstr "Mukosore ikosa rikurikira"
+
+#: templates/admin/login.html:21
+msgid "Please correct the errors below."
+msgstr "Mukosore amakosa akurikira"
+
+#: templates/admin/login.html:37
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/admin/login.html:61
+msgid "Forgotten your password or username?"
+msgstr "Wibagiwe ijambo ry'ibanga?"
+
+#: templates/admin/login.html:65
+msgid "Log in"
+msgstr "Injira"
+
+#: templates/base.html:124
+msgid "Product "
+msgstr "Igicuruzwa"
+
+#: templates/base.html:124 templates/users/account_base.html:90
+msgid "have been added to cart"
+msgstr "Byongewe mu bubiko"
+
+#: templates/includes/banner.html:60 templates/includes/banner.html:67
+msgid "You can make Advertisement Here!!"
+msgstr "Mushobora kwamamaza Hano"
+
+#: templates/includes/banner.html:61 templates/includes/banner.html:68
+msgid "Contact us"
+msgstr "Twandikire"
+
+#: templates/includes/footer.html:8 templates/includes/footer.html:40
+msgid "About Us"
+msgstr "Abo turibo"
+
+#: templates/includes/footer.html:23
+msgid "Categories"
+msgstr "Ibyiciro"
+
+#: templates/includes/footer.html:25 templates/includes/header.html:164
+#: templates/store/shoes.html:3 templates/store/shoes.html:10
+#: templates/users/account_header.html:157
+msgid "Shoes"
+msgstr "Inkweto"
+
+#: templates/includes/footer.html:26 templates/includes/header.html:167
+#: templates/store/laptops.html:3 templates/store/laptops.html:10
+#: templates/users/account_header.html:160
+msgid "Laptops"
+msgstr "Mudasobwa"
+
+#: templates/includes/footer.html:27 templates/includes/header.html:165
+#: templates/store/smartphones.html:3 templates/store/smartphones.html:10
+#: templates/users/account_header.html:158
+msgid "Smartphones"
+msgstr "Telefone"
+
+#: templates/includes/footer.html:28 templates/includes/header.html:166
+#: templates/store/home_furnitures.html:3
+#: templates/store/home_furnitures.html:9
+#: templates/users/account_header.html:159
+msgid "Home Furnitures"
+msgstr "Ibyo murugo"
+
+#: templates/includes/footer.html:37
+msgid "Information"
+msgstr "Amakuru"
+
+#: templates/includes/footer.html:42
+msgid "Privacy Policy"
+msgstr "Amategeko ngenderwaho"
+
+#: templates/includes/footer.html:43
+msgid "Terms & Conditions"
+msgstr "Amategeko n'amabwiriza"
+
+#: templates/includes/footer.html:50
+msgid "Services we offer"
+msgstr "Serivise dutanga"
+
+#: templates/includes/footer.html:52
+msgid "Advertisement"
+msgstr "Kwamamaza"
+
+#: templates/includes/footer.html:53
+msgid "Website development"
+msgstr "Gukora website"
+
+#: templates/includes/footer.html:54
+msgid "Hosting"
+msgstr "Kwandika website"
+
+#: templates/includes/footer.html:55
+msgid "Domain name registration"
+msgstr "Kwandika izina rya website"
+
+#: templates/includes/header.html:59 templates/users/account_header.html:55
+msgid "Welcome"
+msgstr "Murakaza neza"
+
+#: templates/includes/header.html:60 templates/includes/header.html:62
+msgid "My Account"
+msgstr "Konti yanjye"
+
+#: templates/includes/header.html:88
+msgid "Search here"
+msgstr "Shakira hano"
+
+#: templates/includes/header.html:89 templates/users/account_header.html:82
+msgid "Search"
+msgstr "Shaka"
+
+#: templates/includes/header.html:99 templates/users/account_header.html:92
+msgid "Your Wishlist"
+msgstr "Ibyo wifuza"
+
+#: templates/includes/header.html:113 templates/users/account_header.html:106
+msgid "Your Cart"
+msgstr "Ububiko"
+
+#: templates/includes/header.html:134
+msgid "Item(s) selected"
+msgstr "Ibicuruzwa byatoranyijwe"
+
+#: templates/includes/header.html:135 templates/store/cart.html:61
+msgid "TOTAL"
+msgstr "IGITERANYO CYOSE"
+
+#: templates/includes/header.html:138 templates/users/account_header.html:131
+msgid "View Cart"
+msgstr "Reba ububiko"
+
+#: templates/includes/header.html:139 templates/store/cart.html:66
+#: templates/users/account_header.html:132
+msgid "Checkout"
+msgstr "Ishyura"
+
+#: templates/includes/header.html:168 templates/store/cameras.html:3
+#: templates/store/cameras.html:9 templates/users/account_header.html:161
+msgid "Cameras"
+msgstr "Kamera"
+
+#: templates/includes/header.html:169 templates/store/accessories.html:3
+#: templates/store/accessories.html:10 templates/users/account_header.html:162
+msgid "Accessories"
+msgstr "Inyongera"
+
+#: templates/includes/header.html:171 templates/users/account_header.html:164
+msgid "Contact"
+msgstr "Twandikire"
+
+#: templates/includes/hot_deal.html:35
+msgid "hot deal this week"
+msgstr "Ibigezweho iki cyumweru"
+
+#: templates/includes/hot_deal.html:36
+#, python-format
+msgid "New Collection Up to 50%% OFF"
+msgstr "Ibikusanyo bishya bigeze 50%% OFF"
+
+#: templates/includes/hot_deal.html:37
+msgid "Shop now"
+msgstr "Gura nonaha"
+
+#: templates/includes/most_liked.html:8
+#: templates/includes/products_by_category.html:87
+msgid "Most Liked Products"
+msgstr "Ibicuruzwa bikunzwe"
+
+#: templates/includes/new_products.html:8
+#: templates/includes/products_by_category.html:9
+msgid "New Products"
+msgstr "Ibicuruzwa bishya"
+
+#: templates/includes/products_by_category.html:46
+#: templates/includes/top_selling.html:8
+msgid "Top Selling Products"
+msgstr "Ibicuruzwa bigurishwa cyane"
+
+#: templates/registration/login.html:4 templates/registration/login.html:34
+msgid "Login"
+msgstr "Injira"
+
+#: templates/registration/login.html:22
+msgid "Welcome Again!"
+msgstr "Murakaza neza Nanone"
+
+#: templates/registration/login.html:23
+msgid "Sign in to your account to continue"
+msgstr "Injira muri konti yanye kugirango ukomeze"
+
+#: templates/registration/login.html:31
+msgid "Forgot password?"
+msgstr "Mwibagiwe ijambo ry'ibanga?"
+
+#: templates/registration/login.html:35
+msgid "Don't have an account yet?"
+msgstr "Nta konti ufite?"
+
+#: templates/registration/login.html:35
+msgid "Sign Up"
+msgstr "Iyandikishe"
+
+#: templates/registration/password_reset_complete.html:11
+msgid "Password changed!"
+msgstr "Ijambo ry'ibanga ryahinduwe"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"You have successfully changed your password!. You may now proceed to log in."
+msgstr "Ijambo ry'ibanga ryahinduwe!. Ubu wakomeza kwinjira"
+
+#: templates/registration/password_reset_complete.html:15
+#: templates/registration/password_reset_done.html:16
+msgid "Return to Log in"
+msgstr "Subira kwinjira"
+
+#: templates/registration/password_reset_done.html:13
+msgid "Reset Password Done!"
+msgstr "Ihindurwa ry'ijambo ry'ibanga ryakozwe!"
+
+#: templates/registration/password_reset_form.html:10
+msgid "Hello!"
+msgstr "Muraho!"
+
+#: templates/registration/password_reset_form.html:11
+msgid "Type your email to reset you password"
+msgstr "Injiza imeri yawe uhindure ijambo ry'ibanga "
+
+#: templates/registration/password_reset_form.html:15
+msgid "Send reset email"
+msgstr "Ohereza imeri yo guhindura"
+
+#: templates/registration/register.html:5
+#: templates/registration/register.html:41
+msgid "Register"
+msgstr "Iyandikishe"
+
+#: templates/registration/register.html:13
+msgid "Welcome !"
+msgstr "Murakaza neza"
+
+#: templates/store/cart.html:4 templates/store/cart.html:11
+#: templates/store/cart.html:14 templates/users/dashboard_sidebar.html:11
+#: templates/users/userCart.html:12
+msgid "Cart"
+msgstr "Ububiko"
+
+#: templates/store/cart.html:27 templates/store/wishlist.html:29
+#: templates/users/userCart.html:17 templates/users/userWishlist.html:15
+msgid "Image"
+msgstr "Ishusho"
+
+#: templates/store/cart.html:28 templates/store/wishlist.html:30
+#: templates/users/dashboard.html:23 templates/users/update_profile.html:17
+#: templates/users/userCart.html:18 templates/users/userWishlist.html:16
+msgid "Name"
+msgstr "Izina"
+
+#: templates/store/cart.html:29 templates/users/userCart.html:19
+msgid "Quantity"
+msgstr "Ingano"
+
+#: templates/store/cart.html:30 templates/store/wishlist.html:31
+#: templates/users/userCart.html:20 templates/users/userWishlist.html:17
+msgid "Price Unit"
+msgstr "Igiciro"
+
+#: templates/store/cart.html:31 templates/users/userCart.html:21
+msgid "S.Total"
+msgstr "IGITERANYO"
+
+#: templates/store/cart.html:60 templates/users/userCart.html:49
+msgid "Total Items"
+msgstr "Ibicuruzwa byose"
+
+#: templates/store/cart.html:64
+msgid "Continue shopping"
+msgstr "Komeza ugure"
+
+#: templates/store/product_details.html:39
+msgid "Size"
+msgstr "Ingano"
+
+#: templates/store/product_details.html:45
+msgid "Color"
+msgstr "Ibara"
+
+#: templates/store/product_details.html:52
+msgid "Delivery"
+msgstr "Koherezwa"
+
+#: templates/store/product_details.html:73
+msgid "Category"
+msgstr "Ikiciro"
+
+#: templates/store/product_details.html:76
+msgid "share"
+msgstr "Sangiza abandi"
+
+#: templates/store/product_details.html:85
+msgid "Description"
+msgstr "Ubusobanuro"
+
+#: templates/store/product_details.html:105
+msgid "Reviews"
+msgstr "Ibonwa"
+
+#: templates/store/product_details.html:157
+msgid "Submit"
+msgstr "Ohereza"
+
+#: templates/store/product_details.html:177
+msgid "You may also like this"
+msgstr "Mushobora kuba mwakunda nibi"
+
+#: templates/store/search_results.html:11
+#: templates/store/search_results.html:17
+msgid "Results for"
+msgstr "Ibyabonetse kubijyanye na"
+
+#: templates/store/search_results.html:52
+msgid "No products yet"
+msgstr "Kugeza ubu nta bicuruzwa bihari  "
+
+#: templates/store/wishlist.html:4 templates/store/wishlist.html:13
+#: templates/store/wishlist.html:16 templates/users/dashboard_sidebar.html:12
+#: templates/users/userWishlist.html:11
+msgid "Wishlist"
+msgstr "Ibyo wifuza"
+
+#: templates/store/wishlist.html:32
+msgid "Action"
+msgstr "Igikorwa"
+
+#: templates/store/wishlist.html:42
+msgid "add to cart"
+msgstr "Ongera mu bubiko"
+
+#: templates/store/wishlist.html:44
+msgid "remove"
+msgstr "Kuraho"
+
+#: templates/store/wishlist.html:50
+msgid "You don't have products in your wishlist!!!!!"
+msgstr "Nta bicirishwa ufite kurutonde rw'ibyifuzo"
+
+#: templates/users/account_base.html:90
+msgid "Product"
+msgstr "igicuruzwa"
+
+#: templates/users/account_header.html:56
+#: templates/users/dashboard_sidebar.html:14
+msgid "Logout"
+msgstr "Sohoka"
+
+#: templates/users/account_header.html:128
+msgid "SUBTOTAL"
+msgstr "IGITERANYO CYOSE"
+
+#: templates/users/change_password.html:12
+#: templates/users/dashboard_sidebar.html:13
+msgid "Change Password"
+msgstr "Hindura ijambo ry'ibanga"
+
+#: templates/users/change_password.html:18
+msgid "Current Password"
+msgstr "Ijambo ry'ibanga risanzwe"
+
+#: templates/users/change_password.html:22
+msgid "New Password"
+msgstr "Ijambo ry'ibanga rishya"
+
+#: templates/users/change_password.html:26
+msgid "Confirm New Password"
+msgstr "Emeza ijambo ry'ibanga"
+
+#: templates/users/dashboard.html:19
+msgid "Account Information"
+msgstr "Amakuru ya konti"
+
+#: templates/users/dashboard.html:27 templates/users/update_profile.html:21
+msgid "Email"
+msgstr "Imeri"
+
+#: templates/users/dashboard.html:31 templates/users/update_profile.html:25
+msgid "Gender"
+msgstr "Igitsina"
+
+#: templates/users/dashboard.html:35 templates/users/update_profile.html:29
+msgid "Phone"
+msgstr "Terefone"
+
+#: templates/users/dashboard.html:39 templates/users/update_profile.html:33
+msgid "City"
+msgstr "Umugi"
+
+#: templates/users/dashboard.html:43 templates/users/update_profile.html:37
+msgid "Country"
+msgstr "Igihugu"
+
+#: templates/users/dashboard.html:49 templates/users/update_profile.html:41
+msgid "Update"
+msgstr "Vugurura"
+
+#: templates/users/dashboard_sidebar.html:10
+msgid "Account"
+msgstr "Konti"
+
+#: templates/users/update_profile.html:11
+msgid "Update Profile"
+msgstr "vugurura porofire"
+
+#: templates/users/userCart.html:40
+msgid "You don't have any Product in your cart!"
+msgstr "Nta bicuruzwa ufite kurutonde rw'ihaho"
+
+#: templates/users/userCart.html:50
+msgid "Total"
+msgstr "IGITERANYO"
+
+#: templates/users/userWishlist.html:18
+msgid "Actions"
+msgstr "Ibikorwa"
+
+#: templates/users/userWishlist.html:34
+msgid "You don't have any Product in your wishlist!"
+msgstr "Nta bicuruzwa ufite kurutonde rw'ibyifuzo"

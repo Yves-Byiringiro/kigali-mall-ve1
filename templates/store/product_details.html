@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img">
+                    {% for image in images %}
+                        <div class="product-preview">
+                            <img src="{{image.image.url}}" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-2  col-md-pull-5">
+                <div id="product-imgs">
+                    {% for image in images %}
+                    <div class="product-preview">
+                        <img src="{{image.image.url}}" alt="">
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">{{product.name}}</h2>
+
+                    <div>
+                        <h3 class="product-price">${{product.price}} <del class="product-old-price">${{product.old_price}}</del></h3>
+                        <span class="product-available">In Stock</span>
+                    </div>
+                    <div class="product-options">
+                        <label class="hidden">
+                            <strong>{% trans 'Size' %}</strong>
+                            <select class="input-select">
+                                <option value="0">X</option>
+                            </select>
+                        </label>
+                        <label class="product-color">
+                            <strong>{% trans 'Color' %}: </strong>
+                            <p class="color">{{product.color}}</p>
+                            <select class="input-select hidden">
+                                <option value="0"></option>
+                            </select>
+                        </label>
+                        <label class="product-color">
+                            <strong>{% trans 'Delivery' %}: </strong>
+                            <p class="color">{{product.delivery_minutes}}</p>
+                            <select class="input-select hidden">
+                                <option value="0"></option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="add-to-cart">
+                        <div class="qty-label hidden">
+                            <Strong>Qty</Strong>
+                            <div class="input-number" value="h">
+                                <input type="number" value="1">
+                                <span data-product='{{product.id}}' data-action='add' class="qty-up update-cart">+</span>
+                                <span data-product='{{product.id}}' data-action='remove' class="qty-down update-cart">-</span>
+                            </div>
+                        </div>
+                        <button data-product='{{product.id}}' data-action='add' class="add-to-cart-btn update-cart"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                    </div>
+
+                    <ul class="product-links mb-1">
+                        <li><strong>{% trans 'Category' %}:</strong></li>
+                        <li><a href="">{{product.category.name}}</a></li>
+                    </ul>
+                    <p><strong>{% trans 'share' %}:</strong></p>
+                    <div class="sharethis-inline-share-buttons"></div>
+                  
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div id="product-tab">
+                    <ul class="tab-nav">
+                        <li class="active"><a data-toggle="tab" href="#tab1">{% trans 'Description' %}</a></li>
+                        <li><a data-toggle="tab" href="#tab2">Reviews ({{reviews.paginator.count}})</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="tab1" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>{{product.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                   
+
+                        <div id="tab2" class="tab-pane fade in">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div id="rating">
+                                        <div class="rating-avg">
+                                            <span>{{reviews.paginator.count}} {% trans 'Reviews' %}</span>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div id="reviews">
+                                        <ul class="reviews">
+                                            {% for review in reviews %}
+                                                <li>
+                                                    <div class="review-heading">
+                                                        <h5 class="name">{{review.name}}</h5>
+                                                        <p class="date">{{review.date_added}}</p>
+                                                    </div>
+                                                    <div class="review-body">
+                                                        <p>{{review.review}}</p>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% if reviews.has_other_pages %}
+                                        <ul class="pagination">
+                                          {% if reviews.has_previous %}
+                                            <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                                          {% else %}
+                                            <li class="disabled"><span>&laquo;</span></li>
+                                          {% endif %}
+                                          {% for i in reviews.paginator.page_range %}
+                                            {% if reviews.number == i %}
+                                              <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                            {% else %}
+                                              <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                            {% endif %}
+                                          {% endfor %}
+                                          {% if reviews.has_next %}
+                                            <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                                          {% else %}
+                                            <li class="disabled"><span>&raquo;</span></li>
+                                          {% endif %}
+                                        </ul>
+                                      {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div id="review-form">
+                                        <form class="review-form" method="POST">
+                                            {% csrf_token %}
+                                            {{review_form.name}}
+                                            {{review_form.email}}
+                                            {{review_form.review}}
+                                            <button class="primary-btn">{% trans 'Submit' %}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+{% if my_list %}
+<div class="section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h3 class="title">{% trans "You may also like this" %}</h3>
+                </div>
+            </div>
+
+          {% for product in my_list %}
+            <div class="col-md-3 col-xs-6">
+                <div class="product">
+                    <div class="product-img">
+                        <img src="{{product.main_image.url}}" alt="">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name"><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h3>
+                        <h4 class="product-price">${{product.price}} <del class="product-old-price">${{product.old_price}}</del></h4>
+                    </div>
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary wishlist" title="add to wishlist">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                        </button>
+                        <a href="{% url 'product_details' product.slug %}">
+                        <button type="button" class="btn btn-secondary" title="view details">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </button>
+                        </a>
+                        <button data-product='{{product.id}}' data-action='add' type="button" class="btn btn-secondary update-cart" title="add to cart">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% else %}
+
+{% endif %}
+
+{% endblock %}
