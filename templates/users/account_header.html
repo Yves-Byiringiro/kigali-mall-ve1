@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name">{{item.product.name}}</h3>
-                                            <h4 class="product-price"><span class="qty">{{item.quantity}}X </span>${{item.product.price|floatformat:2}}</h4>
+                                            <h4 class="product-price"><span class="qty">{{item.quantity}}X </span>{{item.product.price|floatformat:2}} RWF</h4>
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
                                     </div>
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="cart-summary">
                                     <small>{{order.get_cart_items}} Item(s) selected</small>
-                                    <h5>{% trans 'SUBTOTAL' %}: ${{order.get_cart_total}}</h5>
+                                    <h5>{% trans 'SUBTOTAL' %}: {{order.get_cart_total}} RWF</h5>
                                 </div>
                                 <div class="cart-btns">
                                     <a href="{% url 'cart' %}">{% trans 'View Cart' %}</a>
@@ -157,8 +157,8 @@
                 <li class="{% if request.path == shoes_url %} active {% endif %}"><a href="{{shoes_url}}">{% trans 'Shoes' %}</a></li>
                 <li class="{% if request.path == smartphones_url %} active {% endif %}"><a href="{{smartphones_url}}">{% trans 'Smartphones' %}</a></li>
                 <li class="{% if request.path == home_furnitures_url %} active {% endif %}"><a href="{{home_furnitures_url}}">{% trans 'Home Furnitures' %}</a></li>
-                <li class="{% if request.path == laptops_url %} active {% endif %}"><a href="{{laptops_url}}">{% trans 'Laptops' %}</a></li>
-                <li class="{% if request.path == cameras_url %} active {% endif %}"><a href="{{cameras_url}}">{% trans 'Cameras' %}</a></li>
+                <!-- <li class="{% if request.path == laptops_url %} active {% endif %}"><a href="{{laptops_url}}">{% trans 'Laptops' %}</a></li>
+                <li class="{% if request.path == cameras_url %} active {% endif %}"><a href="{{cameras_url}}">{% trans 'Cameras' %}</a></li> -->
                 <li class="{% if request.path == accessories_url %} active {% endif %}"><a href="{{accessories_url}}">{% trans 'Accessories' %}</a></li>
                 <li class="{% if request.path == about_url %} active {% endif %}"><a href="{{about_url}}">{% trans 'About' %}</a></li>
                 <li class="{% if request.path == contact_us_url %} active {% endif %}"><a href="{{contact_us_url}}">{% trans 'Contact' %}</a></li>

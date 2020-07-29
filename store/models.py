@@ -45,6 +45,7 @@ class Product(models.Model):
     name = models.CharField(max_length=250)
     category = models.ForeignKey(Category, on_delete = models.SET_NULL, null=True, blank=True,related_name='products')
     price = models.DecimalField( max_digits=7, decimal_places=2)
+    price_dollar = models.DecimalField( max_digits=7, decimal_places=2, default=1)
     digital = models.BooleanField(default=False,null=True,blank=True)
     main_image = models.ImageField(upload_to='products')
     color = models.CharField(max_length=200,choices=COLOR, default='Black', blank=True, null=True)
@@ -59,8 +60,12 @@ class Product(models.Model):
         return self.name
     
     def old_price(self):
-        old_price = self.price + 12
+        old_price = self.price + 1500
         return old_price
+
+    def rate(self):
+        rate = self.price / self.price_dollar
+        return rate
 
     class Meta:
         ordering = ["-date_added"]
@@ -73,7 +78,6 @@ def pre_save_receiver(sender, instance, *args, **kwargs):
        instance.slug = unique_slug_generator(instance) 
   
 pre_save.connect(pre_save_receiver, sender = Product) 
-
 
 
 class ProductImage(models.Model):
@@ -96,13 +100,12 @@ class Wishlist(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
 
-
 class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
-    shipping_price = models.DecimalField( max_digits=7, decimal_places=2, default=2.00)
+    # shipping_price = models.DecimalField( max_digits=7, decimal_places=2, default=2.00)
 
 
     def __str__(self):
@@ -117,16 +120,16 @@ class Order(models.Model):
                 shipping = True
         return shipping
 
-    @property
-    def get_shipping_price(self):
-        shipping = self.shipping_price
-        return shipping
+    # @property
+    # def get_shipping_price(self):
+    #     shipping = self.shipping_price
+    #     return shipping
 
     @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
-        sub_total = sum([item.get_total for item in orderitems])
-        total = sub_total + self.shipping_price
+        total = sum([item.get_total for item in orderitems])
+        # total = sub_total + self.shipping_price
         return total
 
     @property

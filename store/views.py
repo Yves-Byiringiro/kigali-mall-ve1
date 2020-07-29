@@ -344,30 +344,30 @@ def productResults(request):
 
 
 
-def laptops(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
+# def laptops(request):
+# 	data = cartData(request)
+# 	data2 = wishlistData(request)
 
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
+# 	cartItems = data['cartItems']
+# 	order = data['order']
+# 	items = data['items']
+# 	wishlists_counts = data2['wishlists_counts']
 
-	categories = Category.objects.all()
-	laptops = Product.objects.filter(category__name='Laptops')
+# 	categories = Category.objects.all()
+# 	laptops = Product.objects.filter(category__name='Laptops')
 
 
 
-	template_name = 'store/laptops.html'
-	context = {
-		'cartItems':cartItems,
-		'items':items,
-		'order':order,
-		'categories':categories,
-		'laptops':laptops,
-		'wishlists_counts':wishlists_counts
-	}
-	return render(request,template_name,context)
+# 	template_name = 'store/laptops.html'
+# 	context = {
+# 		'cartItems':cartItems,
+# 		'items':items,
+# 		'order':order,
+# 		'categories':categories,
+# 		'laptops':laptops,
+# 		'wishlists_counts':wishlists_counts
+# 	}
+# 	return render(request,template_name,context)
 
 
 def smartphones(request):
@@ -398,31 +398,31 @@ def smartphones(request):
 
 
 
-def cameras(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
+# def cameras(request):
+# 	data = cartData(request)
+# 	data2 = wishlistData(request)
 
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
+# 	cartItems = data['cartItems']
+# 	order = data['order']
+# 	items = data['items']
+# 	wishlists_counts = data2['wishlists_counts']
 
 	
-	categories = Category.objects.all()
-	cameras = Product.objects.filter(category__name='Cameras')
+# 	categories = Category.objects.all()
+# 	cameras = Product.objects.filter(category__name='Cameras')
 
 
 
-	template_name = 'store/cameras.html'
-	context = {
-		'cartItems':cartItems,
-		'items':items,
-		'order':order,
-		'categories':categories,
-		'cameras':cameras,
-		'wishlists_counts':wishlists_counts
-	}
-	return render(request,template_name,context)
+# 	template_name = 'store/cameras.html'
+# 	context = {
+# 		'cartItems':cartItems,
+# 		'items':items,
+# 		'order':order,
+# 		'categories':categories,
+# 		'cameras':cameras,
+# 		'wishlists_counts':wishlists_counts
+# 	}
+# 	return render(request,template_name,context)
 
 
 
