@@ -45,7 +45,7 @@ class Product(models.Model):
     name = models.CharField(max_length=250)
     category = models.ForeignKey(Category, on_delete = models.SET_NULL, null=True, blank=True,related_name='products')
     price = models.DecimalField( max_digits=7, decimal_places=2)
-    price_dollar = models.DecimalField( max_digits=7, decimal_places=2, default=1)
+    price_dollar = models.DecimalField( max_digits=7, decimal_places=2, default=1, null=True, blank=True)
     digital = models.BooleanField(default=False,null=True,blank=True)
     main_image = models.ImageField(upload_to='products')
     color = models.CharField(max_length=200,choices=COLOR, default='Black', blank=True, null=True)
