@@ -20,8 +20,8 @@ from django.utils.translation import gettext_lazy as _
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'oneclickecommerce250@gmail.com'
-EMAIL_HOST_PASSWORD = '12849yvesoneclick'
+EMAIL_HOST_USER = 'kigalimall250@gmail.com'
+EMAIL_HOST_PASSWORD = 'Kigali@2020Mall127st'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
@@ -42,6 +42,12 @@ SECRET_KEY = 'k)e4if*2t90zmxqaft_&qhy67rk6t4111o5t@-qc5t09lz1u+3'
 DEBUG = False
 
 ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64']
+
+
+
+# DEBUG = True
+
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -116,6 +122,18 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'kigalimalldb1',
+#         'USER': 'kigalimalluser1',
+#         'PASSWORD': 'kigalimall127st',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation

@@ -31,7 +31,7 @@
                     <h2 class="product-name">{{product.name}}</h2>
 
                     <div>
-                        <h3 class="product-price">{{product.price}} RWF<del class="product-old-price">{{product.old_price}} RWF</del></h3>
+                        <h3 class="product-price">{{product.price}} Rwf <del class="product-old-price"> {{product.old_price}} Rwf</del></h3>
                         <span class="product-available">In Stock</span>
                     </div>
                     <div class="product-options">
@@ -43,14 +43,21 @@
                         </label>
                         <label class="product-color">
                             <strong>{% trans 'Color' %}: </strong>
-                            <p class="color">{{product.color}}</p>
+                            <p class="color"> {{product.color}}</p>
+                            <select class="input-select hidden">
+                                <option value="0"></option>
+                            </select>
+                        </label>
+                        <label class="product-color">
+                            <strong>{% trans 'Size' %}: </strong>
+                            <p class="color"> {{product.size}}</p>
                             <select class="input-select hidden">
                                 <option value="0"></option>
                             </select>
                         </label>
                         <label class="product-color">
                             <strong>{% trans 'Delivery' %}: </strong>
-                            <p class="color">{{product.delivery_minutes}}</p>
+                            <p class="color"> {{product.delivery_minutes}}</p>
                             <select class="input-select hidden">
                                 <option value="0"></option>
                             </select>
@@ -186,7 +193,7 @@
                     </div>
                     <div class="product-body">
                         <h3 class="product-name"><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h3>
-                        <h4 class="product-price">{{product.price}} RWF<del class="product-old-price">{{product.old_price}} RWF</del></h4>
+                        <h4 class="product-price">{{product.price}} Rwf<del class="product-old-price">{{product.old_price}} Rwf</del></h4>
                     </div>
                     <div class="overlay">
                         <button type="button" class="btn btn-secondary wishlist" title="add to wishlist">

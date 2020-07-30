@@ -72,7 +72,7 @@
                 <div class="col-md-3">
                     <div class="header-logo">
                         <a href="{% url 'homepage' %}" class="logo">
-                            <img src="{% static 'images/a.png' %}" alt="" style="width: 5cm;">
+                            <img src="{% static 'images/logo.png' %}" alt="" style="width: 5cm;">
                         </a>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name">{{item.product.name}}</h3>
-                                            <h4 class="product-price"><span class="qty">{{item.quantity}}X </span>{{item.product.price|floatformat:2}} RWF</h4>
+                                            <h4 class="product-price"><span class="qty">{{item.quantity}}X </span>{{item.product.price|floatformat:2}} Rwf</h4>
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
                                     </div>
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="cart-summary">
                                     <small>{{order.get_cart_items}} {% trans 'Item(s) selected' %}</small>
-                                    <h5>{% trans 'TOTAL' %}: {{order.get_cart_total}} RWF</h5>
+                                    <h5>{% trans 'TOTAL' %}: {{order.get_cart_total}} Rwf</h5>
                                 </div>
                                 <div class="cart-btns">
                                     <a href="{% url 'cart' %}">{% trans 'View Cart' %}</a>

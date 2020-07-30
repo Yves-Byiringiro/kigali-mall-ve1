@@ -42,8 +42,8 @@
                         <i data-product='{{item.product.id}}' data-action='remove' class="fa fa-minus-square-o chg-quantity update-cart" aria-hidden="true"></i>                                                          
                     </div>
                     </td>
-                    <td>{{item.product.price}} RWF</td>
-                    <td>{{item.get_total}} RWF</td>
+                    <td>{{item.product.price}} Rwf</td>
+                    <td>{{item.get_total}} Rwf</td>
                 </tr>
             {% empty %}
                 <tr>
@@ -58,7 +58,7 @@
         <thead>
           <tr>
             <th scope="col" style="float: left;">{% trans 'Total Items' %}: <span class="dash-totals">{{order.get_cart_items}}</span></th>
-            <th scope="col" style="float: right;">{% trans 'TOTAL' %}: <span class="dash-totals">{{order.get_cart_total}} RWF</span></th>
+            <th scope="col" style="float: right;">{% trans 'TOTAL' %}: <span class="dash-totals">{{order.get_cart_total}} Rwf</span></th>
           </tr>
           <tr>
             <th scope="col" style="float: left;"><a  style="padding:6px;" class="btn btn-success" href="{% url 'homepage' %}"><i style="font-size: 22px;" class="fa fa-cart-plus" aria-hidden="true"></i> {% trans 'Continue shopping' %}</a>

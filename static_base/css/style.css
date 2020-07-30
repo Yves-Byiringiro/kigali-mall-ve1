@@ -325,7 +325,7 @@ textarea.input {
 \*----------------------------*/
 
 .section {
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 30px;
 }
 
@@ -337,10 +337,16 @@ textarea.input {
 
 .section-title .title {
   display: inline-block;
-  text-transform: uppercase;
   margin: 0px;
+  font-size: 16px;
+  color: #20165d;
 }
 
+#shipping-info .title{
+  margin: 0px;
+  font-size: 16px;
+  color: #20165d;
+}
 .section-title .section-nav {
   float: right;
 }
@@ -452,7 +458,9 @@ textarea.input {
 .header-links li {
   display: inline-block;
   margin-right: 15px;
-  font-size: 12px;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .header-links li:last-child {
@@ -1555,6 +1563,7 @@ textarea.input {
 .product-details .product-options {
   margin-top: 30px;
   margin-bottom: 30px;
+  display: grid;
 }
 
 .product-details .product-options label {
@@ -1906,7 +1915,7 @@ textarea.input {
 }
 
 .order-summary .order-col .order-total {
-  font-size: 24px;
+  font-size: 18px;
   color: #D10024;
 }
 
@@ -2024,8 +2033,7 @@ textarea.input {
 }
 
 .footer .footer-title {
-  color: #FFF;
-  text-transform: uppercase;
+  color: #fff;
   font-size: 18px;
   margin: 0px 0px 30px;
 }
@@ -2047,6 +2055,7 @@ textarea.input {
 
 .footer-links li a:hover {
   color: #ff6a00;
+  text-decoration: underline;
 }
 
 .copyright {
