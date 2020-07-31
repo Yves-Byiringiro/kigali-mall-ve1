@@ -7,10 +7,18 @@
     color: darkblue;
     text-decoration: underline;
 } 
+.btn-trans{
+    margin-top: 15px;
+    background: #20165d !important;
+    color: #fff;
+    padding: 6px;
+}
+
 /*************** password reset  css **************/
 .btn-reset{
     margin-top: 15px;
     background: #20165d !important;
+    padding: 6px;
 }
 
 /*************** password change page css **************/

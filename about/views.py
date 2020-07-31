@@ -3,6 +3,7 @@ from .models import *
 from .forms import ContactForm
 from store.utils import  cartData, wishlistData
 from store.models import *
+from django.contrib import messages
 
 
 
@@ -47,6 +48,7 @@ def contact_us(request):
     form = ContactForm(request.POST)
     if form.is_valid():
         form.save()
+        messages.success(request, 'Thank you for contacting us!.')
         return redirect('contact_us')
     else:
         form = ContactForm()

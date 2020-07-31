@@ -13,6 +13,8 @@ urlpatterns = [
 	path('checkout/', checkout, name="checkout"),
 	path('update_item/', updateItem, name="update_item"),
 	path('process_order/', processOrder, name="process-order"),
+	path('pay_mobile_money/', payMobilemoney, name="pay_mobile_money"),
+
 	
 
 	path('update_items/', updateItems, name="update_items"),

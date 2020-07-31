@@ -1,3 +1,67 @@
+.payment-title{
+    margin-bottom: 15px;
+}
+
+.payment-title small{
+    font-size: 100%;
+    color: darkblue;
+    text-decoration: underline;
+} 
+.btn-trans{
+    margin-top: 15px;
+    background: #20165d !important;
+    color: #fff;
+    padding: 6px;
+}
+
+/*************** password reset  css **************/
+.btn-reset{
+    margin-top: 15px;
+    background: #20165d !important;
+    padding: 6px;
+}
+
+/*************** password change page css **************/
+
+.pwd-change-done{
+    margin-top: 73px;
+}
+/********** user wishlist page css ****/
+.wishlist-btn{
+    background-color: #ff6a00;
+    color: #fff;
+    border: none;
+}
+
+
+/********** checkout page css ****/
+.momo-details{
+    font-weight: 700;
+}
+
+#form #form-button{
+    background-color: #ff6a00;
+    padding: 8px;
+    color: #fff;
+    border-radius: 17px;
+    border: none;
+}
+.billing-details #send_transactionID{
+    margin-top: 15px;
+    padding: 8px;
+    background-color: #ff6a00;
+    border: none;
+    color: white;
+    border-radius: 17px;
+}
+.payment-buttons{
+    width: 93px;
+    height: 26px;
+}
+.payment-button-momo{
+    background: #cac417f7;
+}
+
 /****** dashboard product page css ******/
 .dash-container{
 
@@ -189,7 +253,7 @@ form .helptext{
 }
 
 .contact .content2 .info {
-    margin-top: 30px;
+    margin-top: 5px;
 }
 .contact .content2 .info i {
     font-size: 40px;
@@ -304,16 +368,14 @@ a, a:hover {
     margin: 10px;
 }
 .quantity{
-    display: inline-block;
+    display: inline-grid;
     font-weight: 700;
     padding-right: 10px;
     font-size: 17px;
 }
 .chg-quantity{
-    width: 12px;
     cursor: pointer;
-    display: block;
-    margin-top: 5px;
+    margin-bottom: 2px;
     transition: .1s;
 }
 .cart-totals{

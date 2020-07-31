@@ -4,6 +4,7 @@ from kigalimall.settings import AUTH_USER_MODEL
 from store.slugs import unique_slug_generator
 from django.db.models.signals import pre_save, post_save
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
 User = settings.AUTH_USER_MODEL
 
@@ -175,6 +176,10 @@ class MomoTranctionID(models.Model):
 
     def __str__(self):
         return str(self.transaction_id)
+    
+    # def clean(self):
+    #     if len(self.transaction_id) < 16:
+    #         raise ValidationError('Transaction you entered is less than 10')
     
 
 class Mymomo(models.Model):

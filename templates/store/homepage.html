@@ -3,7 +3,14 @@
 
 {% block content %}
   
-	
+<div class="overdue container register-notification">
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
+          {{ message }}
+        </div>
+    {% endfor %}
+  </div>
+
 {% include "includes/corousel.html" %}
 
 

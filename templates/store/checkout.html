@@ -23,7 +23,7 @@
             <div class="col-md-7">
                 <div class="billing-details">
                     <div class="section-title">
-                        <h3 class="title">Billing address</h3>
+                        <h3 class="title" id="billing-title">Billing address</h3>
                     </div>
                 <form id="form">
                     {% csrf_token %}
@@ -70,15 +70,8 @@
                             <div class="payment-title">
                                 <small>Mobile Money</small>
                             </div>
-                            <p>Mobile Money Number : <span class="momo-details">{{momo.number}}</span></p>
-                            <p>Name : <span class="momo-details">{{momo.name}}</span></p>
-                            <br>
-                            <form method="POST" >
-                                {% csrf_token %}
-                                {{form}}
-                                <button type="submit" id="send_transactionID">Send Transaction ID</button>
-                            </form>
-                          
+                            <p>You can shop with us using Mobile Money</p>
+                            <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
                         </div> 
                     </div>
                 </div>
@@ -170,7 +163,7 @@
     var transctionBtn = document.getElementById('send_transactionID')
 
     transctionBtn.addEventListener("click", function(){
-        submitFormData()
+        submitFormData1()
     })
 </Script>
 <script type="text/javascript">
@@ -182,6 +175,8 @@
 
     if (user != 'AnonymousUser'){
          document.getElementById('user-info').innerHTML = ''
+         document.getElementById('billing-title').classList.add('hidden');
+         
      }
 
     if (shipping == 'False' && user != 'AnonymousUser'){
@@ -256,6 +251,58 @@
 
             })
     }
+
+    function submitFormData1(){
+
+        var userFormData = {
+            'name':null,
+            'email':null,
+            'total':total,
+        }
+
+        var shippingInfo = {
+            'address':null,
+            'city':null,
+            'state':null,
+            'country':null,
+        }
+
+        if (shipping != 'False'){
+            shippingInfo.address = form.address.value
+            shippingInfo.city = form.city.value
+            shippingInfo.state = form.state.value
+            shippingInfo.country = form.country.value
+        }
+
+        if (user == 'AnonymousUser'){
+            userFormData.name = form.name.value
+            userFormData.email = form.email.value
+        }
+
+        // console.log('Shipping Info:', shippingInfo)
+        // console.log('User Info:', userFormData)
+
+        var url = "/process_order/"
+        fetch(url, {
+            method:'POST',
+            headers:{
+                'Content-Type':'applicaiton/json',
+                'X-CSRFToken':csrftoken,
+            }, 
+            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
+            
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+            alert('Do you  want  continue to pay with Mobile Money ?');
+
+            cart = {}
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+            window.location.href = "{% url 'pay_mobile_money' %}"
+
+            })
+        }
 </script>
 {% endblock %}
     

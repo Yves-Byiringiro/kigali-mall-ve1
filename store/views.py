@@ -11,6 +11,8 @@ from django.db.models import Q
 from .forms import ReviewForm,MomoTranctionIDForm
 from django.core.paginator import Paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
+
 
 
 
@@ -111,13 +113,7 @@ def checkout(request):
 	wishlists_counts = data2['wishlists_counts']
 
 	categories = Category.objects.all()
-	momo = Mymomo.objects.get(pk=1)
-
-	if request.method == 'POST':
-		form = MomoTranctionIDForm(request.POST)
-		if form.is_valid():
-			form.save()
-	form  = MomoTranctionIDForm()
+	
 
 
 	template_name = 'store/checkout.html'
@@ -128,8 +124,6 @@ def checkout(request):
 		'cartItems':cartItems,
 		'categories':categories,
 		'wishlists_counts':wishlists_counts,
-		'form':form,
-		'momo':momo
 		
 		}
 	return render(request, template_name, context)
@@ -199,8 +193,7 @@ def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
 	action = data['action']
-	print('Action:', action)
-	print('Product:', productId)
+
 
 	customer = request.user
 	product = Product.objects.get(id=productId)
@@ -507,3 +500,39 @@ def home_furnitures(request):
 	}
 	return render(request,template_name,context)
 
+
+
+def payMobilemoney(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
+
+	
+	categories = Category.objects.all()
+	momo = Mymomo.objects.get(pk=1)
+	
+	
+	if request.method == 'POST':
+		form = MomoTranctionIDForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Your Transaction ID has been submitted successfully !.')
+			return redirect('homepage')
+	form  = MomoTranctionIDForm()
+
+	template_name = 'store/pay_mobilemoney.html'
+
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'wishlists_counts':wishlists_counts,
+		'momo':momo,
+		'form':form
+	}
+	return render(request, template_name, context)
