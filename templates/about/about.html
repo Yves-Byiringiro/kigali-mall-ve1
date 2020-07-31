@@ -3,7 +3,50 @@
 {% block title %}{% trans 'About' %}{% endblock %}
 
 {% block content %}
-  <div class="container">
-      <h2>{% trans 'About' %}</h2>
+
+<style>
+  .about-div{
+  
+  background: url(/media/about/a.jpg);
+  background-size: cover;
+  letter-spacing: 0.1em;
+ 
+ }
+ 
+</style>
+<div class="container">
+
+  <div class="about-div">
+
+    <div class="card" style="padding: 10% 25% 10% 5%;">
+      <div class="card-body" style="background-color: white; padding:3%;">
+        <h1 class="about-title">About Us</h1>
+        <P>
+          Kigali Mall is an innovative E-commerce that help an individual or
+          a company sell their products online in a safer way.
+        </P>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 2% 5% 10% 25%;">
+      <div class="card-body" style="background-color: white; padding:3%;">
+        <h1 class="about-title">Services We Offer</h1>
+        <p>
+          Moreover, we offer different services such as: Advertisement,
+          Website development, Hosting and Domain name registration.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 2% 25% 10% 5%;">
+      <div class="card-body" style="background-color: white; padding:3%;">
+        <h1 class="about-title">Our Goal</h1>
+        <p> We insure that our clients meet their needs and get satisfied.</p>
+      </div>
+    </div>
+
   </div>
+
+</div>
+        
 {% endblock  %}
