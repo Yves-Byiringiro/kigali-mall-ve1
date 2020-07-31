@@ -42,7 +42,7 @@ class Product(models.Model):
         ('Silver', 'Silver')
         )
 
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250,unique=True)
     category = models.ForeignKey(Category, on_delete = models.SET_NULL, null=True, blank=True,related_name='products')
     price = models.DecimalField( max_digits=7, decimal_places=2)
     price_dollar = models.DecimalField( max_digits=7, decimal_places=2, default=1, null=True, blank=True)
