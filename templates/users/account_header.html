@@ -2,6 +2,7 @@
 {% load i18n %}
 {% url 'homepage' as home_url %}
 {% url 'shoes' as shoes_url %}
+{% url 'bags' as bags_url %}
 {% url 'smartphones' as smartphones_url %}
 {% url 'laptops' as laptops_url %}
 {% url 'cameras' as cameras_url %}
@@ -156,6 +157,8 @@
             <ul class="main-nav nav navbar-nav">
                 <li class=" {% if request.path == home_url %} active {% endif %}"><a href="{{home_url}}">{% trans 'Home' %}</a></li>
                 <li class="{% if request.path == shoes_url %} active {% endif %}"><a href="{{shoes_url}}">{% trans 'Shoes' %}</a></li>
+                <li class="{% if request.path == bags_url %} active {% endif %}"><a href="{{bags_url}}">{% trans 'Bags' %}</a></li>
+
                 <!-- <li class="{% if request.path == smartphones_url %} active {% endif %}"><a href="{{smartphones_url}}">{% trans 'Smartphones' %}</a></li> -->
                 <li class="{% if request.path == home_furnitures_url %} active {% endif %}"><a href="{{home_furnitures_url}}">{% trans 'Home Furnitures' %}</a></li>
                 <!-- <li class="{% if request.path == laptops_url %} active {% endif %}"><a href="{{laptops_url}}">{% trans 'Laptops' %}</a></li>
