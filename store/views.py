@@ -30,10 +30,19 @@ def homepage(request):
 
 	products = Product.objects.order_by('-id')
 	top_selling = Product.objects.order_by('name')
-	most_liked = Product.objects.order_by('id')
+	top = list(top_selling)
+	shuffle(top)
+	final = top
 
+	most_liked = Product.objects.order_by('id')
+	most = list(most_liked)
+	shuffle(most)
+	final = most
 
 	new_products = products[:20]
+	new = list(new_products)
+	shuffle(new)
+	final = new
 	categories = Category.objects.all()
 
 	new_products_cat = products[0:3]
@@ -55,17 +64,17 @@ def homepage(request):
 	template_name = 'store/homepage.html'
 	context = {
 		'products':products, 
-		'new_products':new_products, 
+		'new':new, 
 		'items':items,
 		'order':order,
 		'cartItems':cartItems,
 		'categories':categories,
 		'new_products_cat':new_products_cat,
 		'new_products_cat2':new_products_cat2,
-		'top_selling':top_selling,
+		'top':top,
 		'top_selling_cat':top_selling_cat,
 		'top_selling_cat2':top_selling_cat2,
-		'most_liked':most_liked,
+		'most':most,
 		'most_liked_cat':most_liked_cat,
 		'most_liked_cat2':most_liked_cat2,
 		'carousels':carousels,
@@ -441,6 +450,34 @@ def accessories(request):
 		'order':order,
 		'categories':categories,
 		'accessories':accessories,
+		'wishlists_counts':wishlists_counts
+	}
+	return render(request,template_name,context)
+
+
+
+def bags(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
+
+	
+	categories = Category.objects.all()
+	bags = Product.objects.filter(category__name='Bags')
+
+
+
+	template_name = 'store/bags.html'
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'bags':bags,
 		'wishlists_counts':wishlists_counts
 	}
 	return render(request,template_name,context)
