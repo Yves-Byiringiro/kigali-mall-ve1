@@ -372,31 +372,31 @@ def productResults(request):
 # 	return render(request,template_name,context)
 
 
-# def smartphones(request):
-# 	data = cartData(request)
-# 	data2 = wishlistData(request)
+def smartphones(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
 
-# 	cartItems = data['cartItems']
-# 	order = data['order']
-# 	items = data['items']
-# 	wishlists_counts = data2['wishlists_counts']
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
 
 	
-# 	categories = Category.objects.all()
-# 	smartphones = Product.objects.filter(category__name='Smartphones')
+	categories = Category.objects.all()
+	smartphones = Product.objects.filter(category__name='Smartphones')
 
 
 
-# 	template_name = 'store/smartphones.html'
-# 	context = {
-# 		'cartItems':cartItems,
-# 		'items':items,
-# 		'order':order,
-# 		'categories':categories,
-# 		'smartphones':smartphones,
-# 		'wishlists_counts':wishlists_counts
-# 	}
-# 	return render(request,template_name,context)
+	template_name = 'store/smartphones.html'
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'smartphones':smartphones,
+		'wishlists_counts':wishlists_counts
+	}
+	return render(request,template_name,context)
 
 
 

@@ -143,6 +143,14 @@ msgstr "Ibyiciro"
 msgid "Shoes"
 msgstr "Inkweto"
 
+
+#: templates/includes/footer.html:27 templates/includes/header.html:166
+#: templates/store/bags.html:3 templates/store/bags.html:9
+#: templates/users/account_header.html:160
+msgid "Bags"
+msgstr "Ibikapu"
+
+
 #: templates/includes/footer.html:26 templates/includes/header.html:167
 #: templates/store/laptops.html:3 templates/store/laptops.html:10
 #: templates/users/account_header.html:160

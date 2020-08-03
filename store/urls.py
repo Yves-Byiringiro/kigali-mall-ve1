@@ -27,7 +27,7 @@ urlpatterns = [
 
 	
 	# path('products/laptops/', laptops, name="laptops"),
-	# path('products/smartphones/', smartphones, name="smartphones"),
+	path('products/smartphones/', smartphones, name="smartphones"),
 	# path('products/cameras/', cameras, name="cameras"),
 	# path('products/accessories/', accessories, name="accessories"),
 	path('products/bags/', bags, name="bags"),
