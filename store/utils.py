@@ -2,8 +2,9 @@ import json
 from .models import *
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
-User = settings.AUTH_USER_MODEL
+User = get_user_model()
 
 
 
@@ -115,9 +116,7 @@ def guestOrder(request, data):
 	cookieData = cookieCart(request)
 	items = cookieData['items']
 
-	customer, created = User.objects.get_or_create(
-			email=email,
-			)
+	customer, created = User.objects.get_or_create(email=email,)
 	customer.name = name
 	customer.save()
 
