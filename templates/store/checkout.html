@@ -95,7 +95,7 @@
                           
                         <div class="order-col">
                             <div>{{item.quantity}}x {{item.product.name}}</div>
-                            <div>{{item.product.price|floatformat:2}} Rwf</div>
+                            <div>{{item.product.price|floatformat:2}} Frw</div>
                         </div>
 
                         {% endfor %}
@@ -103,11 +103,11 @@
                     </div>
                     <div class="order-col">
                         <div>Shiping Price</div>
-                        <div><strong>0 Rwf</strong></div>
+                        <div><strong>0 Frw</strong></div>
                     </div>
                     <div class="order-col">
                         <div><strong>TOTAL</strong></div>
-                        <div><strong class="order-total">{{order.get_cart_total|floatformat:2}} Rwf</strong></div>
+                        <div><strong class="order-total">{{order.get_cart_total|floatformat:2}} Frw</strong></div>
                     </div>
                 </div>
  
