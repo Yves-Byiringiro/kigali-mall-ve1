@@ -188,3 +188,33 @@ def update_profile(request):
     }
     return render(request, 'users/update_profile.html', context)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
