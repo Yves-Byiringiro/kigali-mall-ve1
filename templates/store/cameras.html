@@ -9,34 +9,32 @@
             <h2 class="result-title">{% trans 'Cameras' %}</h2>
         </div>
     </div>
-    <div class="row">
-      {% for product in cameras %}
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{{product.main_image.url}}" alt="">
+</div>
+<section class="cat_product_area section_padding border_top">
+    <div class="container">
+<div class="row">
+    {% for product in cameras %}
+    <div class="col-lg-3 col-sm-6">
+        <div class="single_category_product">
+            <div class="single_category_img">
+                <img src="{{product.main_image.url}}" alt="">
+                <div class="category_social_icon">
+                    <ul>
+                        <li><a href="#" type="button" class="update-wishlist" data-product="{{product.id}}" data-action="add" ><i class="fa fa-heart" title="add to wishlist"></i></a></li>
+                        <li><a href="{% url 'product_details' product.slug %}"><i class="fa fa-eye" title="view details"></i></a></li>
+                        <li><a href="#" data-product='{{product.id}}' data-action='add' type="button" class="update-cart"><i class="fa fa-shopping-cart" title="add to cart"></i></a></li>
+
+                    </ul>
                 </div>
-                <div class="product-body">
-                    <h3 class="product-name"><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h3>
-                    <h4 class="product-price">{{product.price}} Frw<del class="product-old-price">{{product.old_price}} Frw</del></h4>
-                </div>
-                <div class="overlay">
-                    <button type="button" class="btn btn-secondary update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlist">
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                    </button>
-                    <a href="{% url 'product_details' product.slug %}">
-                    <button type="button" class="btn btn-secondary" title="view details">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </button>
-                    </a>
-                    <button data-product='{{product.id}}' data-action='add' type="button" class="btn btn-secondary update-cart" title="add to cart">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </button>
+                <div class="category_product_text">
+                    <a href="{% url 'product_details' product.slug %}"><h5>{{product.name}}</h5></a>
+                    <p>{{product.price}} Frw</p>
                 </div>
             </div>
         </div>
-      {% endfor %}
-
-    </div>
+    </div> 
+{% endfor %}
 </div>
+</div>
+</section>
 {% endblock %}
