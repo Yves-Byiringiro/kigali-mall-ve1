@@ -1,3 +1,155 @@
+.cat_product_area .btn_2 {
+    border: 1px solid #606060;
+    color: #606060;
+    margin-top: 80px;
+  }
+
+  .cat_product_area .latest_product_inner {
+    padding-top: 30px;
+  }
+
+  .cat_product_area .latest_product_inner .single-product {
+    margin-bottom: 50px;
+  }
+  .section_padding {
+    padding: 10px 0px;
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 25, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_common.scss */
+    .section_padding {
+      padding: 0px 0px;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* line 25, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_common.scss */
+    .section_padding {
+      padding: 10px 0px;
+    }
+  }
+  @media (max-width: 576px) {
+    /* line 25, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_common.scss */
+    .section_padding {
+      padding: 10px 0px;
+    }
+  }
+  @media only screen and (min-width: 576px) and (max-width: 767px) {
+    /* line 25, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_common.scss */
+    .section_padding {
+      padding: 10px 0px;
+    }
+  }
+
+  .border_top {
+    border-top: 1px solid #eee;
+    max-width: 1110px;
+    margin: 0 auto;
+  }
+
+  .single_category_product {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 35px;
+  }
+  
+  /* line 119, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product_list.scss */
+  .single_category_product img {
+    width: 100%;
+  }
+  
+  /* line 122, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product_list.scss */
+  .single_category_product .category_social_icon {
+    position: absolute;
+    right: -30px;
+    bottom: 100px;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .single_category_product .category_social_icon a {
+    width: 50px;
+    height: 50px;
+    display: inherit;
+    background-color: #2f7dfc;
+    border-radius: 50%;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  /* line 144, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product_list.scss */
+.single_category_product:hover .category_social_icon {
+    position: absolute;
+    right: 11px;
+    bottom: 100px;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* line 152, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product_list.scss */
+  .single_category_product .category_product_text {
+    text-align: center;
+    margin-top: 23px;
+  }
+  
+  /* line 155, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product_list.scss */
+  .single_category_product .category_product_text h5 {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 0;
+  }
+  
+  /* line 160, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product_list.scss */
+  .single_category_product .category_product_text p {
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************* terms and conditions and privacy  page **********/
+.terms{
+    color: #323275;
+}
+
+
 /********************* about  page **********/
 .about-title{
     font-size: 20px;
