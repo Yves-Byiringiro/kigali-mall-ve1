@@ -16,73 +16,74 @@ from django.contrib import messages
 
 
 
-
-
-
 def homepage(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
+	return render(request,'store/homepage.html')
 
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
 
-	products = Product.objects.order_by('-id')
-	top_selling = Product.objects.order_by('name')
-	top = list(top_selling)
-	shuffle(top)
-	final = top
+# def homepage(request):
+# 	data = cartData(request)
+# 	data2 = wishlistData(request)
 
-	most_liked = Product.objects.order_by('id')
-	most = list(most_liked)
-	shuffle(most)
-	final = most
+# 	cartItems = data['cartItems']
+# 	order = data['order']
+# 	items = data['items']
+# 	wishlists_counts = data2['wishlists_counts']
 
-	new_products = products[:20]
-	new = list(new_products)
-	shuffle(new)
-	final = new
-	categories = Category.objects.all()
+# 	products = Product.objects.order_by('-id')
+# 	top_selling = Product.objects.order_by('name')
+# 	top = list(top_selling)
+# 	shuffle(top)
+# 	final = top
 
-	new_products_cat = products[0:3]
-	new_products_cat2 = products[3:7]
+# 	most_liked = Product.objects.order_by('id')
+# 	most = list(most_liked)
+# 	shuffle(most)
+# 	final = most
 
-	top_selling_cat = top_selling[0:3]
-	top_selling_cat2 = top_selling[3:7]
+# 	new_products = products[:20]
+# 	new = list(new_products)
+# 	shuffle(new)
+# 	final = new
+# 	categories = Category.objects.all()
 
-	most_liked_cat = most_liked[0:3]
-	most_liked_cat2 = most_liked[3:7]
+# 	new_products_cat = products[0:3]
+# 	new_products_cat2 = products[3:7]
+
+# 	top_selling_cat = top_selling[0:3]
+# 	top_selling_cat2 = top_selling[3:7]
+
+# 	most_liked_cat = most_liked[0:3]
+# 	most_liked_cat2 = most_liked[3:7]
 	
 
 
-	active_carousels = ActiveCarousel.objects.all()
-	carousels = Carousel.objects.all()
+# 	active_carousels = ActiveCarousel.objects.all()
+# 	carousels = Carousel.objects.all()
 
 
 
-	template_name = 'store/homepage.html'
-	context = {
-		'products':products, 
-		'new':new, 
-		'items':items,
-		'order':order,
-		'cartItems':cartItems,
-		'categories':categories,
-		'new_products_cat':new_products_cat,
-		'new_products_cat2':new_products_cat2,
-		'top':top,
-		'top_selling_cat':top_selling_cat,
-		'top_selling_cat2':top_selling_cat2,
-		'most':most,
-		'most_liked_cat':most_liked_cat,
-		'most_liked_cat2':most_liked_cat2,
-		'carousels':carousels,
-		'active_carousels':active_carousels,
-		'wishlists_counts':wishlists_counts
+# 	template_name = 'store/homepage.html'
+# 	context = {
+# 		'products':products, 
+# 		'new':new, 
+# 		'items':items,
+# 		'order':order,
+# 		'cartItems':cartItems,
+# 		'categories':categories,
+# 		'new_products_cat':new_products_cat,
+# 		'new_products_cat2':new_products_cat2,
+# 		'top':top,
+# 		'top_selling_cat':top_selling_cat,
+# 		'top_selling_cat2':top_selling_cat2,
+# 		'most':most,
+# 		'most_liked_cat':most_liked_cat,
+# 		'most_liked_cat2':most_liked_cat2,
+# 		'carousels':carousels,
+# 		'active_carousels':active_carousels,
+# 		'wishlists_counts':wishlists_counts
 
-		}
-	return render(request,template_name, context)
+# 		}
+# 	return render(request,template_name, context)
 
 
 

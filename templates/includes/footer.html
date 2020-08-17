@@ -1,99 +1,76 @@
 {% load i18n %}
-<footer id="footer">
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">{% trans 'About Us' %}</h3>
-                        <p style="color:#B9BABC;">
-                            Kigali Mall is an innovative E-commerce that help an 
-                            individual or a company sell their products online in a safer way. Moreover, we offer different 
-                            services such as: Advertisement, Website development, Hosting and Domain name registration.
-                        </p><br>
-                        <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-map-marker"></i>Kigali / Rwanda</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+250-781-433-445</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>kigalimall250@gmail.com</a></li>
-                        </ul>
+{% load static %}
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-7">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                    </div>
+                    <p>Kigali Mall is an innovative E-commerce that help an 
+                        individual or a company sell their products online in a safer way. Moreover, we offer different 
+                        services such as: Advertisement, Website development, Hosting and Domain name registration.
+                    </p>
+                    <div class="footer__payment">
+                        <a href="#"><img src="{% static 'img/payment/payment-1.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'img/payment/payment-2.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'img/payment/payment-3.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'img/payment/payment-4.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'img/payment/payment-5.png' %}" alt=""></a>
                     </div>
                 </div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">{% trans 'Categories' %}</h3>
-                        <ul class="footer-links">
-                            <li><a href="{% url 'shoes' %}">{% trans 'Shoes' %}</a></li>
-                            <li><a href="{% url 'bags' %}">{% trans 'Bags' %}</a></li>
-                            <li><a href="{% url 'smartphones' %}">{% trans 'Smartphones' %}</a></li>
-                            <li><a href="{% url 'home_furnitures' %}">{% trans 'Home Furnitures' %}</a></li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-5">
+                <div class="footer__widget">
+                    <h6>Quick links</h6>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
                 </div>
-
-                <div class="clearfix visible-xs"></div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">{% trans 'Information' %}</h3>
-                        <ul class="footer-links">
-                            <li><a href="{% url 'help' %}">{% trans 'Help' %}</a></li>
-                            <li><a href="{% url 'about' %}">{% trans 'About Us' %}</a></li>
-                            <li><a href="{% url 'contact_us' %}">{% trans 'Contact Us' %}</a></li>
-                            <li><a href="{% url 'privacy_policy' %}">{% trans 'Privacy Policy' %}</a></li>
-                            <li><a href="{% url 'terms_conditions' %}">{% trans 'Terms & Conditions' %}</a></li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <div class="footer__widget">
+                    <h6>Account</h6>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Orders Tracking</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                    </ul>
                 </div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">{% trans 'Services we offer' %}</h3>
-                        <ul class="footer-links">
-                            <li><a href="{% url 'contact_us' %}">{% trans 'Advertisement' %}</a></li>
-                            <li><a href="{% url 'contact_us' %}">{% trans 'Website development' %}</a></li>
-                            <li><a href="{% url 'contact_us' %}">{% trans 'Hosting' %}</a></li>
-                            <li><a href="{% url 'contact_us' %}">{% trans 'Domain name registration' %}</a></li>
-                        </ul>
+            </div>
+            <div class="col-lg-4 col-md-8 col-sm-8">
+                <div class="footer__newslatter">
+                    <h6>NEWSLETTER</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Email">
+                        <button type="submit" class="site-btn">Subscribe</button>
+                    </form>
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /top footer -->
-
-    <!-- bottom footer -->
-    <div id="bottom-footer" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <!-- <ul class="footer-payments">
-                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                    </ul> -->
-                    <div class="socialbtns">
-                        <ul>
-                        <li><a href="https://www.facebook.com/kigali.mall" target="_blank" class="fa fa-lg fa-facebook"></a></li>
-                        <li><a href="https://twitter.com/KigaliMall" target="_blank" class="fa fa-lg fa-twitter"></a></li>
-                        <!-- <li><a href="#" class="fa fa-lg fa-google-plus"></a></li> -->
-                        <!-- <li><a href="#" class="fa fa-lg fa-pinterest"></a></li> -->
-                        <!-- <li><a href="#" class="fa fa-lg fa-linkedin"></a></li> -->
-                        <li><a href="https://www.instagram.com/kigali_mall/" target="_blank" class="fa fa-lg fa-instagram"></a></li>
-                        <!-- <li><a href="#" class="fa fa-lg fa-youtube"></a></li> -->
-                        </ul>
-                    </div>
-                    <span class="copyright">
-                        Copyright &copy; <script>document.write(new Date().getFullYear());</script> Kigali Mall All rights reserved
-                    </span>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <div class="footer__copyright__text">
+                    <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
                 </div>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>
-                <!-- /row -->
         </div>
-        <!-- /container -->
     </div>
-    <!-- /bottom footer -->
 </footer>
+

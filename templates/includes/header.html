@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 {% load i18n %}
 {% url 'homepage' as home_url %}
 {% url 'smartphones' as smartphones_url %}
@@ -10,170 +10,86 @@
 {% url 'accessories' as accessories_url %}
 {% url 'about' as about_url %}
 {% url 'contact_us' as contact_us_url %}
-{% url 'help' as help_url %}
+{% url 'help' as help_url %} -->
 
-<style>
-    .bu{
-        background-color:#1E1F29;
-        color:aliceblue; 
-        padding:0;
-        font-weight: 500;
-        -webkit-transition: 0.2s color;
-        transition: 0.2s color;
-        font-size: small;
-        
-    }
-    input[type = "submit"]:hover {
-        color: #ff6a00;
-    }
-</style>
 
-<header>
-    <div id="top-header">
-        <div class="container">
-            <ul class="header-links pull-left">
 
-                <li><i class="fa fa-phone"></i>+250-781-433-445</li>
-                <li><i class="fa fa-envelope-o"></i>kigalimall250@gmail.com</li>
-                <li><i class="fa fa-map-marker"></i>Kigali / Rwanda</li>
-            </ul>
-            <ul class="header-links pull-right">
-               <li> 
-                    <form action="{% url 'set_language' %}" method="post">
-                        {% csrf_token %}
-                        <input name="language" type="hidden" value="rw"/>
-                        <img title="kinyarwanda" alt="kiny" src="/static/images/R.png" width="20px" height="16px"><input class="btn bu" type="submit" value="kinyarwanda"/>
-                    </form>
-                </li>
 
-                <li> 
-                    <form action="{% url 'set_language' %}" method="post">
-                       {% csrf_token %}
-                      <input name="language" type="hidden" value="en-us"/>
-                      <img title="English" alt="en" src="/static/images/E.png" width="20px" height="20px"><input class="btn bu"type="submit" value="English"/>
-                    </form> 
-                </li>
-       
-                <!-- <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li> -->
-                
-                {% if user.is_authenticated %}
-                    <li>{% trans 'Welcome' %}  {{user.get_short_name}}</li>
-                    <li><a href="{% url 'dashboard' %}"><i class="fa fa-arrow-right"></i>{% trans 'My Account'%}</a></li>
-                {%  else %}
-                    <li><a href="{% url 'login' %}"><i class="fa fa-user-o"></i>{% trans 'My Account' %} </a></li>
-                {% endif %}
-                    
-            </ul>
-        </div>
+
+
+
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__close">+</div>
+    <ul class="offcanvas__widget">
+        <li><span class="icon_search search-switch"></span></li>
+        <li><a href="#"><span class="icon_heart_alt"></span>
+            <div class="tip">2</div>
+        </a></li>
+        <li><a href="#"><span class="icon_bag_alt"></span>
+            <div class="tip">2</div>
+        </a></li>
+    </ul>
+    <div class="offcanvas__logo">
+        <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
     </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__auth">
+        <a href="#">Login</a>
+        <a href="#">Register</a>
+    </div>
+</div>
+<!-- Offcanvas Menu End -->
 
-    <div id="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="header-logo">
-                        <a href="{% url 'homepage' %}" class="logo">
-                            <img src="{% static 'images/logo.png' %}" alt="" style="width: 5cm;">
-                        </a>
-                    </div>
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="header-search">
-                        <form class="needs-validation" novalidate action="{% url 'products_results' %}" method="get">
-                            <select class="input-select" name="category_name">
-                                {% for category in  categories%}
-                                    <option>{{category.name}}</option>
-                                {% endfor %}
-                            </select>
-                            <input class="input" type="text" placeholder="{% trans 'Search here' %}" name="product">
-                            <button class="search-btn" type="submit">{% trans 'Search' %}</button>
-                        </form>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li><a href="#">Women’s</a></li>
+                        <li><a href="#">Men’s</a></li>
+                        <li><a href="./shop.html">Shop</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="./product-details.html">Product Details</a></li>
+                                <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                <li><a href="./checkout.html">Checkout</a></li>
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__right">
+                    <div class="header__right__auth">
+                        <a href="#">Login</a>
+                        <a href="#">Register</a>
                     </div>
-                </div>
-
-                <div class="col-md-3 clearfix">
-                    <div class="header-ctn">
-                        <div>
-                            <a href="{% url 'wishlist' %}">
-                                <i class="fa fa-heart-o"></i>
-                                <span>{% trans 'Your Wishlist' %}</span>
-                                <div class="qty">
-                                    {% if request.user.is_authenticated  %}
-                                        {{wishlists_counts}}                                
-                                    {% else %}
-                                        0
-                                    {% endif %}
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span>{% trans 'Your Cart' %}</span>
-                                <div class="qty">{{cartItems}}</div>
-                            </a>
-                            <div class="cart-dropdown">
-                                <div class="cart-list">
-
-                                    {% for item in items %}
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img class="row-image" src="{{item.product.main_image.url}}">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name">{{item.product.name}}</h3>
-                                            <h4 class="product-price"><span class="qty">{{item.quantity}}X </span>{{item.product.price|floatformat:2}} Frw</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-                                    {% endfor %}
-
-                                </div>
-                                <div class="cart-summary">
-                                    <small>{{order.get_cart_items}} {% trans 'Item(s) selected' %}</small>
-                                    <h5>{% trans 'TOTAL' %}: {{order.get_cart_total}} Frw</h5>
-                                </div>
-                                <div class="cart-btns">
-                                    <a href="{% url 'cart' %}">{% trans 'View Cart' %}</a>
-                                    <a href="{% url 'checkout' %}">{% trans 'Checkout' %}  <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="menu-toggle">
-                            <a href="#">
-                                <i class="fa fa-bars"></i>
-                                <span>Menu</span>
-                            </a>
-                        </div>
-                    </div>
+                    <ul class="header__right__widget">
+                        <li><span class="icon_search search-switch"></span></li>
+                        <li><a href="#"><span class="icon_heart_alt"></span>
+                            <div class="tip">2</div>
+                        </a></li>
+                        <li><a href="#"><span class="icon_bag_alt"></span>
+                            <div class="tip">2</div>
+                        </a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-</header>
-
-
-<nav id="navigation">
-    <div class="container">
-        <div id="responsive-nav">
-            
-            <ul class="main-nav nav navbar-nav">
-                <li class=" {% if request.path == home_url %} active {% endif %}"><a href="{{home_url}}">{% trans 'Home' %}</a></li>
-                <li class="{% if request.path == shoes_url %} active {% endif %}"><a href="{{shoes_url}}">{% trans 'Shoes' %}</a></li>
-                <li class="{% if request.path == bags_url %} active {% endif %}"><a href="{{bags_url}}">{% trans 'Bags' %}</a></li>
-                <li class="{% if request.path == smartphones_url %} active {% endif %}"><a href="{{smartphones_url}}">{% trans 'Smartphones' %}</a></li>
-                <li class="{% if request.path == home_furnitures_url %} active {% endif %}"><a href="{{home_furnitures_url}}">{% trans 'Home Furnitures' %}</a></li>
-                <!-- <li class="{% if request.path == laptops_url %} active {% endif %}"><a href="{{laptops_url}}">{% trans 'Laptops' %}</a></li>
-                <li class="{% if request.path == cameras_url %} active {% endif %}"><a href="{{cameras_url}}">{% trans 'Cameras' %}</a></li> -->
-                <!-- <li class="{% if request.path == accessories_url %} active {% endif %}"><a href="{{accessories_url}}">{% trans 'Accessories' %}</a></li> -->
-                <li class="{% if request.path == about_url %} active {% endif %}"><a href="{{about_url}}">{% trans 'About' %}</a></li>
-                <li class="{% if request.path == contact_us_url %} active {% endif %}"><a href="{{contact_us_url}}">{% trans 'Contact' %}</a></li>
-                <li class="{% if request.path == help_url %} active {% endif %}"><a href="{{help_url}}">{% trans 'Help' %}</a></li>
-
-            </ul>
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
         </div>
     </div>
-</nav>
+</header>
