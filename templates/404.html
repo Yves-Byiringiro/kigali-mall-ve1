@@ -2,8 +2,24 @@
 {% load static %}
 {% block title %}404 Page{% endblock %}
 {% load i18n %}
-
+{% url 'contact_us' as contact_us_url %}
+{% url 'homepage' as home_url %}
 {% block content %}
-<h1>{% trasn 'Page Not Found' %}</h1>
+<style>
+    .mx-auto{
+        width: 70%;
+        padding:5%
+    }
+    .btn{margin-top: 2%;background: #20165d }
+</style>
 
+
+
+<div class="mx-auto">
+<h3 class="mx-auto">{% trasn 'Page could not be found ' %}<p>😥</p></h3>
+<p class="mx-auto">Sorry, it seems like you've stumbled upon a missing page. Please check
+     the URL again and if you're sure that this page should be here, please feel
+      free to <a href="{{contact_us_url}}">contact support.</a></p>
+      <a class="btn mx-auto" href="{{home_url}}">Back to start page</a>
+</div>
 {% endblock %}

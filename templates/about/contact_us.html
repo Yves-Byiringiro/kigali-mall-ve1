@@ -3,17 +3,149 @@
 {% block title %}{% trans 'Contact Us' %}{% endblock %}
 
 {% block content %}
-
-<div class="overdue container register-notification">
-    {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
-          {{ message }}
-        </div>
-    {% endfor %}
-  </div>
-
-  <div class="container">
-    <div class="row">
+<style>
+    .content {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .typedtext {
+        margin-top: 20%;
+        border-right: 2px solid black;
+        animation: blinkTextCursor 800ms steps(44) infinite normal;
+        height: 40px;
+        margin-bottom: 55px;
+        color: #000;
+        display: block;
+      }
+      
+      @keyframes blinkTextCursor {
+        from {
+          border-right-color: black;
+        }
+        to {
+          border-right-color: transparent;
+        }
+      }
+    
+      
+    /*** contact form ****/
+    .contact {
+        padding: 40px 0;
+    }
+    
+    .contact .heading h2 {
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+    
+    }
+    
+    .contact .heading h2 span {
+        color: #ff6a00;
+    }
+    
+    .contact .heading p {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.7;
+        color: #999999;
+        margin: 20px 0 60px;
+        padding: 0;
+    }
+    
+    .contact .form-control {
+        padding: 25px;
+        font-size: 13px;
+        margin-bottom: 10px;
+        background: #f9f9f9;
+        border: 0;
+        border-radius: 10px;
+    }
+    
+    .contact button.btn {
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 15px;
+        background-color: #ff6a00;
+        color: #ffffff;
+    }
+    
+    .contact button.btn:hover{
+        background-color:#7c3b0c;
+    }
+    .contact .title h3 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .contact .title p {
+        font-size: 14px;
+        font-weight: 400;
+        color: #999;
+        line-height: 1.6;
+        margin: 0 0 40px;
+    }
+    
+    .contact .content2 .info {
+        margin-top: 5px;
+    }
+    .contact .content2 .info i {
+        font-size: 40px;
+        padding: 0;
+        margin: 0;
+        color: #02434b;
+        margin-right: 20px;
+        text-align: center;
+        width: 20px;
+    }
+    .contact .content2 .info2 i {
+        font-size: 25px;
+        padding: 0;
+        margin: 0;
+        color: #02434b;
+        margin-right: 20px;
+        text-align: center;
+        width: 20px;
+    }
+    .contact .content2 .info h4 {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .contact .content2 .info2 h4 {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .contact .content2 .info h4 span {
+        font-size: 13px;
+        font-weight: 300;
+        color: #999999;
+    }
+    
+    .contact .content2 .info2 h4 span {
+        font-size: 13px;
+        font-weight: 300;
+        color: #999999;
+    }
+    #btn-submit{
+       background: #20165d 
+    }
+    .a{
+        background-color: lavender;
+        border-radius: 3%;
+    }
+ 
+</style>
+<div class="container">
+    <div class="row a">
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="content">
@@ -88,5 +220,62 @@
     </div>
 </div>
 
+
+
+<script>
+    function typingEffect() {
+        const contactTexts = shuffleArray(['Want to tell me something?😊', 'Ask me anything!😄', 'Want to talk about an idea🙂?', 'Lets do something together!🤗', 'Do you need help in something?👍']);
+        const typedtext = document.getElementsByClassName("typedtext")[0];
+        let removing = false;
+        let idx = char = 0;
+    
+        setInterval(() => { // We define the interval of the typing speed
+    
+            // If we do not reach the limit, we insert characters in the html
+            if (char < contactTexts[idx].length) typedtext.innerHTML += contactTexts[idx][char];
+    
+            // 15*150ms = time before starting to remove characters
+            if (char == contactTexts[idx].length + 15) removing = true;
+    
+            // Removing characters, the last one always
+            if (removing) typedtext.innerHTML = typedtext.innerHTML.substring(0, typedtext.innerHTML.length - 1);
+    
+            char++; // Next character
+    
+            // When there is nothing else to remove
+            if (typedtext.innerHTML.length === 0) {
+    
+                // If we get to the end of the texts we start over
+                if (idx === contactTexts.length - 1) idx = 0
+                else idx++;
+    
+                char = 0; // Start the next text by the first character
+                removing = false; // No more removing characters
+            }
+    
+        }, 150); // Typing speed, 150 ms
+    
+    }
+    typingEffect();
+    function shuffleArray(array) {
+        let currentIndex = array.length,
+            temporaryValue, randomIndex;
+    
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+    
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+    
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+    
+        return array;
+    }
+</script>
 
 {% endblock %}
