@@ -36,6 +36,26 @@ urlpatterns = [
 
 
 
+
+	# new
+	path('products/womens-fashions/', womensFashions, name="womensFashions"),
+	path('products/mens-fashions/', mensFashions, name="mensFashions"),
+	path('products/kids-fashions/', kidsFashions, name="kidsFashions"),
+	path('products/cosmetics/', cosmetics, name="cosmetics"),
+	path('products/accessories/', accessories, name="accessories"),
+
+
+
+
+
+
+
+
+	path('shop/', shop, name="shop"),
+
+
+
+
 ]
 
 

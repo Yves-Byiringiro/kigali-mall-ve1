@@ -16,74 +16,105 @@ from django.contrib import messages
 
 
 
+
+
 def homepage(request):
-	return render(request,'store/homepage.html')
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	# wishlists and carts counts
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
 
 
-# def homepage(request):
-# 	data = cartData(request)
-# 	data2 = wishlistData(request)
+	##########   products types   ####################
+	#1. most liked
+	most_liked = Product.objects.order_by('id')[0:3]
+	most = list(most_liked)
+	shuffle(most)
+	final = most
 
-# 	cartItems = data['cartItems']
-# 	order = data['order']
-# 	items = data['items']
-# 	wishlists_counts = data2['wishlists_counts']
+	#2. best seller
+	best_seller = Product.objects.order_by('name')[0:3]
+	best = list(best_seller)
+	shuffle(best)
+	final = best
 
-# 	products = Product.objects.order_by('-id')
-# 	top_selling = Product.objects.order_by('name')
-# 	top = list(top_selling)
-# 	shuffle(top)
-# 	final = top
+	#3. hot trend
+	hot_trend = Product.objects.order_by('name')[0:3]
+	hot = list(hot_trend)
+	shuffle(hot)
+	final = hot
 
-# 	most_liked = Product.objects.order_by('id')
-# 	most = list(most_liked)
-# 	shuffle(most)
-# 	final = most
-
-# 	new_products = products[:20]
-# 	new = list(new_products)
-# 	shuffle(new)
-# 	final = new
-# 	categories = Category.objects.all()
-
-# 	new_products_cat = products[0:3]
-# 	new_products_cat2 = products[3:7]
-
-# 	top_selling_cat = top_selling[0:3]
-# 	top_selling_cat2 = top_selling[3:7]
-
-# 	most_liked_cat = most_liked[0:3]
-# 	most_liked_cat2 = most_liked[3:7]
+	#new products
+	new_products = Product.objects.order_by('-id')[:20]
+	new = list(new_products)
+	shuffle(new)
+	final = new
 	
+	# categories products
+	womens_fashions = Product.objects.filter(category__name='WomensFashions').count()
+	mens_fashions = Product.objects.filter(category__name='MensFashions').count()
+	kids_fashions = Product.objects.filter(category__name='KidsFashions').count()
+	cosmetics = Product.objects.filter(category__name='Cosmetics').count()
+	accessories = Product.objects.filter(category__name='Accessories').count()
+
+	new_products = Product.objects.order_by('id')[:6]
+	new_products2 = Product.objects.order_by('-id')[:6]
 
 
-# 	active_carousels = ActiveCarousel.objects.all()
-# 	carousels = Carousel.objects.all()
+	# categories = Category.objects.all()
+
+	# new_products_cat = products[0:3]
+	# new_products_cat2 = products[3:7]
+
+	# top_selling_cat = top_selling[0:3]
+	# top_selling_cat2 = top_selling[3:7]
+
+	# most_liked_cat = most_liked[0:3]
+	# most_liked_cat2 = most_liked[3:7]
 
 
 
-# 	template_name = 'store/homepage.html'
-# 	context = {
-# 		'products':products, 
-# 		'new':new, 
-# 		'items':items,
-# 		'order':order,
-# 		'cartItems':cartItems,
-# 		'categories':categories,
-# 		'new_products_cat':new_products_cat,
-# 		'new_products_cat2':new_products_cat2,
-# 		'top':top,
-# 		'top_selling_cat':top_selling_cat,
-# 		'top_selling_cat2':top_selling_cat2,
-# 		'most':most,
-# 		'most_liked_cat':most_liked_cat,
-# 		'most_liked_cat2':most_liked_cat2,
-# 		'carousels':carousels,
-# 		'active_carousels':active_carousels,
-# 		'wishlists_counts':wishlists_counts
 
-# 		}
-# 	return render(request,template_name, context)
+
+	template_name = 'store/homepage.html'
+	context = {
+		
+		'new':new, 
+		'items':items,
+		'order':order,
+		'cartItems':cartItems,
+		'wishlists_counts':wishlists_counts,
+		'most':most,
+		'best':best,
+		'hot':hot,
+		'womens_fashions':womens_fashions,
+		'mens_fashions':mens_fashions,
+		'kids_fashions':kids_fashions,
+		'cosmetics':cosmetics,
+		'accessories':accessories,
+		'new_products':new_products,
+		'new_products2':new_products2
+
+
+
+
+
+		# 'products':products, 
+		# 'new_products_cat':new_products_cat,
+		# 'new_products_cat2':new_products_cat2,
+		
+		# 'top_selling_cat':top_selling_cat,
+		# 'top_selling_cat2':top_selling_cat2,
+		
+		# 'most_liked_cat':most_liked_cat,
+		# 'most_liked_cat2':most_liked_cat2,
+		
+		}
+	return render(request,template_name, context)
 
 
 
@@ -574,3 +605,151 @@ def payMobilemoney(request):
 		'form':form
 	}
 	return render(request, template_name, context)
+
+
+
+
+# new
+
+
+def womensFashions(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
+
+	
+	categories = Category.objects.all()
+	womens_fashions = Product.objects.filter(category__name='WomensFashions')
+
+
+	template_name = 'store/womens_fashions.html'
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'womens_fashions':womens_fashions,
+		'wishlists_counts':wishlists_counts
+	}
+	return render(request,template_name,context)
+
+
+
+
+def mensFashions(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
+
+	
+	categories = Category.objects.all()
+	mens_fashions = Product.objects.filter(category__name='MensFashions')
+
+
+	template_name = 'store/mens_fashions.html'
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'mens_fashions':mens_fashions,
+		'wishlists_counts':wishlists_counts
+	}
+	return render(request,template_name,context)
+
+
+
+
+def kidsFashions(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
+
+	
+	categories = Category.objects.all()
+	kids_fashions = Product.objects.filter(category__name='KidsFashions')
+
+
+	template_name = 'store/kids_fashions.html'
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'kids_fashions':kids_fashions,
+		'wishlists_counts':wishlists_counts
+	}
+	return render(request,template_name,context)
+
+
+
+
+def cosmetics(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
+
+	
+	categories = Category.objects.all()
+	cosmetics = Product.objects.filter(category__name='Cosmetics')
+
+
+	template_name = 'store/cosmetics.html'
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'cosmetics':cosmetics,
+		'wishlists_counts':wishlists_counts
+	}
+	return render(request,template_name,context)
+
+
+
+
+def accessories(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
+
+	
+	categories = Category.objects.all()
+	accessories = Product.objects.filter(category__name='Accessories')
+
+
+
+	template_name = 'store/accessories.html'
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'categories':categories,
+		'accessories':accessories,
+		'wishlists_counts':wishlists_counts
+	}
+	return render(request,template_name,context)
+
+
+def shop(request):
+	return render(request, 'store/shop.html')

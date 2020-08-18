@@ -1,16 +1,13 @@
-<!-- {% load static %}
+{% load static %}
 {% load i18n %}
+
 {% url 'homepage' as home_url %}
-{% url 'smartphones' as smartphones_url %}
-{% url 'shoes' as shoes_url %}
-{% url 'bags' as bags_url %}
-{% url 'home_furnitures' as home_furnitures_url %}
-{% url 'laptops' as laptops_url %}
-{% url 'cameras' as cameras_url %}
-{% url 'accessories' as accessories_url %}
+{% url 'womensFashions' as womensFashions_url %}
+{% url 'mensFashions' as mensFashions_url %}
+{% url 'kidsFashions' as kidsFashions_url %}
 {% url 'about' as about_url %}
 {% url 'contact_us' as contact_us_url %}
-{% url 'help' as help_url %} -->
+
 
 
 
@@ -39,7 +36,7 @@
         <a href="#">Register</a>
     </div>
 </div>
-<!-- Offcanvas Menu End -->
+
 
 <!-- Header Section Begin -->
 <header class="header">
@@ -53,37 +50,37 @@
             <div class="col-xl-6 col-lg-7">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="#">Women’s</a></li>
-                        <li><a href="#">Men’s</a></li>
+                        <li class="{% if request.path == home_url %} active {% endif %}"><a href="{{home_url}}">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="./product-details.html">Product Details</a></li>
-                                <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                <li><a href="./checkout.html">Checkout</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        
+                        <li class="{% if request.path == womensFashions_url %} active {% endif %}"><a href="{{womensFashions_url}}">Womens</a></li>
+                        <li class="{% if request.path == mensFashions_url %} active {% endif %}"><a href="{{mensFashions_url}}">Mens</a></li>
+                        <li class="{% if request.path == kidsFashions_url %} active {% endif %}"><a href="{{kidsFashions_url}}">Kids</a></li>
+                        <li class="{% if request.path == about_url %} active {% endif %}"><a href="{{about_url}}">About</a></li>
+                        <li class="{% if request.path == contact_us_url %} active {% endif %}"><a href="{{contact_us_url}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__right">
                     <div class="header__right__auth">
-                        <a href="#">Login</a>
-                        <a href="#">Register</a>
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'register' %}">Register</a>
                     </div>
                     <ul class="header__right__widget">
                         <li><span class="icon_search search-switch"></span></li>
-                        <li><a href="#"><span class="icon_heart_alt"></span>
-                            <div class="tip">2</div>
-                        </a></li>
-                        <li><a href="#"><span class="icon_bag_alt"></span>
-                            <div class="tip">2</div>
-                        </a></li>
+                        <li><a href="{% url 'wishlist' %}"><span class="icon_heart_alt"></span>
+                            <div class="tip">
+                                {% if request.user.is_authenticated  %}
+                                        {{wishlists_counts}}                                
+                                    {% else %}
+                                        0
+                                    {% endif %}
+                            </div></a>
+                        </li>
+                        <li><a href="{% url 'cart' %}"><span class="icon_bag_alt"></span>
+                            <div class="tip">{{cartItems}}</div></a>
+                        </li>
                     </ul>
                 </div>
             </div>

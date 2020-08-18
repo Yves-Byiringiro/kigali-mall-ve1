@@ -4,71 +4,166 @@
 {% block title %}{% trans 'Cart' %}{% endblock %}
 
 {% block content %}
-<div id="breadcrumb" class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="breadcrumb-header">{% trans 'Cart' %}</h3>
-                <ul class="breadcrumb-tree">
-                    <li><a href="{% url 'homepage' %}">{% trans 'Home' %}</a></li>
-                    <li class="active">{% trans 'Cart' %}</li>
+
+
+
+<div class="breadcrumb-option">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="breadcrumb__links">
+                  <a href="{% url 'homepage' %}"><i class="fa fa-home"></i> Home</a>
+                  <span>Shopping cart</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Shop Cart Section Begin -->
+<section class="shop-cart spad">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8">
+              <div class="shop__cart__table">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Product</th>
+                              <th>Price</th>
+                              <th>Quantity</th>
+                              <th>Total</th>
+                              <th></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {% for item in items %}
+                          <tr>
+                              <td class="cart__product__item">
+                                  <img src="{% static 'img/shop-cart/cp-4.jpg' %}" alt="">
+                                  <div class="cart__product__item__title">
+                                      <h6>{{item.product.name}}</h6>
+                                      <div class="rating">
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td class="cart__price">{{item.product.price}} Frw</td>
+                              <td class="cart__quantity">
+                                
+                                  <div class="pro-qty">
+                                      <input  value="{{item.quantity}}">
+                                  </div>
+                              </td>
+                              <td class="cart__total">{{item.get_total}} Frw</td>
+                              <td class="cart__close"><span class="icon_close"></span></td>
+                          </tr>
+                          {% empty %}
+                          <tr>
+                              <td class="text-center font-italic" colspan="4">You don't have products in your cart !!!!!</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="cart__total__procced">
+                <h6>Cart total</h6>
+                <ul>
+                    <!-- <li>Subtotal <span>$ 750.0</span></li> -->
+                    <li>Total <span>{{order.get_cart_total}} Frw</span></li>
                 </ul>
+                <a href="{% url 'checkout' %}" class="primary-btn">Proceed to checkout</a>
             </div>
         </div>
-    </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="cart__btn">
+                  <a href="{% url 'shop' %}">Continue Shopping</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+{% endblock %}
+
+
+
+<div id="breadcrumb" class="section">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <h3 class="breadcrumb-header">{% trans 'Cart' %}</h3>
+              <ul class="breadcrumb-tree">
+                  <li><a href="{% url 'homepage' %}">{% trans 'Home' %}</a></li>
+                  <li class="active">{% trans 'Cart' %}</li>
+              </ul>
+          </div>
+      </div>
+  </div>
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">{% trans 'Image' %}</th>
-            <th scope="col">{% trans 'Name' %}</th>
-            <th scope="col">{% trans 'Quantity' %}</th>
-            <th scope="col">{% trans 'Price Unit' %}</th>
-            <th scope="col">{% trans 'S.Total' %}</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for item in items %}
-                <tr>
-                    <th scope="row"><img class="cart-image" src="{{item.product.main_image.url}}"/></th>
-                    <td>{{item.product.name}}</td>
-                    <td>{{item.quantity}}
-                      <div class="quantity">
-                        <i data-product='{{item.product.id}}' data-action='add' class="fa fa-plus-square-o chg-quantity update-cart" aria-hidden="true"></i>
-                        <i data-product='{{item.product.id}}' data-action='remove' class="fa fa-minus-square-o chg-quantity update-cart" aria-hidden="true"></i>                                                          
-                    </div>
-                    </td>
-                    <td>{{item.product.price}} Frw</td>
-                    <td>{{item.get_total}} Frw</td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td class="text-center font-italic" colspan="4">You don't have products in your cart !!!!!</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col" style="float: left;">{% trans 'Total Items' %}: <span class="dash-totals">{{order.get_cart_items}}</span></th>
-            <th scope="col" style="float: right;">{% trans 'TOTAL' %}: <span class="dash-totals">{{order.get_cart_total}} Frw</span></th>
-          </tr>
-          <tr>
-            <th scope="col" style="float: left;"><a  style="padding:6px;" class="btn btn-success" href="{% url 'homepage' %}"><i style="font-size: 22px;" class="fa fa-cart-plus" aria-hidden="true"></i> {% trans 'Continue shopping' %}</a>
-            </th>
-            <th scope="col" style="float: right;"><a  style="padding:6px" class="btn btn-success" href="{% url 'checkout' %}"><i style="font-size: 22px;" class="fa fa-money" aria-hidden="true"></i> {% trans 'Checkout' %}</a>
-            </th>
-          </tr>
-        </thead>
-      </table>
-    </div>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">{% trans 'Image' %}</th>
+          <th scope="col">{% trans 'Name' %}</th>
+          <th scope="col">{% trans 'Quantity' %}</th>
+          <th scope="col">{% trans 'Price Unit' %}</th>
+          <th scope="col">{% trans 'S.Total' %}</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for item in items %}
+              <tr>
+                  <th scope="row"><img class="cart-image" src="{{item.product.main_image.url}}"/></th>
+                  <td>{{item.product.name}}</td>
+                  <td>{{item.quantity}}
+                    <div class="quantity">
+                      <i data-product='{{item.product.id}}' data-action='add' class="fa fa-plus-square-o chg-quantity update-cart" aria-hidden="true"></i>
+                      <i data-product='{{item.product.id}}' data-action='remove' class="fa fa-minus-square-o chg-quantity update-cart" aria-hidden="true"></i>                                                          
+                  </div>
+                  </td>
+                  <td>{{item.product.price}} Frw</td>
+                  <td>{{item.get_total}} Frw</td>
+              </tr>
+          {% empty %}
+              <tr>
+                  <td class="text-center font-italic" colspan="4">You don't have products in your cart !!!!!</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="float: left;">{% trans 'Total Items' %}: <span class="dash-totals">{{order.get_cart_items}}</span></th>
+          <th scope="col" style="float: right;">{% trans 'TOTAL' %}: <span class="dash-totals">{{order.get_cart_total}} Frw</span></th>
+        </tr>
+        <tr>
+          <th scope="col" style="float: left;"><a  style="padding:6px;" class="btn btn-success" href="{% url 'homepage' %}"><i style="font-size: 22px;" class="fa fa-cart-plus" aria-hidden="true"></i> {% trans 'Continue shopping' %}</a>
+          </th>
+          <th scope="col" style="float: right;"><a  style="padding:6px" class="btn btn-success" href="{% url 'checkout' %}"><i style="font-size: 22px;" class="fa fa-money" aria-hidden="true"></i> {% trans 'Checkout' %}</a>
+          </th>
+        </tr>
+      </thead>
+    </table>
   </div>
 </div>
-{% endblock %}
+</div>

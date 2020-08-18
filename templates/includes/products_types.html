@@ -1,0 +1,94 @@
+{% load static %}
+{% load i18n %}
+
+
+<section class="trend spad">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+              <div class="trend__content">
+                  <div class="section-title">
+                      <h4>Most Liked</h4>
+                  </div>
+
+                  {% for product in  best %}
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{% static 'img/trend/ht-1.jpg' %}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>{{product.name}}</h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">{{product.price}}</div>
+                        </div>
+                    </div>
+                  {% endfor %}
+
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+              <div class="trend__content">
+                  <div class="section-title">
+                      <h4>Best seller</h4>
+                  </div>
+
+
+                  {% for product in most %}
+                  <div class="trend__item">
+                    <div class="trend__item__pic">
+                        <img src="{% static 'img/trend/bs-1.jpg' %}" alt="">
+                    </div>
+                    <div class="trend__item__text">
+                        <h6>{{product.name}}</h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">{{product.price}} Frw</div>
+                    </div>
+                </div>
+                  {% endfor %}
+
+
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+              <div class="trend__content">
+                  <div class="section-title">
+                      <h4>Hot Trend</h4>
+                  </div>
+
+                  {% for product in hot %}
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{% static 'img/trend/bs-3.jpg' %}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>{{product.name}}</h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">{{product.price}} Frw</div>
+                        </div>
+                    </div>
+                  {% endfor %}
+
+
+              </div>
+          </div>
+      </div>
+    </div>
+    </section>
