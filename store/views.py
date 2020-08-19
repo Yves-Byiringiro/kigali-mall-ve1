@@ -752,4 +752,5 @@ def accessories(request):
 
 
 def shop(request):
-	return render(request, 'store/shop.html')
+	products = Product.objects.all().order_by('-id')
+	return render(request, 'store/shop.html',{'products':products})

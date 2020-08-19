@@ -14,7 +14,7 @@
                       <h5>{{product.name}}</h5>
                       <p>{{product.price}}</p>
                       <p></p>
-                      <a href="#">View Details</a>
+                      <a href="{% url 'product_details' product.slug %}">View Details</a>
                   </div>
               </div>
           </div>

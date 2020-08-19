@@ -35,8 +35,6 @@ urlpatterns = [
 	path('products/home-furnitures/', home_furnitures, name="home_furnitures"),
 
 
-
-
 	# new
 	path('products/womens-fashions/', womensFashions, name="womensFashions"),
 	path('products/mens-fashions/', mensFashions, name="mensFashions"),
@@ -45,14 +43,7 @@ urlpatterns = [
 	path('products/accessories/', accessories, name="accessories"),
 
 
-
-
-
-
-
-
 	path('shop/', shop, name="shop"),
-
 
 
 
