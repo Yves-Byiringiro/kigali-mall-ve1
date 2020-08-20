@@ -16,10 +16,8 @@ urlpatterns = [
 	path('pay_mobile_money/', payMobilemoney, name="pay_mobile_money"),
 
 	
-
 	path('update_items/', updateItems, name="update_items"),
 	path('destroy_wishlist/', destroy_wishlist, name="destroy_wishlist"),
-
 
 
 	path('product_details/<slug>/', productDetails, name="product_details"),
