@@ -5,13 +5,13 @@
 {% block title %}{% trans 'Register' %}{% endblock %}
 {% block content %}
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-7">
-      <div class="info-form">
-        <h1 class="display-4 text-center sign-welcm">{% trans 'Welcome !' %}</h1>
-        <form method="POST">
+<div class="container mx-auto">
+  <div class="row mx-auto">
+    
+    <div class="col-md-7 mx-auto">
+      <div class="info-form mx-auto mx-auto">
+        <h1 class="display-4 text-center sign-welcm mx-auto">{% trans 'Welcome !' %}</h1>
+        <form method="POST" class="mx-auto">
           {% csrf_token %}
           <input type="hidden" name="next" value="{{ next }}">
           <div class="form-group">
