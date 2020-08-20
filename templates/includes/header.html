@@ -2,15 +2,12 @@
 {% load i18n %}
 
 {% url 'homepage' as home_url %}
+{% url 'shop' as shop_url %}
 {% url 'womensFashions' as womensFashions_url %}
 {% url 'mensFashions' as mensFashions_url %}
 {% url 'kidsFashions' as kidsFashions_url %}
 {% url 'about' as about_url %}
 {% url 'contact_us' as contact_us_url %}
-
-
-
-
 
 
 
@@ -51,7 +48,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="{% if request.path == home_url %} active {% endif %}"><a href="{{home_url}}">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
+                        <li class="{% if request.path == shop_url %} active {% endif %}"><a href="{{shop_url}}">Shop</a></li>
                         
                         <li class="{% if request.path == womensFashions_url %} active {% endif %}"><a href="{{womensFashions_url}}">Womens</a></li>
                         <li class="{% if request.path == mensFashions_url %} active {% endif %}"><a href="{{mensFashions_url}}">Mens</a></li>

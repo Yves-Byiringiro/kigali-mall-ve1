@@ -16,10 +16,8 @@ urlpatterns = [
 	path('pay_mobile_money/', payMobilemoney, name="pay_mobile_money"),
 
 	
-
 	path('update_items/', updateItems, name="update_items"),
 	path('destroy_wishlist/', destroy_wishlist, name="destroy_wishlist"),
-
 
 
 	path('product_details/<slug>/', productDetails, name="product_details"),
@@ -35,8 +33,6 @@ urlpatterns = [
 	path('products/home-furnitures/', home_furnitures, name="home_furnitures"),
 
 
-
-
 	# new
 	path('products/womens-fashions/', womensFashions, name="womensFashions"),
 	path('products/mens-fashions/', mensFashions, name="mensFashions"),
@@ -45,14 +41,7 @@ urlpatterns = [
 	path('products/accessories/', accessories, name="accessories"),
 
 
-
-
-
-
-
-
 	path('shop/', shop, name="shop"),
-
 
 
 

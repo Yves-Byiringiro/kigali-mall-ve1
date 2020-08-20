@@ -1,9 +1,13 @@
 {% load static %}
-
+<style>
+  .min-costs{
+    margin: 30px 0px;
+  }
+  </style>
 
 <div class="instagram">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row min-costs">
 
         {% for product in new_products2 %}
           <div class="col-lg-2 col-md-4 col-sm-4 p-0">
@@ -14,7 +18,7 @@
                       <h5>{{product.name}}</h5>
                       <p>{{product.price}}</p>
                       <p></p>
-                      <a href="#">View Details</a>
+                      <a href="{% url 'product_details' product.slug %}">View Details</a>
                   </div>
               </div>
           </div>
@@ -22,3 +26,6 @@
       </div>
     </div>
     </div>
+
+
+  

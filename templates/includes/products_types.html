@@ -12,6 +12,7 @@
                   </div>
 
                   {% for product in  best %}
+                  <a href="{% url 'product_details' product.slug %}">
                     <div class="trend__item">
                         <div class="trend__item__pic">
                             <img src="{% static 'img/trend/ht-1.jpg' %}" alt="">
@@ -28,6 +29,7 @@
                             <div class="product__price">{{product.price}}</div>
                         </div>
                     </div>
+                    </a>
                   {% endfor %}
 
               </div>
@@ -40,6 +42,7 @@
 
 
                   {% for product in most %}
+                  <a href="{% url 'product_details' product.slug %}">
                   <div class="trend__item">
                     <div class="trend__item__pic">
                         <img src="{% static 'img/trend/bs-1.jpg' %}" alt="">
@@ -56,6 +59,7 @@
                         <div class="product__price">{{product.price}} Frw</div>
                     </div>
                 </div>
+                </a>
                   {% endfor %}
 
 
@@ -68,6 +72,7 @@
                   </div>
 
                   {% for product in hot %}
+                  <a href="{% url 'product_details' product.slug %}">
                     <div class="trend__item">
                         <div class="trend__item__pic">
                             <img src="{% static 'img/trend/bs-3.jpg' %}" alt="">
@@ -84,6 +89,7 @@
                             <div class="product__price">{{product.price}} Frw</div>
                         </div>
                     </div>
+                    </a>
                   {% endfor %}
 
 

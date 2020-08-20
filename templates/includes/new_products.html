@@ -28,13 +28,13 @@
                   <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
                       <div class="label">Sale</div>
                       <ul class="product__hover">
-                          <li><a href="{% url 'product_details' product.slug %}"><span class="arrow_expand"></span></a></li>
-                          <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                          <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                          <li><a href="#" title="view details"><span class="arrow_expand"></span></a></li>
+                          <li><a href="#" title="add to wishlists"><span class="icon_heart_alt"></span></a></li>
+                          <li><a href="#" title="add to carts"><span class="icon_bag_alt"></span></a></li>
                       </ul>
                   </div>
                   <div class="product__item__text">
-                      <h6><a href="#">{{product.name}}</a></h6>
+                      <h6><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h6>
                       <div class="rating">
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>

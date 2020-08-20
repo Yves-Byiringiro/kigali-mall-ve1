@@ -71,11 +71,47 @@
   </div>
 </div>
 </section>
-<!-- Categories  End -->
 
 {% include 'includes/new_products.html' %}
 
-<!-- Banner   -->
+
+
+<section class="services spad">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="services__item">
+                  <i class="fa fa-car"></i>
+                  <h6>Free Shipping</h6>
+                  <p>For all oder over $99</p>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="services__item">
+                  <i class="fa fa-money"></i>
+                  <h6>Money Back Guarantee</h6>
+                  <p>If good have Problems</p>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="services__item">
+                  <i class="fa fa-support"></i>
+                  <h6>Online Support 24/7</h6>
+                  <p>Dedicated support</p>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="services__item">
+                  <i class="fa fa-headphones"></i>
+                  <h6>Payment Secure</h6>
+                  <p>100% secure payment</p>
+              </div>
+          </div>
+      </div>
+    </div>
+    </section>
+
+
 <section class="banner set-bg" data-setbg="{% static 'img/banner/banner-1.jpg' %}">
 <div class="container">
   <div class="row">
@@ -83,23 +119,23 @@
           <div class="banner__slider owl-carousel">
               <div class="banner__item">
                   <div class="banner__text">
-                      <span>The Chloe Collection</span>
-                      <h1>The Project Jacket</h1>
-                      <a href="#">Shop now</a>
+                      <span>Get Your</span>
+                      <h1>Womens Fashions</h1>
+                      <a href="{% url 'womensFashions' %}">Shop now</a>
                   </div>
               </div>
               <div class="banner__item">
                   <div class="banner__text">
-                      <span>The Chloe Collection</span>
-                      <h1>The Project Jacket</h1>
-                      <a href="#">Shop now</a>
+                      <span>Get Your</span>
+                      <h1>Mens Fashions</h1>
+                      <a href="{% url 'mensFashions' %}">Shop now</a>
                   </div>
               </div>
               <div class="banner__item">
                   <div class="banner__text">
-                      <span>The Chloe Collection</span>
-                      <h1>The Project Jacket</h1>
-                      <a href="#">Shop now</a>
+                      <span>Get Yours for your kid</span>
+                      <h1>Kids Fashions</h1>
+                      <a href="{% url 'kidsFashions' %}">Shop now</a>
                   </div>
               </div>
           </div>
@@ -110,12 +146,11 @@
 <!-- Banner  End -->
 
 
-{% include 'includes/products_types.html' %}
+
 
 {% include 'includes/products_with_mincosts.html' %}
 
 
-<!-- Discount  Begin -->
 <section class="discount">
 <div class="container">
   <div class="row">
@@ -155,46 +190,11 @@
   </div>
 </div>
 </section>
-<!-- Discount  End -->
 
-<!-- Services  Begin -->
-<section class="services spad">
-<div class="container">
-  <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="services__item">
-              <i class="fa fa-car"></i>
-              <h6>Free Shipping</h6>
-              <p>For all oder over $99</p>
-          </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="services__item">
-              <i class="fa fa-money"></i>
-              <h6>Money Back Guarantee</h6>
-              <p>If good have Problems</p>
-          </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="services__item">
-              <i class="fa fa-support"></i>
-              <h6>Online Support 24/7</h6>
-              <p>Dedicated support</p>
-          </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="services__item">
-              <i class="fa fa-headphones"></i>
-              <h6>Payment Secure</h6>
-              <p>100% secure payment</p>
-          </div>
-      </div>
-  </div>
-</div>
-</section>
-<!-- Services  End -->
 
 
 {% include 'includes/products_with_mincosts2.html' %}
+
+{% include 'includes/products_types.html' %}
 
 {% endblock  %}
