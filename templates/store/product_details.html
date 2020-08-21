@@ -234,36 +234,18 @@
                             </div>
                             <button data-product='{{product.id}}' data-action='add' class="add-to-cart-btn update-cart"><i class="fa fa-shopping-cart"></i> add to cart</button>
                             <ul>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
                             </ul>
                         </div>
                         <div class="product__details__widget">
                             <ul>
+
+   
                                 <li>
-                                    <span>Category:</span>
-                                    <div class="color__checkbox">
-                                        <label for="">
-                                            
-                                            <span >{{product.category}}</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Availability:</span>
-                                    <div class="stock__checkbox">
-                                        <label for="stockin">
-                                            In Stock
-                                            <input type="checkbox" id="stockin" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Available color:</span>
-                                    <div class="color__checkbox">
-                                        <label for="">
-                                            
-                                            <span >{{product.color}}</span>
+                                    <span>Color:</span>
+                                    <div class="size__btn">
+                                        <label for="xs-btn" class="active">
+                                            {{product.color}}
                                         </label>
                                     </div>
                                 </li>
@@ -271,7 +253,6 @@
                                     <span>Available size:</span>
                                     <div class="size__btn">
                                         <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn">
                                             {{product.size}}
                                         </label>
                                     </div>
@@ -280,8 +261,17 @@
                                     <span>Delivery time:</span>
                                     <div class="size__btn">
                                         <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn">
                                             {{product.delivery_minutes}}
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>Availability:</span>
+                                    <div class="stock__checkbox">
+                                        <label for="stockin">
+                                            In Stock
+                                            {% comment %} <input type="checkbox" id="stockin" checked> {% endcomment %}
+                                            <span class="checkmark"></span>
                                         </label>
                                     </div>
                                 </li>
@@ -372,7 +362,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="related__title">
-                        <h5>RELATED PRODUCTS</h5>
+                        <h5>You may also like this</h5>
                     </div>
                 </div>
                 {% for product in my_list %}
