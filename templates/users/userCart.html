@@ -1,14 +1,45 @@
-{% extends 'users/account_base.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
 {% block content %}
-  
-<div class="container dash-container">
-    <div class="row">
-        <div class="col-md-3">
-            {% include "users/dashboard_sidebar.html" %}
+{% url 'dashboard' as dashboard_url %}
+{% url 'user_cart' as user_cart_url %}
+{% url 'user_wishlist' as user_wishlist_url %}
+{% url 'user_change_password' as password_change_url %}
+<style>
+    li{list-style-type: none;color: rgb(29, 28, 28);padding-left: 4%;}
+    ul{margin-top: 2%;margin-bottom: 2%;}
+    h4{font-weight: 500;}
+    .current{text-decoration-line: underline;color: #D10024;}
+    li:hover{color: #D10024;}
+    .col-md-4{background-color:  #f8f8f8;border: 1px solid  #f6f5fa;}
+  </style>
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="{% url 'homepage' %}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{dashboard_url}}">Dashboard</a>
+                    <span>Cart</span>
+                </div>
+            </div>
         </div>
-        <div class="col-md-9">
+    </div>
+</div>
+<div class="container dash-container"  style="padding: 5%;">
+    <div class="row">
+        <div class="col-md-4"  style="padding-top: 5%;">
+            <h4>Manage My Account</h4>
+            <ul class="dash-list">
+                <a href="{{dashboard_url}}"><li class=" {% if request.path == dashboard_url %} active {% endif %}">{% trans 'Account' %}</li></a>
+                <a href="{{user_cart_url}}"><li class=" current{% if request.path == user_cart_url %} active {% endif %}">{% trans 'Cart' %} <span class="cart-number">{{cartItems}}</span></li></a>
+                <a href="{{user_wishlist_url}}"><li class=" {% if request.path == user_wishlist_url %} active {% endif %}">{% trans 'Wishlist' %} <span class="wishlist-number">{{wishlists_counts}}</span></li></a> 
+                <a href="{{password_change_url}}"><li class=" {% if request.path == password_change_url %} active {% endif %}">{% trans 'Change Password' %}</li></a>
+                <a href="{% url 'logout' %}"><li class="">{% trans 'Logout' %}</li></a> 
+              </ul>
+        </div>
+        <div class="col-md-8">
             <h3 class="text-center">{% trans 'Cart' %}</h3>
             <div class="table-responsive">
                 <table class="table dash-table">
