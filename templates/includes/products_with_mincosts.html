@@ -13,12 +13,11 @@
           <div class="col-lg-2 col-md-4 col-sm-4 p-0">
               <div class="instagram__item set-bg" data-setbg="{{product.main_image.url}}">
                   <div class="instagram__text">
-                      <!-- <i class="fa fa-instagram"></i> -->
-                      <!-- <a href="#">@ ashion_shop</a> -->
+                      
                       <h5>{{product.name}}</h5>
-                      <p>{{product.price}}</p>
+                      <p>{{product.price}} Frw</p>
                       <p></p>
-                      <a href="{% url 'product_details' product.slug %}">View Details</a>
+                      <a href="{% url 'product_details' product.slug %}" class="view-mincosts">View Details</a>
                   </div>
               </div>
           </div>

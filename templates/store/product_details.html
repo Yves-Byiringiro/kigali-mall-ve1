@@ -181,7 +181,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{% url 'homepage' %}"><i class="fa fa-home"></i> Home</a>
-                        <a href="#">{{product.category.name}}</a>
+                        <a >{{product.category.name}}</a>
                         <span>{{product.name}}</span>
                     </div>
                 </div>
@@ -226,16 +226,9 @@
                         <div class="product__details__price">{{product.price}} Frw <span>{{product.old_price}} Frw </span></div>
                       
                         <div class="product__details__button">
-                            <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
+
                             <button data-product='{{product.id}}' data-action='add' class="add-to-cart-btn update-cart"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            <ul>
-                                <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
-                            </ul>
+
                         </div>
                         <div class="product__details__widget">
                             <ul>
@@ -372,8 +365,8 @@
                             <div class="label new">New</div>
                             <ul class="product__hover">
                                 <li><a href="{% url 'product_details' product.slug %}"><span class="arrow_expand"></span></a></li>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                <li class="update-wishlist" data-product="{{product.id}}" data-action="add"><a title="add to wishlists"><span class="icon_heart_alt"></span></a></li>
+                                <li  data-product='{{product.id}}' data-action='add' class="update-cart"><a title="add to carts"><span class="icon_bag_alt"></span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -389,36 +382,32 @@
                         </div>
                     </div>
                 </div>
-            
+                {% endfor %}
             </div>
         </div>
     </section>
     <!-- Product Details Section End -->
-
-    <!-- Instagram Begin -->
-    {% for product in top_selling   %}
-    <div class="instagram">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="{{product.main_image.url}}">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="https://www.instagram.com/kigali_mall/">@ Kigali_mall</a>
+{% else %}
+        <!-- Instagram Begin -->
+        {% for product in top_selling   %}
+        <div class="instagram">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                        <div class="instagram__item set-bg" data-setbg="{{product.main_image.url}}">
+                            <div class="instagram__text">
+                                <i class="fa fa-instagram"></i>
+                                <a href="https://www.instagram.com/kigali_mall/">@ Kigali_mall</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-
+                
             </div>
-            
         </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    
+        {% endfor %}
 {% endif %}
     <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
-    {% endblock %}
+{% endblock %}

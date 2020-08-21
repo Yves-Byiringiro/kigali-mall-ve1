@@ -1,7 +1,86 @@
 /****** login page css ******/
-.login-form{
+.info-form{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 25px;
     background-color: #fff;
     box-shadow: 0px 0px 6px 11px lavender
 }
+.info-form form{
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.info-form .sign-welcm{
+    margin-top: 30px;
+    margin-bottom: 18px;
+}
+.info-form .sign-continue{
+    margin-bottom: 30px;
+}
+.info-form .sign-btn{
+    margin-top: 23px;
+    margin-bottom: 27px;
+    background: #20165d !important;
+}
+.form-group{
+    margin-bottom: 25px !important;
+}
+.form-group .asteriskField{
+    display: none;
+}
+.register-notification{
+margin-top: 20px;
+}
 
 
+.register-notification{
+    animation: fade 7s ease forwards;
+}
+
+@keyframes fade{
+    from{
+        opacity: 2;
+        pointer-events: all;
+        
+    }
+
+    to{
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.dash-container .register-notification{
+    animation: fading 5s ease forwards;
+}
+
+@keyframes fading{
+    from{
+        opacity: 1;
+        pointer-events: all;
+        
+    }
+
+    to{
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+/* 
+other css */
+
+.logo-kmall{
+    height: 40px;
+}
+
+
+.view-mincosts{
+    background: red;
+    padding: 5px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 800;
+    margin-top: 48px;
+    width: 138px;
+}

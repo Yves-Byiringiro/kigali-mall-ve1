@@ -25,6 +25,7 @@ from about.models import *
 class RegistrationView(CreateView):
     template_name = 'registration/register.html'
     form_class = RegistrationForm
+    
 
     def get_context_data(self, *args, **kwargs):
         context = super(RegistrationView, self).get_context_data(*args, **kwargs)

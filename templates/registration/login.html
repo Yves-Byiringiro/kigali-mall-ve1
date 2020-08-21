@@ -53,8 +53,16 @@
 </div>
 
 <script>
-  password = document.getElementById('div_id_password')
-  password.style.marginBottom = '15px'
+  // password = document.getElementById('div_id_password')
+  email = document.getElementById('id_username')
+  pwd = document.getElementById('id_password')
+
+
+  pwd.style.marginBottom = '15px'
+  email.classList.add('form-control')
+  pwd.classList.add('form-control')
+
+
 </script> 
 
 {% endblock %}
