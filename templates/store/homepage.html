@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block content %}
-  
+  <style>
+      .text-light{
+          text-shadow:1px 1px 3px black;
+      }
+  </style>
 <div class="overdue container register-notification">
   {% for message in messages %}
       <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
@@ -18,51 +22,51 @@
       <div class="row">
           <div class="col-lg-6 p-0">
               <div class="categories__item categories__large__item set-bg"
-              data-setbg="{% static 'img/categories/category-1.jpg' %}">
+              data-setbg="{% static 'img/categories/w.jpg' %}">
               <div class="categories__text">
-                  <h1>Women’s fashion</h1>
-                  <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
+                  <h1 class="text-light">Women’s fashion</h1>
+                  <p class="text-light">Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
                   edolore magna aliquapendisse ultrices gravida.</p>
-                  <p>{{womens_fashions}} items</p>
-                  <a href="{% url 'womensFashions' %}">Shop now</a>
+                  <p class="text-light"> {{womens_fashions}} items</p>
+                  <a class="text-light" href="{% url 'womensFashions' %}">Shop now</a>
               </div>
           </div>
       </div>
       <div class="col-lg-6">
           <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/category-2.jpg' %}">
+                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/m.jpg' %}">
                       <div class="categories__text">
-                          <h4>Men’s fashion</h4>
-                          <p>{{mens_fashions}} items</p>
-                          <a href="{% url 'mensFashions' %}">Shop now</a>
+                          <h4 class="text-light">Men’s fashion</h4>
+                          <p class="text-light">{{mens_fashions}} items</p>
+                          <a class="text-light" href="{% url 'mensFashions' %}">Shop now</a>
                       </div>
                   </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/category-3.jpg' %}">
+                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/kid.jpg' %}">
                       <div class="categories__text">
-                          <h4>Kid’s fashion</h4>
-                          <p>{{kids_fashions}} items</p>
-                          <a href="{% url 'kidsFashions' %}">Shop now</a>
+                          <h4 class="text-light">Kid’s fashion</h4>
+                          <p class="text-light">{{kids_fashions}} items</p>
+                          <a class="text-light"href="{% url 'kidsFashions' %}">Shop now</a>
                       </div>
                   </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/category-4.jpg' %}">
+                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/c.jpg' %}">
                       <div class="categories__text">
-                          <h4>Cosmetics</h4>
-                          <p>{{cosmetics}} items</p>
-                          <a href="{% url 'cosmetics' %}">Shop now</a>
+                          <h4 class="text-light">Cosmetics</h4>
+                          <p class="text-light">{{cosmetics}} items</p>
+                          <a class="text-light" href="{% url 'cosmetics' %}">Shop now</a>
                       </div>
                   </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/category-5.jpg' %}">
+                  <div class="categories__item set-bg" data-setbg="{% static 'img/categories/ac.jpg' %}">
                       <div class="categories__text">
-                          <h4>Accessories</h4>
-                          <p>{{accessories}} items</p>
-                          <a href="{% url 'accessories' %}">Shop now</a>
+                          <h4 class="text-light">Accessories</h4>
+                          <p class="text-light">{{accessories}} items</p>
+                          <a  class="text-light" href="{% url 'accessories' %}">Shop now</a>
                       </div>
                   </div>
               </div>
