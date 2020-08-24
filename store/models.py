@@ -49,7 +49,11 @@ class Product(models.Model):
         ('Sutes', 'Sutes'),
         ('Shirts', 'Shirts'),
         ('TShirts', 'TShirts'),
-        ('Jeans', 'Jeans')
+        ('Jeans', 'Jeans'),
+        ('Phones', 'Phones'),
+        ('Laptops', 'Laptops')
+
+
 
 
         )
