@@ -209,13 +209,18 @@
     border-radius: 17px;
     border: none;
 }
-.billing-details #send_transactionID{
+#send_transactionID{
     margin-top: 15px;
     padding: 8px;
     background-color: #ff6a00;
     border: none;
     color: white;
     border-radius: 17px;
+}
+#bill-detail{
+    margin-bottom: 28px;
+    font-size: 23px;
+    font-weight: 500;
 }
 .payment-buttons{
     width: 93px;

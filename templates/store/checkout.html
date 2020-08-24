@@ -3,6 +3,12 @@
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
+<style>
+    .hidden{
+        display:none;
+    }
+</style>
+
 
 <div class="breadcrumb-option">
     <div class="container">
@@ -21,45 +27,61 @@
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
-        <form class="checkout__form" id="form">
-            {% csrf_token %}
             <div class="row">
                 <div class="col-lg-7">
-                    <h5>Billing detail</h5>
+                    <h5 id="bill-detail">Billing detail</h5>
+                    <form id="form">
+                        {% csrf_token %}
+
+                        <div class="row" id="user-info">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input required class="form-control" type="text" name="name" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input required class="form-control" type="email" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="shipping-info">
+                            <div class="form-group">
+                                <input required class="form-control" type="text" name="address" placeholder="Address">
+                            </div>
+                            <div class="form-group">
+                                <input required class="form-control" type="text" name="city" placeholder="City">
+                            </div>
+                            <div class="form-group">
+                                <input required class="form-control" type="text" name="state" placeholder="State">
+                            </div>
+                            <div class="form-group">
+                                <input required class="form-control" type="text" name="country" placeholder="Country">
+                            </div>
+                        </div>
+                        <button  type="submit" id="form-button">Payment Options</button>
+
+                    </form>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="checkout__form__input">
-                                <p>Name <span>*</span></p>
-                                <input required class="form-control" type="text" name="name">
+                        <div class="col-md-5">
+                            <div class="box-element hidden" id="payment-info">
+                                <div class="payment-title">
+                                    <small>Paypal</small>
+                                </div>
+                                <div id="paypal-button-container"></div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="checkout__form__input">
-                                <p>Email <span>*</span></p>
-                                <input required class="form-control" type="email" name="email">
-                            </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                            <div class="box-element hidden" id="momo-payment-info">
+                                <div class="payment-title">
+                                    <small>Mobile Money</small>
+                                </div>
+                                <p>You can shop with us using Mobile Money</p>
+                                <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
+                            </div> 
                         </div>
-                        
-                        <div class="col-lg-12">
-                            <div class="checkout__form__input">
-                                <p>Address <span>*</span></p>
-                                <input required class="form-control" type="text" name="address" placeholder="Street Address">
-                            </div>
-                            <div class="checkout__form__input">
-                                <p>Town/City <span>*</span></p>
-                                <input required class="form-control" type="text" name="city">
-                            </div>
-                            <div class="checkout__form__input">
-                                <p>State <span>*</span></p>
-                                <input required class="form-control" type="text" name="state">
-                            </div>
-                            <div class="checkout__form__input">
-                                <p>Country <span>*</span></p>
-                                <input required class="form-control" type="text" name="country">
-                            </div>
-                        </div>
-  
-                        </div>
+                    </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="checkout__order">
@@ -93,11 +115,9 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <button type="submit" class="site-btn">Place oder</button>
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
     </section>
 
@@ -153,7 +173,7 @@
 
     if (user != 'AnonymousUser'){
          document.getElementById('user-info').innerHTML = ''
-         document.getElementById('billing-title').classList.add('hidden');
+        //  document.getElementById('billing-title').classList.add('hidden');
          
      }
 
