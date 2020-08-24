@@ -1,3 +1,41 @@
+/********* dashboard page *********/
+
+.fa-power-off{
+    margin-right: 6px;
+}
+
+.dash-list a li{
+    list-style-type: none;
+    color: rgb(29, 28, 28);
+    padding-left: 4%;
+}
+
+.current{
+    background-color: #ff6a00;
+    color:#fff;
+} 
+.dash-list li:hover{
+    background-color: #ff6a00;; 
+    color: #fff;
+}
+.btn{
+    width: 100%;
+    background-color: #20165d;
+    color: white;
+} 
+.btn:hover{
+    background-color: #423788;
+    color: white;
+} 
+.account-nav{
+    background-color:  #f8f8f8;
+    border: 1px solid  #f6f5fa;
+}
+.dash-list li{
+    padding: 3%;
+}
+
+
 /****** login page css ******/
 .info-form{
     margin-top: 50px;
