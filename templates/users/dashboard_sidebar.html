@@ -1,0 +1,15 @@
+{% load i18n %}
+{% url 'dashboard' as dashboard_url %}
+{% url 'user_cart' as user_cart_url %}
+{% url 'user_wishlist' as user_wishlist_url %}
+{% url 'user_change_password' as password_change_url %}
+
+
+
+<ul class="dash-list">
+  <a href="{{dashboard_url}}"><li class="{% if request.path == dashboard_url %} current {% endif %}">{% trans 'Account' %}</li></a>
+  <a href="{{user_cart_url}}"><li class=" {% if request.path == user_cart_url %} current {% endif %}">{% trans 'Cart' %} <span class="cart-number">{{cartItems}}</span></li></a>
+  <a href="{{user_wishlist_url}}"><li class=" {% if request.path == user_wishlist_url %} current {% endif %}">{% trans 'Wishlist' %} <span class="wishlist-number">{{wishlists_counts}}</span></li></a> 
+  <a href="{{password_change_url}}"><li class=" {% if request.path == password_change_url %} current {% endif %}">{% trans 'Change Password' %}</li></a>
+  <a href="{% url 'logout' %}"><li class="">{% trans 'Logout' %}</li></a> 
+</ul>

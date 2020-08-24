@@ -32,14 +32,7 @@
 <div class="container dash-container"  style="padding: 5%;">
     <div class="row">
         <div class="col-md-4"  style="padding-top: 5%;">
-          <h4>Manage My Account</h4>
-          <ul class="dash-list">
-              <a href="{{dashboard_url}}"><li class=" {% if request.path == dashboard_url %} active {% endif %}">{% trans 'Account' %}</li></a>
-              <a href="{{user_cart_url}}"><li class=" {% if request.path == user_cart_url %} active {% endif %}">{% trans 'Cart' %} <span class="cart-number">{{cartItems}}</span></li></a>
-              <a href="{{user_wishlist_url}}"><li class="current {% if request.path == user_wishlist_url %} active {% endif %}">{% trans 'Wishlist' %} <span class="wishlist-number">{{wishlists_counts}}</span></li></a> 
-              <a href="{{password_change_url}}"><li class=" {% if request.path == password_change_url %} active {% endif %}">{% trans 'Change Password' %}</li></a>
-              <a href="{% url 'logout' %}"><li class="">{% trans 'Logout' %}</li></a> 
-            </ul>
+          {% include "users/dashboard_sidebar.html" %}
         </div>
         <div class="col-md-8">
             <h3 class="text-center">{% trans 'Wishlist' %}</h3>

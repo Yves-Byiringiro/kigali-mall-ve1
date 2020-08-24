@@ -1,3 +1,11 @@
+.product-thumbnail{
+    height: 90px;
+    width: 90px;
+}
+.wishlist-container{
+    margin-top: 50px;
+}
+
 .cat_product_area .btn_2 {
     border: 1px solid #606060;
     color: #606060;
@@ -205,13 +213,18 @@
     border-radius: 17px;
     border: none;
 }
-.billing-details #send_transactionID{
+#send_transactionID{
     margin-top: 15px;
     padding: 8px;
     background-color: #ff6a00;
     border: none;
     color: white;
     border-radius: 17px;
+}
+#bill-detail{
+    margin-bottom: 28px;
+    font-size: 23px;
+    font-weight: 500;
 }
 .payment-buttons{
     width: 93px;

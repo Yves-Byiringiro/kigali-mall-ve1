@@ -1,6 +1,8 @@
 {% extends 'users/account_base.html' %}
 {% load i18n %}
 {% block content %}
+
+
 <div class="breadcrumb-option">
     <div class="container">
         <div class="row">
@@ -50,7 +52,9 @@
                         {{form.country}}
                     </div>
                 </div>
-                    <button type="submit" class="btn btn-lg btn-info dashb-update-btn">{% trans 'Update' %}</button>
+                    <div class="text-center mt-2">
+                    <button type="submit" class="btn">Save</button>
+                    </div>
                 </form>
         </div>
     </div>

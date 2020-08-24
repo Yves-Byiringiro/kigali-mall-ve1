@@ -734,7 +734,6 @@ def accessories(request):
 	wishlists_counts = data2['wishlists_counts']
 
 	
-	categories = Category.objects.all()
 	accessories = Product.objects.filter(category__name='Accessories')
 
 
@@ -752,5 +751,23 @@ def accessories(request):
 
 
 def shop(request):
+	data = cartData(request)
+	data2 = wishlistData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
 	products = Product.objects.all().order_by('-id')
-	return render(request, 'store/shop.html',{'products':products})
+
+
+
+	context = {
+		'cartItems':cartItems,
+		'items':items,
+		'order':order,
+		'wishlists_counts':wishlists_counts,
+		'products':products,
+	}
+
+	return render(request, 'store/shop.html',context)

@@ -6,55 +6,85 @@
 
 
 <style>
-  .image{width: 3cm;}
-  img{width: 100%;border-radius: 50%;}
-  .container{padding: 0% 10% 3% 10%;}
-  form{padding: 5%;border-radius: 2%;box-shadow: 0px 0px 6px 11px lavender}
-  p{padding:2% 0 2% 0}
-  h3{padding-top: 2%;color: #2B2D42;font-weight: 700;margin: 0 0 10px;}
-  .sign-btn{margin-top: 23px;margin-bottom: 27px;background: #20165d !important;}
+  #image{
+    width: 3cm;
+  }
+  #image{
+    border-radius: 50%;
+  }
+  /* .container{
+    padding: 0% 10% 3% 10%;
+  } */
+  #login-frm{
+    padding: 5%;
+    border-radius: 2%;
+    box-shadow: 0px 0px 6px 11px lavender
+  }
+  p{
+    padding:2% 0 2% 0
+  }
+  h3{
+    padding-top: 2%;
+    color: #2B2D42;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .sign-btn{
+    margin-top: 23px;
+    margin-bottom: 27px;
+    background: #20165d !important;
+    }
 </style>
 
 
-<div class="container">
 
-  <div class="overdue container register-notification">
-    {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
-          {{ message }}
-        </div>
-    {% endfor %}
-  </div>
-  <div class="image mx-auto">
-    <img src="/static/img/small-logo.png">
-  </div>
-  <div class="row mx-auto">
-    <div class="col-md-7 mx-auto">
-      <div class=" mx-auto">
-        <h3 class="text-center mx-auto">{% trans 'Hey, good to see you again!' %}</h3>
-        <p class="text-center mx-auto sign-continue">{% trans 'Sign in to your account to continue' %}</p>
-        <form method="POST" class="mx-auto">
-          {% csrf_token %}
-          <div class="form-group">
-            {{ form.username|as_crispy_field }}
-          </div>
-          <div class="form-group">
-            {{ form.password|as_crispy_field }}
-          </div>
-          <button type="submit" class="btn btn-primary mx-auto btn-block sign-btn">{% trans 'Login' %}</button>
-        </form>
-        <div class="row">
-        <div class="mt-3 mb-2 tx-12 col-7">{% trans "Don't have an account?" %} <a href="{% url 'register' %}?next={{ next }}">{% trans 'Sign Up' %}</a></div>
-        <div class="mt-3 mb-2 tx-12 col-5" style="display:flex;justify-content:flex-end" ><a href="{% url 'password_reset' %}" class="tx-12 d-block" style="color: #20165d;">{% trans 'Forgot password?' %}</a></div>
+
+<div class="overdue container register-notification">
+  {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
+        {{ message }}
       </div>
+  {% endfor %}
+</div>
+
+<div class="mx-auto" id="image">
+  <img src="/static/img/small-logo.png">
+</div>
+
+<div class="row mx-auto">
+  <div class="col-md-5 mx-auto">
+    <div class=" mx-auto">
+      <h3 class="text-center mx-auto">{% trans 'Hey, good to see you again!' %}</h3>
+      <p class="text-center mx-auto sign-continue">{% trans 'Sign in to your account to continue' %}</p>
+      <form method="POST" class="mx-auto" id="login-frm">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.username|as_crispy_field }}
+        </div>
+        <div class="form-group">
+          {{ form.password|as_crispy_field }}
+        </div>
+        <button type="submit" class="btn btn-primary mx-auto btn-block sign-btn">{% trans 'Login' %}</button>
+      </form>
+      <div class="row">
+      <div class="mt-3 mb-2 tx-12 col-7">{% trans "Don't have an account?" %} <a href="{% url 'register' %}?next={{ next }}">{% trans 'Sign Up' %}</a></div>
+      <div class="mt-3 mb-2 tx-12 col-5" style="display:flex;justify-content:flex-end" ><a href="{% url 'password_reset' %}" class="tx-12 d-block" style="color: #20165d;">{% trans 'Forgot password?' %}</a></div>
     </div>
-    </div>
+  </div>
   </div>
 </div>
 
+
 <script>
-  password = document.getElementById('div_id_password')
-  password.style.marginBottom = '15px'
+  email = document.getElementById('id_username')
+  pwd = document.getElementById('id_password')
+
+
+  pwd.style.marginBottom = '15px'
+  email.classList.add('form-control')
+  pwd.classList.add('form-control')
+
+
 </script> 
 
 {% endblock %}

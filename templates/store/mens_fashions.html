@@ -33,14 +33,20 @@
                         </div>
                         <div class="categories__accordion">
                             <div class="accordion" id="accordionExample">
+                                
                                 <div class="card">
                                     <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Shoes</a>
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('All')"> All</a>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Bags</a>
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('Shoes')"> Shoes</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('Bags')"> Bags</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,28 +57,28 @@
             <div class="col-lg-9 col-md-9">
                 <div class="row">
                     {% for product in mens_fashions %}
-                        <div class="col-lg-4 col-md-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
-                                    <ul class="product__hover">
-                                        <li><a href="{{product.main_image.url}}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                        <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                        <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-                                    </ul>
+                    <div class="col-lg-4 col-md-6 filter" id="{{product.sub_category}}">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
+                                <ul class="product__hover">
+                                    <li><a href="{% url 'product_details' product.slug %}"  title="view details"><span class="arrow_expand"></span></a></li>
+                                    <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
+                                    <li data-product='{{product.id}}' data-action='add' class="update-cart" title="add to carts"><a><span class="icon_bag_alt"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h6>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
                                 </div>
-                                <div class="product__item__text">
-                                    <h6><a href="{% url 'product_details'  product.slug  %}">{{product.name}}</a></h6>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <div class="product__price">{{product.price}} Frw</div>
-                                </div>
+                                <div class="product__price">{{product.price}} Frw</div>
                             </div>
                         </div>
+                    </div>
                     {% endfor %}
 
   
@@ -89,8 +95,36 @@
         </div>
     </div>
 </section>
-<!-- Shop Section End -->
 
+<script>
+
+   // Function to hide all other elements, bar the parameter provided
+   function filterSelection(elementToShow){
+    if(elementToShow != "All"){ 
+    // Get an array of elements with the class name, filter.
+    var x = document.getElementsByClassName("filter");
+    // For each of them
+    for(var i = 0; i < x.length; i++){
+    // Make them invisible
+    x[i].style.display = "none";
+    }
+    // Get and then make the one you want, visible
+    var y = document.getElementById(elementToShow).style.display = "block";
+    }
+    else{ // If the parameter provided is all, we want to display everything
+    // Get an array of elements with the class name, filter.
+    var x = document.getElementsByClassName("filter");
+    // For each of them
+    for(var i = 0; i < x.length; i++){
+    //Make them visible
+    x[i].style.display = "block";
+    }
+    }
+
+    }
+
+
+</script>
 
 
 {% endblock %}
