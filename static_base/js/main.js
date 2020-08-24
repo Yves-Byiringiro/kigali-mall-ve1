@@ -1,205 +1,227 @@
-(function($) {
-	"use strict"
 
-	// Mobile Nav toggle
-	$('.menu-toggle > a').on('click', function (e) {
-		e.preventDefault();
-		$('#responsive-nav').toggleClass('active');
-	})
+'use strict';
 
-	// Fix cart dropdown from closing
-	$('.cart-dropdown').on('click', function (e) {
-		e.stopPropagation();
-	});
+(function ($) {
 
-	/////////////////////////////////////////
+    /*------------------
+        Preloader
+    --------------------*/
+    $(window).on('load', function () {
+        $(".loader").fadeOut();
+        $("#preloder").delay(200).fadeOut("slow");
 
-	// Products Slick
-	$('.products-slick').each(function() {
-		var $this = $(this),
-				$nav = $this.attr('data-nav');
-
-		$this.slick({
-			slidesToShow: 4,
-			slidesToScroll: 1,
-			autoplay: true,
-			infinite: true,
-			speed: 300,
-			dots: false,
-			arrows: true,
-			appendArrows: $nav ? $nav : false,
-			responsive: [{
-	        breakpoint: 991,
-	        settings: {
-	          slidesToShow: 2,
-	          slidesToScroll: 1,
-	        }
-	      },
-	      {
-	        breakpoint: 480,
-	        settings: {
-	          slidesToShow: 1,
-	          slidesToScroll: 1,
-	        }
-	      },
-	    ]
-		});
-	});
-
-	// Products Widget Slick
-	$('.products-widget-slick').each(function() {
-		var $this = $(this),
-				$nav = $this.attr('data-nav');
-
-		$this.slick({
-			infinite: true,
-			autoplay: true,
-			speed: 300,
-			dots: false,
-			arrows: true,
-			appendArrows: $nav ? $nav : false,
-		});
-	});
-
-	/////////////////////////////////////////
-
-	// Product Main img Slick
-	$('#product-main-img').slick({
-    infinite: true,
-    speed: 300,
-    dots: false,
-    arrows: true,
-    fade: true,
-    asNavFor: '#product-imgs',
-  });
-
-	// Product imgs Slick
-  $('#product-imgs').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
-    centerMode: true,
-    focusOnSelect: true,
-		centerPadding: 0,
-		vertical: true,
-    asNavFor: '#product-main-img',
-		responsive: [{
-        breakpoint: 991,
-        settings: {
-					vertical: false,
-					arrows: false,
-					dots: true,
+        /*------------------
+            Product filter
+        --------------------*/
+        $('.filter__controls li').on('click', function () {
+            $('.filter__controls li').removeClass('active');
+            $(this).addClass('active');
+        });
+        if ($('.property__gallery').length > 0) {
+            var containerEl = document.querySelector('.property__gallery');
+            var mixer = mixitup(containerEl);
         }
-      },
-    ]
-  });
+    });
 
-	// Product img zoom
-	var zoomMainProduct = document.getElementById('product-main-img');
-	if (zoomMainProduct) {
-		$('#product-main-img .product-preview').zoom();
-	}
+    /*------------------
+        Background Set
+    --------------------*/
+    $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+    });
 
-	/////////////////////////////////////////
+    //Search Switch
+    $('.search-switch').on('click', function () {
+        $('.search-model').fadeIn(400);
+    });
 
-	// Input number
-	$('.input-number').each(function() {
-		var $this = $(this),
-		$input = $this.find('input[type="number"]'),
-		up = $this.find('.qty-up'),
-		down = $this.find('.qty-down');
+    $('.search-close-switch').on('click', function () {
+        $('.search-model').fadeOut(400, function () {
+            $('#search-input').val('');
+        });
+    });
 
-		down.on('click', function () {
-			var value = parseInt($input.val()) - 1;
-			value = value < 1 ? 1 : value;
-			$input.val(value);
-			$input.change();
-			updatePriceSlider($this , value)
-		})
+    //Canvas Menu
+    $(".canvas__open").on('click', function () {
+        $(".offcanvas-menu-wrapper").addClass("active");
+        $(".offcanvas-menu-overlay").addClass("active");
+    });
 
-		up.on('click', function () {
-			var value = parseInt($input.val()) + 1;
-			$input.val(value);
-			$input.change();
-			updatePriceSlider($this , value)
-		})
-	});
+    $(".offcanvas-menu-overlay, .offcanvas__close").on('click', function () {
+        $(".offcanvas-menu-wrapper").removeClass("active");
+        $(".offcanvas-menu-overlay").removeClass("active");
+    });
 
-	var priceInputMax = document.getElementById('price-max'),
-			priceInputMin = document.getElementById('price-min');
+    /*------------------
+		Navigation
+	--------------------*/
+    $(".header__menu").slicknav({
+        prependTo: '#mobile-menu-wrap',
+        allowParentLinks: true
+    });
 
-	priceInputMax.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
+    /*------------------
+        Accordin Active
+    --------------------*/
+    $('.collapse').on('shown.bs.collapse', function () {
+        $(this).prev().addClass('active');
+    });
 
-	priceInputMin.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
+    $('.collapse').on('hidden.bs.collapse', function () {
+        $(this).prev().removeClass('active');
+    });
 
-	function updatePriceSlider(elem , value) {
-		if ( elem.hasClass('price-min') ) {
-			console.log('min')
-			priceSlider.noUiSlider.set([value, null]);
-		} else if ( elem.hasClass('price-max')) {
-			console.log('max')
-			priceSlider.noUiSlider.set([null, value]);
+    /*--------------------------
+        Banner Slider
+    ----------------------------*/
+    $(".banner__slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 1,
+        dots: true,
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true
+    });
+
+    /*--------------------------
+        Product Details Slider
+    ----------------------------*/
+    $(".product__details__pic__slider").owlCarousel({
+        loop: false,
+        margin: 0,
+        items: 1,
+        dots: false,
+        nav: true,
+        navText: ["<i class='arrow_carrot-left'></i>","<i class='arrow_carrot-right'></i>"],
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: false,
+        mouseDrag: false,
+        startPosition: 'URLHash'
+    }).on('changed.owl.carousel', function(event) {
+        var indexNum = event.item.index + 1;
+        product_thumbs(indexNum);
+    });
+
+    function product_thumbs (num) {
+        var thumbs = document.querySelectorAll('.product__thumb a');
+        thumbs.forEach(function (e) {
+            e.classList.remove("active");
+            if(e.hash.split("-")[1] == num) {
+                e.classList.add("active");
+            }
+        })
+    }
+
+
+    /*------------------
+		Magnific
+    --------------------*/
+    $('.image-popup').magnificPopup({
+        type: 'image'
+    });
+
+
+    $(".nice-scroll").niceScroll({
+        cursorborder:"",
+        cursorcolor:"#dddddd",
+        boxzoom:false,
+        cursorwidth: 5,
+        background: 'rgba(0, 0, 0, 0.2)',
+        cursorborderradius:50,
+        horizrailenabled: false
+    });
+
+    /*------------------
+        CountDown
+    --------------------*/
+    // For demo preview start
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(mm == 12) {
+        mm = '01';
+        yyyy = yyyy + 1;
+    } else {
+        mm = parseInt(mm) + 1;
+        mm = String(mm).padStart(2, '0');
+    }
+    var timerdate = mm + '/' + dd + '/' + yyyy;
+    // For demo preview end
+
+
+    // Uncomment below and use your date //
+
+    /* var timerdate = "2020/12/30" */
+
+	$("#countdown-time").countdown(timerdate, function(event) {
+        $(this).html(event.strftime("<div class='countdown__item'><span>%D</span> <p>Day</p> </div>" + "<div class='countdown__item'><span>%H</span> <p>Hour</p> </div>" + "<div class='countdown__item'><span>%M</span> <p>Min</p> </div>" + "<div class='countdown__item'><span>%S</span> <p>Sec</p> </div>"));
+    });
+
+    /*-------------------
+		Range Slider
+	--------------------- */
+	var rangeSlider = $(".price-range"),
+    minamount = $("#minamount"),
+    maxamount = $("#maxamount"),
+    minPrice = rangeSlider.data('min'),
+    maxPrice = rangeSlider.data('max');
+    rangeSlider.slider({
+    range: true,
+    min: minPrice,
+    max: maxPrice,
+    values: [minPrice, maxPrice],
+    slide: function (event, ui) {
+        minamount.val('$' + ui.values[0]);
+        maxamount.val('$' + ui.values[1]);
+        }
+    });
+    minamount.val('$' + rangeSlider.slider("values", 0));
+    maxamount.val('$' + rangeSlider.slider("values", 1));
+
+    /*------------------
+		Single Product
+	--------------------*/
+	$('.product__thumb .pt').on('click', function(){
+		var imgurl = $(this).data('imgbigurl');
+		var bigImg = $('.product__big__img').attr('src');
+		if(imgurl != bigImg) {
+			$('.product__big__img').attr({src: imgurl});
 		}
-	}
-
-	// Price Slider
-	var priceSlider = document.getElementById('price-slider');
-	if (priceSlider) {
-		noUiSlider.create(priceSlider, {
-			start: [1, 999],
-			connect: true,
-			step: 1,
-			range: {
-				'min': 1,
-				'max': 999
+    });
+    
+    /*-------------------
+		Quantity change
+	--------------------- */
+    var proQty = $('.pro-qty');
+	proQty.prepend('<span class="dec qtybtn">-</span>');
+	proQty.append('<span class="inc qtybtn">+</span>');
+	proQty.on('click', '.qtybtn', function () {
+		var $button = $(this);
+		var oldValue = $button.parent().find('input').val();
+		if ($button.hasClass('inc')) {
+			var newVal = parseFloat(oldValue) + 1;
+		} else {
+			// Don't allow decrementing below zero
+			if (oldValue > 0) {
+				var newVal = parseFloat(oldValue) - 1;
+			} else {
+				newVal = 0;
 			}
-		});
+		}
+		$button.parent().find('input').val(newVal);
+    });
+    
+    /*-------------------
+		Radio Btn
+	--------------------- */
+    $(".size__btn label").on('click', function () {
+        $(".size__btn label").removeClass('active');
+        $(this).addClass('active');
+    });
 
-		priceSlider.noUiSlider.on('update', function( values, handle ) {
-			var value = values[handle];
-			handle ? priceInputMax.value = value : priceInputMin.value = value
-		});
-	}
-
-	// function makeTimer() {
-
-	// 	var endTime = new Date("21 December 2019 9:56:00 GMT+01:00");			
-	// 	endTime = (Date.parse(endTime) / 1000);
-	
-	// 	var now = new Date();
-	// 	now = (Date.parse(now) / 1000);
-	
-	// 	var timeLeft = endTime - now;
-	
-	// 	var days = Math.floor(timeLeft / 86400); 
-	// 	var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-	// 	var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
-	// 	var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-	
-	// 	if (hours < "10") { hours = "0" + hours; }
-	// 	if (minutes < "10") { minutes = "0" + minutes; }
-	// 	if (seconds < "10") { seconds = "0" + seconds; }
-	
-	// 	$("#days").html(days + "<span>Days</span>");
-	// 	$("#hours").html(hours + "<span>Hours</span>");
-	// 	$("#minutes").html(minutes + "<span>Minutes</span>");
-	// 	$("#seconds").html(seconds + "<span>Seconds</span>");		
-	
-	// }
-	
-	// setInterval(function() { makeTimer(); }, 1000);
-	
 })(jQuery);
-
-
-
-
-
-
-
-
-
