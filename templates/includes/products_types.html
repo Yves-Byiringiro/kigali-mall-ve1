@@ -15,7 +15,7 @@
                   <a href="{% url 'product_details' product.slug %}">
                     <div class="trend__item">
                         <div class="trend__item__pic">
-                            <img src="{% static 'img/trend/ht-1.jpg' %}" alt="">
+                            <img src="{{product.main_image.url}}" alt="product" class="product-thumbnail">
                         </div>
                         <div class="trend__item__text">
                             <h6>{{product.name}}</h6>
@@ -45,7 +45,7 @@
                   <a href="{% url 'product_details' product.slug %}">
                   <div class="trend__item">
                     <div class="trend__item__pic">
-                        <img src="{% static 'img/trend/bs-1.jpg' %}" alt="">
+                        <img src="{{product.main_image.url}}" alt="product" class="product-thumbnail">
                     </div>
                     <div class="trend__item__text">
                         <h6>{{product.name}}</h6>
@@ -75,7 +75,7 @@
                   <a href="{% url 'product_details' product.slug %}">
                     <div class="trend__item">
                         <div class="trend__item__pic">
-                            <img src="{% static 'img/trend/bs-3.jpg' %}" alt="">
+                            <img src="{{product.main_image.url}}" alt="product" class="product-thumbnail">
                         </div>
                         <div class="trend__item__text">
                             <h6>{{product.name}}</h6>

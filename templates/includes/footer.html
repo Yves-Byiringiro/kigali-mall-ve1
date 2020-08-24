@@ -11,13 +11,11 @@
                         <a href="{% url 'homepage' %}"><img class="logo-kmall" src="{% static 'img/logo.png' %}" alt=""></a>
                     </div>
                     <p>Kigali Mall is an innovative E-commerce that help an 
-                        individual or a company sell their products online in a safer way. Moreover, we offer different 
-                        services such as: Advertisement, Website development, Hosting and Domain name registration.
+                        individual or a company sell their products online in a safer way.
                     </p>
                     <div class="footer__payment">
                         <a href="#"><img src="{% static 'img/payment/payment-1.png' %}" alt=""></a>
                         <a href="#"><img src="{% static 'img/payment/payment-2.png' %}" alt=""></a>
-                        <a href="#"><img src="{% static 'img/payment/payment-3.png' %}" alt=""></a>
                         <a href="#"><img src="{% static 'img/payment/payment-4.png' %}" alt=""></a>
                         <a href="#"><img src="{% static 'img/payment/payment-5.png' %}" alt=""></a>
                     </div>
@@ -37,9 +35,14 @@
                 <div class="footer__widget">
                     <h6>Account</h6>
                     <ul>
-                        <li><a href="{% url 'login' %}">My Account</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'dashboard' %}">My Account</a></li>
                         <li><a href="{% url 'checkout' %}">Checkout</a></li>
                         <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                        {% else %}
+                        <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                        <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
