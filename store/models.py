@@ -13,12 +13,13 @@ User = settings.AUTH_USER_MODEL
 
 
 
-class Company(models.Model):
+class Seller(models.Model):
     name = models.CharField(max_length=200,null=True, blank=True)
-
+    phone  = models.CharField(max_length=15,default='078 000 0000')
+    date_added  = models.DateTimeField(auto_now_add=True)
     class Meta:
-        verbose_name = 'Company'
-        verbose_name_plural = 'Companies'
+        verbose_name = 'Seller'
+        verbose_name_plural = 'Sellers'
 
     def __str__(self):
         return self.name
@@ -73,7 +74,7 @@ class Product(models.Model):
     slug  = models.SlugField(blank=True, null=True, max_length=250)
     filter = models.CharField(max_length=50, help_text='Enter: men , women , kid , accessories , cosmetic', null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
-    company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True)
+    seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -124,7 +125,6 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
-    # shipping_price = models.DecimalField( max_digits=7, decimal_places=2, default=2.00)
 
 
     def __str__(self):

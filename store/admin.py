@@ -4,8 +4,8 @@ from .models import *
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name','category','price','delivery_minutes','company','date_added']
-    list_filter = ['category','company','date_added','delivery_minutes']
+    list_display = ['name','category','price','delivery_minutes','seller','date_added']
+    list_filter = ['category','seller','date_added','delivery_minutes']
     list_per_page = 10
 
 
@@ -51,10 +51,15 @@ class MomoTranctionIDAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 
+class SellerDAdmin(admin.ModelAdmin):
+    list_display = ['name','phone','date_added']
+    list_filter = ['date_added']
+    list_per_page = 10
+
 
 
 admin.site.register(Category)
-admin.site.register(Company)
+admin.site.register(Seller,SellerDAdmin)
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Review,ReviewAdmin)
 admin.site.register(ProductImage)
