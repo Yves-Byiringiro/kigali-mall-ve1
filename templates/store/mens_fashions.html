@@ -33,14 +33,20 @@
                         </div>
                         <div class="categories__accordion">
                             <div class="accordion" id="accordionExample">
+                                
                                 <div class="card">
                                     <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Shoes</a>
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('All')"> All</a>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Bags</a>
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('Shoes')"> Shoes</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('Bags')"> Bags</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +57,7 @@
             <div class="col-lg-9 col-md-9">
                 <div class="row">
                     {% for product in mens_fashions %}
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 filter" id="{{product.sub_category}}">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
                                 <ul class="product__hover">
@@ -89,8 +95,36 @@
         </div>
     </div>
 </section>
-<!-- Shop Section End -->
 
+<script>
+
+   // Function to hide all other elements, bar the parameter provided
+   function filterSelection(elementToShow){
+    if(elementToShow != "All"){ 
+    // Get an array of elements with the class name, filter.
+    var x = document.getElementsByClassName("filter");
+    // For each of them
+    for(var i = 0; i < x.length; i++){
+    // Make them invisible
+    x[i].style.display = "none";
+    }
+    // Get and then make the one you want, visible
+    var y = document.getElementById(elementToShow).style.display = "block";
+    }
+    else{ // If the parameter provided is all, we want to display everything
+    // Get an array of elements with the class name, filter.
+    var x = document.getElementsByClassName("filter");
+    // For each of them
+    for(var i = 0; i < x.length; i++){
+    //Make them visible
+    x[i].style.display = "block";
+    }
+    }
+
+    }
+
+
+</script>
 
 
 {% endblock %}
