@@ -743,7 +743,6 @@ def accessories(request):
 		'cartItems':cartItems,
 		'items':items,
 		'order':order,
-		'categories':categories,
 		'accessories':accessories,
 		'wishlists_counts':wishlists_counts
 	}

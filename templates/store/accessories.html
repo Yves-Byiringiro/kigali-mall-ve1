@@ -6,6 +6,17 @@
 
 {% block content %}
 
+<style>
+
+    .column {
+    
+      display: none; /* Hide columns by default */
+    }
+    .show {
+      display: block;
+    }
+</style>
+
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
     <div class="container">
@@ -35,12 +46,17 @@
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
                                     <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Shoes</a>
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('all')"> All</a>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Clothes</a>
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('Phones')"> Phones</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseFive" onclick="filterSelection('Laptops')"> Laptops</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,10 +67,9 @@
             <div class="col-lg-9 col-md-9">
                 <div class="row">
                     {% for product in accessories %}
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6  column {{product.sub_category}}" id="{{product.sub_category}}">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
-                                <div class="label new">New</div>
                                 <ul class="product__hover">
                                     <li><a href="{% url 'product_details' product.slug %}"  title="view details"><span class="arrow_expand"></span></a></li>
                                     <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
@@ -76,7 +91,7 @@
                     </div>
                     {% endfor %}
 
-
+  
                     <div class="col-lg-12 text-center">
                         <div class="pagination__option">
                             <a href="#">1</a>
@@ -90,8 +105,58 @@
         </div>
     </div>
 </section>
-<!-- Shop Section End -->
 
+<script>
+
+  
+filterSelection("all") // Execute the function and show all columns
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
 
 
 {% endblock %}

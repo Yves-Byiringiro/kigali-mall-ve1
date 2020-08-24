@@ -366,7 +366,6 @@ ol {
 
 .header__menu ul li a {
 	font-size: 15px;
-	text-transform: uppercase;
 	color: #111111;
 	font-weight: 500;
 	display: block;
@@ -1109,7 +1108,7 @@ ol {
 }
 
 .product__item.sale .product__item__pic .label {
-	background: #ff6a00;
+	background: #36a300;;
 }
 
 .product__item.sale .product__item__text .product__price {
