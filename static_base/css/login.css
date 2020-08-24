@@ -76,11 +76,16 @@ other css */
 
 
 .view-mincosts{
-    background: red;
+    background: #ff6a00;
     padding: 5px;
     border-radius: 15px;
     color: white;
-    font-weight: 800;
+    font-weight: 400;
     margin-top: 48px;
-    width: 138px;
+    width: 168px;
+}
+
+.view-mincosts:hover{
+    background: #e07e37;
+    color: white;
 }

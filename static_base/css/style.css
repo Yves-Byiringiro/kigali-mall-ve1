@@ -404,7 +404,7 @@ ol {
 	font-size: 12px;
 	color: #666666;
 	position: relative;
-	margin-right: 8px;
+	margin-right: 18px;
 }
 
 .header__right__auth a:last-child {
@@ -1109,11 +1109,11 @@ ol {
 }
 
 .product__item.sale .product__item__pic .label {
-	background: #ca1515;
+	background: #ff6a00;
 }
 
 .product__item.sale .product__item__text .product__price {
-	color: #ca1515;
+	color: red;
 }
 
 .product__item__pic {
@@ -1146,9 +1146,7 @@ ol {
 	background: #0066bd !important;
 }
 
-.product__item__pic .label.sale {
-	background: #ca1515;
-}
+
 
 .product__hover {
 	position: absolute;
@@ -1390,7 +1388,7 @@ ol {
 	font-weight: 700;
 	display: inline-block;
 	padding: 5px 16px 5px 24px;
-	border: 2px solid #ff0000;
+	border: 2px solid #ff6a00;
 	position: absolute;
 	right: 0;
 	bottom: -5px;
@@ -1445,14 +1443,14 @@ ol {
 	height: 14px;
 	width: 14px;
 	border-radius: 50%;
-	background: #ca1515;
+	background: #ff6a00;
 	border: none;
 	outline: none;
 	cursor: pointer;
 }
 
 .filter-range-wrap .price-range .ui-slider-range {
-	background: #ca1515;
+	background: #ff6a00;
 	border-radius: 0;
 }
 
@@ -1490,12 +1488,12 @@ ol {
 
 .sidebar__sizes .size__list label input:checked~.checkmark,
 .sidebar__color .size__list label input:checked~.checkmark {
-	border-color: #ca1515;
+	border-color: #ff6a00;
 }
 
 .sidebar__sizes .size__list label input:checked~.checkmark:after,
 .sidebar__color .size__list label input:checked~.checkmark:after {
-	border-color: #ca1515;
+	border-color: #ff6a00;
 	opacity: 1;
 }
 

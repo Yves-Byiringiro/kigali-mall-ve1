@@ -63,7 +63,7 @@
                 <div class="header__right">
                     <div class="header__right__auth">
                     {% if user.is_authenticated %}
-                        <a href="{% url 'login' %}">{% trans 'Welcome' %}  {{user.get_short_name}}</a>
+                        <a href="{% url 'dashboard' %}">{% trans 'Welcome' %}  {{user.get_short_name}}</a>
                     {% else %}
                         <a href="{% url 'login' %}">Login</a>
                         <a href="{% url 'register' %}">Register</a>
