@@ -38,7 +38,7 @@
                         {% for item in items %}
                           <tr>
                               <td class="cart__product__item">
-                                  <img src="{% static 'img/shop-cart/cp-4.jpg' %}" alt="">
+                                  <img src="{{item.product.main_image.url}}" alt="product" class="product-thumbnail">
                                   <div class="cart__product__item__title">
                                       <h6>{{item.product.name}}</h6>
                                       <div class="rating">
