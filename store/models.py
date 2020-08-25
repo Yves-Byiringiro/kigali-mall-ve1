@@ -42,7 +42,15 @@ class Product(models.Model):
         ('Black', 'Black'), 
         ('Red', 'Red'), 
         ('White', 'White'),
-        ('Silver', 'Silver')
+        ('Silver', 'Silver'),
+        ('Gray', 'Gray'),
+        ('Yellow', 'Yellow'),
+        ('Pink', 'Pink'),
+        ('Dark blue', 'Dark blue'),
+        ('Gold', 'Gold')
+
+
+
         )
 
     SUB_CATEGORIES = (
@@ -68,7 +76,7 @@ class Product(models.Model):
     main_image = models.ImageField(upload_to='products')
     color = models.CharField(max_length=200,choices=COLOR, default='Black', blank=True, null=True)
     size = models.CharField(max_length=50,null=True, blank=True,default='not specified')
-    delivery_minutes = models.CharField(max_length=50, default='45 Minutes')
+    delivery_minutes = models.CharField(max_length=50, default='2 hours')
     in_stock = models.BooleanField(default=False,null=True,blank=True)
     description = models.TextField(blank=True)
     slug  = models.SlugField(blank=True, null=True, max_length=250)
