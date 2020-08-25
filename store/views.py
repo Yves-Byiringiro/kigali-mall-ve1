@@ -49,7 +49,7 @@ def homepage(request):
 	final = hot
 
 	#new products
-	new_products = Product.objects.order_by('-id')[:20]
+	new_products = Product.objects.order_by('-id')[:8]
 	new = list(new_products)
 	shuffle(new)
 	final = new
@@ -61,9 +61,20 @@ def homepage(request):
 	cosmetics = Product.objects.filter(category__name='Cosmetics').count()
 	accessories = Product.objects.filter(category__name='Accessories').count()
 
-	new_products = Product.objects.order_by('id')[:6]
-	new_products2 = Product.objects.order_by('-id')[:6]
 
+
+
+	kids_products = Product.objects.filter(category__name='KidsFashions')[:6]
+	kids = list(kids_products)
+	shuffle(kids)
+	final = kids
+
+
+
+	womens_products = Product.objects.filter(category__name='WomensFashions')[:6]
+	womens = list(womens_products)
+	shuffle(womens)
+	final = womens
 
 	# categories = Category.objects.all()
 
@@ -96,8 +107,8 @@ def homepage(request):
 		'kids_fashions':kids_fashions,
 		'cosmetics':cosmetics,
 		'accessories':accessories,
-		'new_products':new_products,
-		'new_products2':new_products2
+		'kids':kids,
+		'womens':womens
 
 
 
