@@ -48,7 +48,7 @@ class Product(models.Model):
         ('Pink', 'Pink'),
         ('Dark blue', 'Dark blue'),
         ('Light blue', 'Light blue'),
-        ('Black and white', 'Black and white''),
+        ('Black and white', 'Black and white'),
         ('Gold', 'Gold'),
         ('Not Specified', 'Not Specified'),
 
