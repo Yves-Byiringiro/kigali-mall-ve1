@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-
-
+{% url 'dashboard' as dashboard_url %}
+{% url 'user_cart' as user_cart_url %}
+{% url 'user_wishlist' as user_wishlist_url %}
+{% url 'user_change_password' as password_change_url %}
 
 <div class="breadcrumb-option">
   <div class="container">
