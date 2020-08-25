@@ -47,7 +47,11 @@ class Product(models.Model):
         ('Yellow', 'Yellow'),
         ('Pink', 'Pink'),
         ('Dark blue', 'Dark blue'),
-        ('Gold', 'Gold')
+        ('Light blue', 'Light blue'),
+        ('Black and white', 'Black and white''),
+        ('Gold', 'Gold'),
+        ('Not Specified', 'Not Specified'),
+
 
 
 
@@ -56,6 +60,7 @@ class Product(models.Model):
     SUB_CATEGORIES = (
         ('Shoes', 'Shoes'), 
         ('Sutes', 'Sutes'),
+        ('Clothes', 'Clothes'),
         ('Shirts', 'Shirts'),
         ('TShirts', 'TShirts'),
         ('Jeans', 'Jeans'),
