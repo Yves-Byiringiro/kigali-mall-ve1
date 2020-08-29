@@ -49,7 +49,7 @@ def homepage(request):
 	final = hot
 
 	#new products
-	new_products = Product.objects.order_by('name')[:8]
+	new_products = Product.objects.order_by('price')[:8]
 	new = list(new_products)
 	shuffle(new)
 	final = new
