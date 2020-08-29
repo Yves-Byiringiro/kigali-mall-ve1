@@ -9,16 +9,13 @@
       <div class="col-md-2"></div>
       <div class="col-md-7">
         <div class="info-form">
-          <h3 class="text-center sign-welcm">You order has been Confirmed !</h3>
-          <p class="text-center sign-continue">You can continue and pay on the phone number below.</p>
+          <h3 class="text-center sign-welcm">You order is being processed !</h3>
+          <p class="text-center sign-continue">Continue and pay using Mobile Money.</p>
           
-          <p>Mobile Money Number : <span class="momo-details">{{momo.number}}</span></p>
-          <p>Name : <span class="momo-details">{{momo.name}}</span></p>
-          <br>
   
           <form method="POST" >
               {% csrf_token %}
-              <p>Transaction ID:</p>
+              <p>Enter you Phone Number:</p>
               {{form.transaction_id}}
               <button  class="btn-block btn-trans" type="submit">Send</button>
           </form>
@@ -27,23 +24,3 @@
     </div>
   </div>
 {% endblock %}
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h3>You order has been Confirmed, continue and pay on the phone number below.</h3>
-            <p>Mobile Money Number : <span class="momo-details">{{momo.number}}</span></p>
-            <p>Name : <span class="momo-details">{{momo.name}}</span></p>
-            <br>
-    
-            <form method="POST" >
-                {% csrf_token %}
-                {{form}}
-                <button type="submit" id="send_transactionID">Send</button>
-            </form>
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-</div>

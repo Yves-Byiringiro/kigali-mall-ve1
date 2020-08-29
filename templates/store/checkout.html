@@ -63,15 +63,6 @@
 
                     </form>
                     <div class="row">
-                        <div class="col-md-5">
-                            <div class="box-element hidden" id="payment-info">
-                                <div class="payment-title">
-                                    <small>Paypal</small>
-                                </div>
-                                <div id="paypal-button-container"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
                         <div class="col-md-6">
                             <div class="box-element hidden" id="momo-payment-info">
                                 <div class="payment-title">
@@ -80,6 +71,16 @@
                                 <p>You can shop with us using Mobile Money</p>
                                 <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
                             </div> 
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <div class="box-element hidden" id="payment-info">
+                                <div class="payment-title">
+                                    <!-- <small>Paypal</small>
+                                    <h4>ghjghjghj</h4> -->
+                                </div>
+                                <div id="paypal-button-container"></div>
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -120,42 +121,44 @@
                 </div>
         </div>
     </section>
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=AeBJc6eMC0RNDclqKzEcF5rQhcWaJoSPeACDLBKzZRv0YSxWzbMHduH7taNgUr5Ozu1pPdFK7ATlb7G9&currency=USD&disable-funding=credit"></script> -->
 
-<script src="https://www.paypal.com/sdk/js?client-id=AeBJc6eMC0RNDclqKzEcF5rQhcWaJoSPeACDLBKzZRv0YSxWzbMHduH7taNgUr5Ozu1pPdFK7ATlb7G9&currency=USD&disable-funding=credit"></script>
-
-<script>
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=LIVE_CLIENT_ID"></script> -->
+    <script>
     var total = '{{order.get_cart_total|floatformat:2}}'
-
-    // Render the PayPal button into #paypal-button-container
+    
     paypal.Buttons({
 
-        style: {
-                color:  'gold',
-                shape:  'pill',
-                label:  'pay',
-                height: 40
-            },
-        // Set up the transaction
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: parseFloat(total).toFixed(2)
-                    }
-                }]
-            });
-        },
+style: {
+        color:  'gold',
+        shape:  'pill',
+        label:  'pay',
+        height: 40
+    },
+// Set up the transaction
+createOrder: function(data, actions) {
+    return actions.order.create({
+        purchase_units: [{
+            amount: {
+                value: parseFloat(total).toFixed(2)
+            }
+        }]
+    });
+},
 
-        // Finalize the transaction
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                submitFormData()
-            });
-        }
+// Finalize the transaction
+onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+        submitFormData()
+    });
+}
 
 
-    }).render('#paypal-button-container');
+}).render('#paypal-button-container');
+
 </script>
+
+
 
 <Script>
     var transctionBtn = document.getElementById('send_transactionID')
@@ -295,8 +298,8 @@
             console.log('Success:', data);
             alert('Do you  want  continue to pay with Mobile Money ?');
 
-            cart = {}
-            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+            // cart = {}
+            // document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
             window.location.href = "{% url 'pay_mobile_money' %}"
 
             })
@@ -372,8 +375,11 @@
                         <div class="box-element hidden" id="payment-info">
                             <div class="payment-title">
                                 <small>Paypal</small>
+                            <h2>ukguguguig</h2>
+
                             </div>
                             <div id="paypal-button-container"></div>
+                            <h2>ukguguguig</h2>
                         </div>
                     </div>
                     <div class="col-md-1"></div>
