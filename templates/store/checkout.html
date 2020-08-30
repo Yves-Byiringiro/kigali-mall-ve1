@@ -69,7 +69,14 @@
                                     <small>Mobile Money</small>
                                 </div>
                                 <p>You can shop with us using Mobile Money</p>
-                                <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
+                                 
+                                <!-- <form method="POST" >
+                                    {% csrf_token %}
+                                    <p>Enter you Phone Number:</p>
+                                    {{form.transaction_id}} -->
+                                    <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
+<!-- 
+                                </form>      -->
                             </div> 
                         </div>
                         <div class="col-md-1"></div>
@@ -199,6 +206,35 @@ onApprove: function(data, actions) {
     
 
     })
+   
+    const testMomo = async()=>{
+        document.getElementById('send_transactionID').addEventListener('click', async()=>{
+          const response =  await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
+                method:"POST",
+                headers:{
+                'Content-Type':'applicaiton/json',
+                'Accept': 'application/json',
+               }, 
+                body:JSON.stringify({
+                    "telephoneNumber" : "250789421906",
+                    "amount" : 100.0,
+                    "organizationId" : "ec1a0d19-d19a-4385-99b2-76a0d1313e2a",
+                    "description" : "Payment for Printing services",
+                    "callbackUrl" : "http://myonlineprints.com/payments/callback",
+                    "transactionId" : "ffe037792fc5a11e8b4a4663a98989f0064a995500"
+                }),
+                
+            })
+
+            const data = await response.json()
+            console.log(response.status)
+            alert(JSON.stringify(data))
+            if(response.ok){
+                
+            }
+        })
+    }
+    testMomo()
 
 
     function submitFormData(){
@@ -284,6 +320,7 @@ onApprove: function(data, actions) {
         // console.log('User Info:', userFormData)
 
         var url = "/process_order/"
+        
         fetch(url, {
             method:'POST',
             headers:{
@@ -295,12 +332,33 @@ onApprove: function(data, actions) {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('Success:', data);
-            alert('Do you  want  continue to pay with Mobile Money ?');
+            fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
+                method:"POST",
+                body:JSON.stringify({
+                       'telephoneNumber' : '250781607266',
+                        'amount' : 100.0,
+                        'organizationId' : 'ec1a0d19-d19a-4385-99b2-76a0d1313e2a',
+                        'description' : 'Payment for Printing services',
+                        'callbackUrl' : 'http://myonlineprints.com/payments/callback',
+                        'transactionId' : 'ffe037792fc5a11e8b4a4663af0064a00000000'
+                }),
+                headers:{
+                    'Content-Type':'applicaiton/json',
+                
+                }
+            }).then((response)=>{
+                alert(response.status)
+                    response.json()
+             
+                }).then((data)=>{
+                    alert(data)
+                       // console.log(data)
+            })
+            // alert('Do you  want  continue to pay with Mobile Money ?');
 
             // cart = {}
             // document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-            window.location.href = "{% url 'pay_mobile_money' %}"
+            // window.location.href = "{% url 'pay_mobile_money' %}"
 
             })
         }

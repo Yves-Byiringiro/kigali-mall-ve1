@@ -142,8 +142,13 @@ def checkout(request):
 	items = data['items']
 	wishlists_counts = data2['wishlists_counts']
 
-	categories = Category.objects.all()
-	
+	if request.method == 'POST':
+		form = MomoTranctionIDForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('homepage')
+			# messages.success(request, 'Your Transaction ID has been submitted successfully !.')
+	form  = MomoTranctionIDForm()
 
 
 	template_name = 'store/checkout.html'
@@ -152,8 +157,8 @@ def checkout(request):
 		'items':items, 
 		'order':order, 
 		'cartItems':cartItems,
-		'categories':categories,
 		'wishlists_counts':wishlists_counts,
+		'form':form
 		
 		}
 	return render(request, template_name, context)
