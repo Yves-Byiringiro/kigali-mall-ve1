@@ -222,6 +222,8 @@
 
 }
 const testMomo = async()=>{
+
+
 document.getElementById('send_transactionID').addEventListener('click',async()=>{
 const reponse = await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
         method:"POST",
@@ -235,7 +237,7 @@ const reponse = await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
             "organizationId" : "ec1a0d19-d19a-4385-99b2-76a0d1313e2a",
             "description" : "Payment for Printing services",
             "callbackUrl" : "http://myonlineprints.com/payments/callback",
-            "transactionId" : "fde0hxz9f114xzse1b4l4663af0064a21"
+            "transactionId" : "fde0hxz9ff79xzse1b4l4663axz0x4a21"
             }
 
         )
