@@ -275,6 +275,8 @@ def processOrder(request):
 		city=data['shipping']['city'],
 		state=data['shipping']['state'],
 		country=data['shipping']['country'],
+		phone=data['shipping']['phone'],
+
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)

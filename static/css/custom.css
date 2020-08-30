@@ -131,10 +131,7 @@
 
 
 
-/********************* terms and conditions and privacy  page **********/
-.terms{
-    color: #323275;
-}
+
 
 
 /********************* about  page **********/
@@ -144,6 +141,17 @@
   }
   
 /********** checkout related pages  ************/
+
+.confirm-momopay{
+    font-weight: 600;
+
+}
+
+.enter-momo-number{
+    padding: 50px 0px 10px 0px;
+    font-weight: 600;
+    color: #ff6a00;
+}
 .payment-title{
     margin-bottom: 15px;
 }
