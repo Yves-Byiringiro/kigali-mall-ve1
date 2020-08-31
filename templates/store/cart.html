@@ -58,11 +58,11 @@
                                   </div>
                               </td>
                               <td class="cart__price"><span class="n">{{item.product.price}} Frw</span></td>
-                              <td class="cart__quantity">
-                                
-                                  <div class="pro-qty" ">
-                                      <input  value="{{item.quantity}}">
-                                  </div>
+                              <td class="cart__quantity">{{item.quantity}}
+                                <div class="quantity">
+                                  <i data-product='{{item.product.id}}' data-action='add' class="fa fa-plus-square-o chg-quantity update-cart" aria-hidden="true"></i>
+                                  <i data-product='{{item.product.id}}' data-action='remove' class="fa fa-minus-square-o chg-quantity update-cart" aria-hidden="true"></i>                                                          
+                              </div>
                               </td>
                               <td class="cart__total"><span class="n">{{item.get_total}} Frw</span></td>
                               
