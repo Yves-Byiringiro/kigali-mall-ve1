@@ -39,7 +39,7 @@ class OrderItemAdmin(admin.ModelAdmin):
 
 
 class ShippingAddressAdmin(admin.ModelAdmin):
-    list_display = ['customer','order','address','city','state','country','date_added']
+    list_display = ['customer','order','address','city','state','country','phone','date_added']
     list_filter = ['customer','city','state','date_added']
     list_per_page = 10
 

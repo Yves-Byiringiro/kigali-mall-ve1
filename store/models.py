@@ -42,12 +42,25 @@ class Product(models.Model):
         ('Black', 'Black'), 
         ('Red', 'Red'), 
         ('White', 'White'),
-        ('Silver', 'Silver')
+        ('Silver', 'Silver'),
+        ('Gray', 'Gray'),
+        ('Yellow', 'Yellow'),
+        ('Pink', 'Pink'),
+        ('Dark blue', 'Dark blue'),
+        ('Light blue', 'Light blue'),
+        ('Black and white', 'Black and white'),
+        ('Gold', 'Gold'),
+        ('Not Specified', 'Not Specified'),
+
+
+
+
         )
 
     SUB_CATEGORIES = (
         ('Shoes', 'Shoes'), 
         ('Sutes', 'Sutes'),
+        ('Clothes', 'Clothes'),
         ('Shirts', 'Shirts'),
         ('TShirts', 'TShirts'),
         ('Jeans', 'Jeans'),
@@ -68,7 +81,7 @@ class Product(models.Model):
     main_image = models.ImageField(upload_to='products')
     color = models.CharField(max_length=200,choices=COLOR, default='Black', blank=True, null=True)
     size = models.CharField(max_length=50,null=True, blank=True,default='not specified')
-    delivery_minutes = models.CharField(max_length=50, default='45 Minutes')
+    delivery_minutes = models.CharField(max_length=50, default='2 hours')
     in_stock = models.BooleanField(default=False,null=True,blank=True)
     description = models.TextField(blank=True)
     slug  = models.SlugField(blank=True, null=True, max_length=250)
@@ -139,10 +152,7 @@ class Order(models.Model):
                 shipping = True
         return shipping
 
-    # @property
-    # def get_shipping_price(self):
-    #     shipping = self.shipping_price
-    #     return shipping
+
 
     @property
     def get_cart_total(self):
@@ -176,6 +186,7 @@ class ShippingAddress(models.Model):
     city = models.CharField(max_length=200, null=False)
     state = models.CharField(max_length=200, null=False)
     country = models.CharField(max_length=200, null=False)
+    phone = models.CharField(max_length=12, null=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -194,10 +205,6 @@ class MomoTranctionID(models.Model):
     def __str__(self):
         return str(self.transaction_id)
     
-    # def clean(self):
-    #     if len(self.transaction_id) < 16:
-    #         raise ValidationError('Transaction you entered is less than 10')
-    
 
 class Mymomo(models.Model):
     name = models.CharField(max_length=30, default="Yves Byiringiro")
@@ -207,42 +214,3 @@ class Mymomo(models.Model):
     def __str__(self):
         return self.name
 
-
-    
-
-# class CartManager(models.Manager):
-#     def new_or_get(self, request):
-#         cart_id = request.session.get("cart_id", None)
-#         qs= self.get_queryset().filter(id=cart_id)
-#         if qs.count == 1:
-#             new_obj = False
-#             cart_obj = qs.first()
-#             if request.user.is_authenticated() and cart_obj.user is None:
-#                 cart_obj.user = request.user
-#                 cart_obj.save()
-#         else:
-#             cart_obj = Cart.objects.new(user=request.user)
-#             new_obj = True
-#             request.session['cart_id'] = cart_obj.id
-#         return cart_obj, new_obj
-
-#     def new(self, user=None):
-#         user_obj = None
-#         if user is not None:
-#             # if user.is_authenticated():
-#             user_obj = user
-#         return self.model.objects.create(user=user_obj)
-
-# class Cart(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,blank=True)
-#     products = models.ManyToManyField(Product, blank=True)
-#     date_updated = models.DateTimeField(auto_now=True)
-#     date_ordered = models.DateTimeField(auto_now_add=True)
-#     total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
-
-
-#     objects = CartManager()
-
-#     def __str__(self):
-#         return str(self.id)
-    

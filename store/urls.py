@@ -24,13 +24,6 @@ urlpatterns = [
 	path('results/', productResults, name="products_results"),
 
 	
-	# path('products/laptops/', laptops, name="laptops"),
-	path('products/smartphones/', smartphones, name="smartphones"),
-	# path('products/cameras/', cameras, name="cameras"),
-	# path('products/accessories/', accessories, name="accessories"),
-	path('products/bags/', bags, name="bags"),
-	path('products/shoes/', shoes, name="shoes"),
-	path('products/home-furnitures/', home_furnitures, name="home_furnitures"),
 
 
 	# new

@@ -55,32 +55,34 @@
                             <div class="form-group">
                                 <input required class="form-control" type="text" name="state" placeholder="State">
                             </div>
-                            <div class="form-group">
-                                <input required class="form-control" type="text" name="country" placeholder="Country">
-                            </div>
+                                <div class="form-group">
+                                    <input required class="form-control" type="text" name="country" placeholder="Country">
+                                </div>
+                           
                         </div>
+
+                        <h6 class="enter-momo-number">Enter Your Mobile Money Number</h6>
+                        <div class="row">
+                        <div class="col-lg-8">
+                        <div class="form-group">
+                            <input required class="form-control" type="text" name="phone" placeholder="Enter Your Phone Number">
+                        </div>
+                    </div>
+                </div>
                         <button  type="submit" id="form-button">Payment Options</button>
 
-                    </form>
+                   
                     <div class="row">
-                        <div class="col-md-5">
-                            <div class="box-element hidden" id="payment-info">
-                                <div class="payment-title">
-                                    <small>Paypal</small>
-                                </div>
-                                <div id="paypal-button-container"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
                         <div class="col-md-6">
                             <div class="box-element hidden" id="momo-payment-info">
-                                <div class="payment-title">
-                                    <small>Mobile Money</small>
-                                </div>
-                                <p>You can shop with us using Mobile Money</p>
+
+                                <p class="confirm-momopay">Do you want to continue using Mobile Money ?</p>
+                                 
                                 <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
+                                </form>
                             </div> 
                         </div>
+                       
                     </div>
                     </div>
                     <div class="col-lg-5">
@@ -103,7 +105,7 @@
                                     <li>Total <span>{{order.get_cart_total|floatformat:2}} Frw</span></li>
                                 </ul>
                             </div>
-                            <div class="checkout__order__widget">
+                            <!-- <div class="checkout__order__widget">
                                 <label for="check-payment">
                                     Cheque payment
                                     <input type="checkbox" id="check-payment">
@@ -114,57 +116,25 @@
                                     <input type="checkbox" id="paypal">
                                     <span class="checkmark"></span>
                                 </label>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
         </div>
     </section>
+    
 
-<script src="https://www.paypal.com/sdk/js?client-id=AeBJc6eMC0RNDclqKzEcF5rQhcWaJoSPeACDLBKzZRv0YSxWzbMHduH7taNgUr5Ozu1pPdFK7ATlb7G9&currency=USD&disable-funding=credit"></script>
-
-<script>
+<Script type="text/javascript">
     var total = '{{order.get_cart_total|floatformat:2}}'
-
-    // Render the PayPal button into #paypal-button-container
-    paypal.Buttons({
-
-        style: {
-                color:  'gold',
-                shape:  'pill',
-                label:  'pay',
-                height: 40
-            },
-        // Set up the transaction
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: parseFloat(total).toFixed(2)
-                    }
-                }]
-            });
-        },
-
-        // Finalize the transaction
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                submitFormData()
-            });
-        }
-
-
-    }).render('#paypal-button-container');
-</script>
-
-<Script>
+    
     var transctionBtn = document.getElementById('send_transactionID')
 
     transctionBtn.addEventListener("click", function(){
         submitFormData1()
     })
-</Script>
-<script type="text/javascript">
+
+
+
     var shipping = '{{order.shipping}}'
 
     if (shipping == 'False'){
@@ -173,15 +143,12 @@
 
     if (user != 'AnonymousUser'){
          document.getElementById('user-info').innerHTML = ''
-        //  document.getElementById('billing-title').classList.add('hidden');
          
      }
 
     if (shipping == 'False' && user != 'AnonymousUser'){
         //Hide entire form if user is logged in and shipping is false
             document.getElementById('form-wrapper').classList.add("hidden");
-            //Show payment if logged in user wants to buy an item that does not require shipping
-            document.getElementById('payment-info').classList.remove("hidden");
     }
 
     var form = document.getElementById('form')
@@ -190,71 +157,18 @@
 
    
         document.getElementById('form-button').classList.add("hidden");
-        document.getElementById('payment-info').classList.remove("hidden");
         document.getElementById('momo-payment-info').classList.remove("hidden");
         
-    
-
     })
+   
 
-
-    function submitFormData(){
-
-        var userFormData = {
-            'name':null,
-            'email':null,
-            'total':total,
-        }
-
-        var shippingInfo = {
-            'address':null,
-            'city':null,
-            'state':null,
-            'country':null,
-        }
-
-        if (shipping != 'False'){
-            shippingInfo.address = form.address.value
-            shippingInfo.city = form.city.value
-            shippingInfo.state = form.state.value
-            shippingInfo.country = form.country.value
-        }
-
-        if (user == 'AnonymousUser'){
-            userFormData.name = form.name.value
-            userFormData.email = form.email.value
-        }
-
-        // console.log('Shipping Info:', shippingInfo)
-        // console.log('User Info:', userFormData)
-
-        var url = "/process_order/"
-        fetch(url, {
-            method:'POST',
-            headers:{
-                'Content-Type':'applicaiton/json',
-                'X-CSRFToken':csrftoken,
-            }, 
-            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
-            
-        })
-        .then((response) => response.json())
-        .then((data) => {
-              console.log('Success:', data);
-              alert('Transaction completed');
-
-              cart = {}
-              document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-              window.location.href = "{% url 'homepage' %}"
-
-            })
-    }
-
+    
     function submitFormData1(){
 
         var userFormData = {
             'name':null,
             'email':null,
+            'phone':null,
             'total':total,
         }
 
@@ -263,6 +177,7 @@
             'city':null,
             'state':null,
             'country':null,
+            'phone':null,
         }
 
         if (shipping != 'False'){
@@ -270,11 +185,15 @@
             shippingInfo.city = form.city.value
             shippingInfo.state = form.state.value
             shippingInfo.country = form.country.value
+            shippingInfo.phone = form.phone.value
+
         }
 
         if (user == 'AnonymousUser'){
             userFormData.name = form.name.value
             userFormData.email = form.email.value
+            userFormData.phone = form.phone.value
+
         }
 
         // console.log('Shipping Info:', shippingInfo)
@@ -293,144 +212,43 @@
         .then((response) => response.json())
         .then((data) => {
             console.log('Success:', data);
-            alert('Do you  want  continue to pay with Mobile Money ?');
+            
 
             cart = {}
             document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-            window.location.href = "{% url 'pay_mobile_money' %}"
+            window.location.href = "{% url 'homepage' %}"
 
             })
-        }
+
+}
+const testMomo = async()=>{
+
+
+document.getElementById('send_transactionID').addEventListener('click',async()=>{
+const reponse = await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
+        method:"POST",
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(
+            {
+            "telephoneNumber" : "250781607266",
+            "amount" : 100.0,
+            "organizationId" : "ec1a0d19-d19a-4385-99b2-76a0d1313e2a",
+            "description" : "Payment for Printing services",
+            "callbackUrl" : "http://myonlineprints.com/payments/callback",
+            "transactionId" : "fde0hxz9ff79xzse1b4l4663axz0x4a21"
+            }
+
+        )
+    })
+
+    const respoData = await reponse.json()
+    console.log(respoData)
+})
+}
+testMomo()
+
+
 </script>
 {% endblock %}
-    
-
-
-
-
-
-
-
-
-
-
-
-<div id="breadcrumb" class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="breadcrumb-header">Checkout</h3>
-                <ul class="breadcrumb-tree">
-                    <li><a href="{% url 'homepage' %}">Home</a></li>
-                    <li class="active">Checkout</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <div class="billing-details">
-                    <div class="section-title">
-                        <h3 class="title" id="billing-title">Billing address</h3>
-                    </div>
-                <form id="form">
-                    {% csrf_token %}
-                <div id="user-info">
-                    <div class="form-group">
-                        <input required class="form-control" type="text" name="name" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <input required class="form-control" type="email" name="email" placeholder="Email">
-                    </div>
-                </div>
-                <div id="shipping-info">
-                    <hr>
-                    <h3 class="title">Shipping Information</h3>
-                    <hr>
-                    <div class="form-group">
-                        <input required class="form-control" type="text" name="address" placeholder="Address">
-                    </div>
-                    <div class="form-group">
-                        <input required class="form-control" type="text" name="city" placeholder="City">
-                    </div>
-                    <div class="form-group">
-                        <input required class="form-control" type="text" name="state" placeholder="State">
-                    </div>
-                    <div class="form-group">
-                        <input required class="form-control" type="text" name="country" placeholder="Country">
-                    </div>
-                </div>
-                <button type="submit" id="form-button">Payment Options</button>
-               </form>
-                <br>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="box-element hidden" id="payment-info">
-                            <div class="payment-title">
-                                <small>Paypal</small>
-                            </div>
-                            <div id="paypal-button-container"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-6">
-                        <div class="box-element hidden" id="momo-payment-info">
-                            <div class="payment-title">
-                                <small>Mobile Money</small>
-                            </div>
-                            <p>You can shop with us using Mobile Money</p>
-                            <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
-                        </div> 
-                    </div>
-                </div>
-
-
-                </div>
-            </div>
-
-            <!-- Order Details -->
-            <div class="col-md-5 order-details">
-                <div class="section-title text-center">
-                    <h3 class="title">Your Order</h3>
-                </div>
-                <div class="order-summary">
-                    <div class="order-col">
-                        <div><strong>Product</strong></div>
-                        <div><strong>Total</strong></div>
-                    </div>
-                    <div class="order-products">
-                        {% for item in items %}
-                          
-                        <div class="order-col">
-                            <div>{{item.quantity}}x {{item.product.name}}</div>
-                            <div>{{item.product.price|floatformat:2}} Frw</div>
-                        </div>
-
-                        {% endfor %}
-
-                    </div>
-                    <div class="order-col">
-                        <div>Shiping Price</div>
-                        <div><strong>0 Frw</strong></div>
-                    </div>
-                    <div class="order-col">
-                        <div><strong>TOTAL</strong></div>
-                        <div><strong class="order-total">{{order.get_cart_total|floatformat:2}} Frw</strong></div>
-                    </div>
-                </div>
- 
-                <!-- <div class="input-checkbox">
-                    <input type="checkbox" id="terms">
-                    <label for="terms">
-                        <span></span>
-                        I've read and accept the <a href="#">terms & conditions</a>
-                    </label>
-                </div> -->
-            </div>
-        </div>
-    </div>
-</div>

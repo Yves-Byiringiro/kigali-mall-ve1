@@ -25,8 +25,10 @@
               data-setbg="{% static 'img/banner/w.jpg' %}">
               <div class="categories__text">
                   <h1 class="text-light">Women’s fashion</h1>
-                  <p class="text-light">Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
-                  edolore magna aliquapendisse ultrices gravida.</p>
+                  <p class="text-light">
+                      <!-- Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
+                  edolore magna aliquapendisse ultrices gravida. -->
+                </p>
                   <p class="text-light"> {{womens_fashions}} items</p>
                   <a class="text-light" href="{% url 'womensFashions' %}">Shop now</a>
               </div>
@@ -149,13 +151,12 @@
 </section>
 <!-- Banner  End -->
 
+<h4 class="kids-fashions">Kids Fashions</h4>
+
+{% include 'includes/products_for_kids.html' %}
 
 
-
-{% include 'includes/products_with_mincosts.html' %}
-
-
-<section class="discount">
+<!-- <section class="discount">
 <div class="container">
   <div class="row">
       <div class="col-lg-6 p-0">
@@ -193,11 +194,12 @@
       </div>
   </div>
 </div>
-</section>
+</section> -->
 
 
+<h4 class="kids-fashions">Womens Fashions</h4>
 
-{% include 'includes/products_with_mincosts2.html' %}
+{% include 'includes/products_for_womens.html' %}
 
 {% include 'includes/products_types.html' %}
 

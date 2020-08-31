@@ -16,7 +16,7 @@ class ReviewForm(forms.ModelForm):
 
 
 class MomoTranctionIDForm(forms.ModelForm):
-    transaction_id = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Enter mobile money transaction id','label':''}))
+    transaction_id = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Enter your phone number','label':''}))
 
     class Meta:
         model = MomoTranctionID

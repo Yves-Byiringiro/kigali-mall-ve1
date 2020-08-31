@@ -49,7 +49,7 @@ def homepage(request):
 	final = hot
 
 	#new products
-	new_products = Product.objects.order_by('-id')[:20]
+	new_products = Product.objects.order_by('-id')[:12]
 	new = list(new_products)
 	shuffle(new)
 	final = new
@@ -61,20 +61,22 @@ def homepage(request):
 	cosmetics = Product.objects.filter(category__name='Cosmetics').count()
 	accessories = Product.objects.filter(category__name='Accessories').count()
 
-	new_products = Product.objects.order_by('id')[:6]
-	new_products2 = Product.objects.order_by('-id')[:6]
 
 
-	# categories = Category.objects.all()
 
-	# new_products_cat = products[0:3]
-	# new_products_cat2 = products[3:7]
+	kids_products = Product.objects.filter(category__name='KidsFashions')[:6]
+	kids = list(kids_products)
+	shuffle(kids)
+	final = kids
 
-	# top_selling_cat = top_selling[0:3]
-	# top_selling_cat2 = top_selling[3:7]
 
-	# most_liked_cat = most_liked[0:3]
-	# most_liked_cat2 = most_liked[3:7]
+
+	womens_products = Product.objects.filter(category__name='WomensFashions')[:6]
+	womens = list(womens_products)
+	shuffle(womens)
+	final = womens
+
+
 
 
 
@@ -96,22 +98,9 @@ def homepage(request):
 		'kids_fashions':kids_fashions,
 		'cosmetics':cosmetics,
 		'accessories':accessories,
-		'new_products':new_products,
-		'new_products2':new_products2
+		'kids':kids,
+		'womens':womens
 
-
-
-
-
-		# 'products':products, 
-		# 'new_products_cat':new_products_cat,
-		# 'new_products_cat2':new_products_cat2,
-		
-		# 'top_selling_cat':top_selling_cat,
-		# 'top_selling_cat2':top_selling_cat2,
-		
-		# 'most_liked_cat':most_liked_cat,
-		# 'most_liked_cat2':most_liked_cat2,
 		
 		}
 	return render(request,template_name, context)
@@ -153,8 +142,13 @@ def checkout(request):
 	items = data['items']
 	wishlists_counts = data2['wishlists_counts']
 
-	categories = Category.objects.all()
-	
+	if request.method == 'POST':
+		form = MomoTranctionIDForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('homepage')
+			# messages.success(request, 'Your Transaction ID has been submitted successfully !.')
+	form  = MomoTranctionIDForm()
 
 
 	template_name = 'store/checkout.html'
@@ -163,8 +157,8 @@ def checkout(request):
 		'items':items, 
 		'order':order, 
 		'cartItems':cartItems,
-		'categories':categories,
 		'wishlists_counts':wishlists_counts,
+		'form':form
 		
 		}
 	return render(request, template_name, context)
@@ -281,6 +275,8 @@ def processOrder(request):
 		city=data['shipping']['city'],
 		state=data['shipping']['state'],
 		country=data['shipping']['country'],
+		phone=data['shipping']['phone'],
+
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)
@@ -378,196 +374,7 @@ def productResults(request):
 
 
 
-# def laptops(request):
-# 	data = cartData(request)
-# 	data2 = wishlistData(request)
 
-# 	cartItems = data['cartItems']
-# 	order = data['order']
-# 	items = data['items']
-# 	wishlists_counts = data2['wishlists_counts']
-
-# 	categories = Category.objects.all()
-# 	laptops = Product.objects.filter(category__name='Laptops')
-
-
-
-# 	template_name = 'store/laptops.html'
-# 	context = {
-# 		'cartItems':cartItems,
-# 		'items':items,
-# 		'order':order,
-# 		'categories':categories,
-# 		'laptops':laptops,
-# 		'wishlists_counts':wishlists_counts
-# 	}
-# 	return render(request,template_name,context)
-
-
-def smartphones(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
-
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
-
-	
-	categories = Category.objects.all()
-	smartphones = Product.objects.filter(category__name='Smartphones')
-
-
-
-	template_name = 'store/smartphones.html'
-	context = {
-		'cartItems':cartItems,
-		'items':items,
-		'order':order,
-		'categories':categories,
-		'smartphones':smartphones,
-		'wishlists_counts':wishlists_counts
-	}
-	return render(request,template_name,context)
-
-
-
-# def cameras(request):
-# 	data = cartData(request)
-# 	data2 = wishlistData(request)
-
-# 	cartItems = data['cartItems']
-# 	order = data['order']
-# 	items = data['items']
-# 	wishlists_counts = data2['wishlists_counts']
-
-	
-# 	categories = Category.objects.all()
-# 	cameras = Product.objects.filter(category__name='Cameras')
-
-
-
-# 	template_name = 'store/cameras.html'
-# 	context = {
-# 		'cartItems':cartItems,
-# 		'items':items,
-# 		'order':order,
-# 		'categories':categories,
-# 		'cameras':cameras,
-# 		'wishlists_counts':wishlists_counts
-# 	}
-# 	return render(request,template_name,context)
-
-
-
-# def accessories(request):
-# 	data = cartData(request)
-# 	data2 = wishlistData(request)
-
-# 	cartItems = data['cartItems']
-# 	order = data['order']
-# 	items = data['items']
-# 	wishlists_counts = data2['wishlists_counts']
-
-	
-# 	categories = Category.objects.all()
-# 	accessories = Product.objects.filter(category__name='Accessories')
-
-
-
-# 	template_name = 'store/accessories.html'
-# 	context = {
-# 		'cartItems':cartItems,
-# 		'items':items,
-# 		'order':order,
-# 		'categories':categories,
-# 		'accessories':accessories,
-# 		'wishlists_counts':wishlists_counts
-# 	}
-# 	return render(request,template_name,context)
-
-
-
-def bags(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
-
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
-
-	
-	categories = Category.objects.all()
-	bags = Product.objects.filter(category__name='Bags')
-
-
-
-	template_name = 'store/bags.html'
-	context = {
-		'cartItems':cartItems,
-		'items':items,
-		'order':order,
-		'categories':categories,
-		'bags':bags,
-		'wishlists_counts':wishlists_counts
-	}
-	return render(request,template_name,context)
-
-
-
-def shoes(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
-
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
-
-	
-	categories = Category.objects.all()
-	shoes = Product.objects.filter(category__name='Shoes')
-
-
-
-	template_name = 'store/shoes.html'
-	context = {
-		'cartItems':cartItems,
-		'items':items,
-		'order':order,
-		'categories':categories,
-		'shoes':shoes,
-		'wishlists_counts':wishlists_counts
-	}
-	return render(request,template_name,context)
-
-
-
-def home_furnitures(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
-
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
-
-	
-	categories = Category.objects.all()
-	home_furnitures = Product.objects.filter(category__name='Furnitures')
-
-
-	template_name = 'store/home_furnitures.html'
-	context = {
-		'cartItems':cartItems,
-		'items':items,
-		'order':order,
-		'categories':categories,
-		'home_furnitures':home_furnitures,
-		'wishlists_counts':wishlists_counts
-	}
-	return render(request,template_name,context)
 
 
 

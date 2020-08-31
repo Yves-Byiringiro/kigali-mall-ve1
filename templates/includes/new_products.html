@@ -1,6 +1,12 @@
 {% load static %}
 {% load i18n %}
 
+<style>
+    .st-cmp-settings{
+        display: none;
+    }
+</style>
+
 <section class="product spad">
     <div class="container">
       <div class="row">
@@ -22,7 +28,8 @@
       </div>
       <div class="row property__gallery">
 
-        {% for product in new%}
+        {% for product in new %}
+       
           <div class="col-lg-3 col-md-4 col-sm-6 mix {{product.filter}}">
               <div class="product__item sale">
                   <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
@@ -44,6 +51,8 @@
                       </div>
                       <div class="product__price">{{product.price}} Frw <span>{{product.old_price}} Frw</span></div>
                   </div>
+                                <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
+
               </div>
           </div>
         {% endfor %}
