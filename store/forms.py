@@ -13,11 +13,3 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields  = ('name','email','review',)
 
-
-
-class MomoTranctionIDForm(forms.ModelForm):
-    transaction_id = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Enter your phone number','label':''}))
-
-    class Meta:
-        model = MomoTranctionID
-        fields = ('transaction_id',)

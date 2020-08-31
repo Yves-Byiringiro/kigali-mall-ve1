@@ -8,7 +8,7 @@ from random import shuffle
 from about.models import *
 from django.views.generic import ListView
 from django.db.models import Q
-from .forms import ReviewForm
+from .forms import ReviewForm,ShippingAddressForm
 from django.core.paginator import Paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
@@ -133,29 +133,29 @@ def cart(request):
 
 
 
-def checkout(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
+# def checkout(request):
+# 	data = cartData(request)
+# 	data2 = wishlistData(request)
 
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
-
-
+# 	cartItems = data['cartItems']
+# 	order = data['order']
+# 	items = data['items']
+# 	wishlists_counts = data2['wishlists_counts']
 
 
-	template_name = 'store/checkout.html'
-	context = {
 
-		'items':items, 
-		'order':order, 
-		'cartItems':cartItems,
-		'wishlists_counts':wishlists_counts
+
+# 	template_name = 'store/checkout.html'
+# 	context = {
+
+# 		'items':items, 
+# 		'order':order, 
+# 		'cartItems':cartItems,
+# 		'wishlists_counts':wishlists_counts
 	
 		
-		}
-	return render(request, template_name, context)
+# 		}
+# 	return render(request, template_name, context)
 
 
 
@@ -246,34 +246,142 @@ def updateItem(request):
 
 def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
-	data = json.loads(request.body)
 
-	if request.user.is_authenticated:
-		customer = request.user
-		order, created = Order.objects.get_or_create(customer=customer, complete=False)
-	else:
-		customer, order = guestOrder(request, data)
+	data = cartData(request)
+	data2 = wishlistData(request)
 
-	total = float(data['form']['total'])
-	order.transaction_id = transaction_id
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	wishlists_counts = data2['wishlists_counts']
 
-	if total == order.get_cart_total:
-		order.complete = True
-	order.save()
 
-	if order.shipping == True:
-		ShippingAddress.objects.create(
-		customer=customer,
-		order=order,
-		address=data['shipping']['address'],
-		city=data['shipping']['city'],
-		state=data['shipping']['state'],
-		country=data['shipping']['country'],
-		phone=data['shipping']['phone'],
+	if request.method ==  'POST':
+		form   =  ShippingAddressForm(request.POST)
+		if  form.is_valid():
+			customer = request.user
+			order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
-		)
+			shippingadress = form.save(commit=False)
+			shippingadress.customer = customer
+			shippingadress.order = order
+			shippingadress.save()
+			return redirect('homepage')
 
-	return JsonResponse('Payment submitted..', safe=False)
+	form = ShippingAddressForm()		
+
+
+	template_name = 'store/checkout.html'
+	context = {
+
+		'items':items, 
+		'order':order, 
+		'cartItems':cartItems,
+		'wishlists_counts':wishlists_counts,
+		'form':form
+		}
+
+	return render(request, template_name, context)
+
+
+
+
+
+	# transaction_id = datetime.datetime.now().timestamp()
+	# data = json.loads(request.body)
+
+	# if request.user.is_authenticated:
+	# 	customer = request.user
+	# 	order, created = Order.objects.get_or_create(customer=customer, complete=False)
+	# else:
+	# 	customer, order = guestOrder(request, data)
+
+	# total = float(data['form']['total'])
+	# order.transaction_id = transaction_id
+
+	# if total == order.get_cart_total:
+	# 	order.complete = True
+	# order.save()
+
+	# if order.shipping == True:
+	# 	ShippingAddress.objects.create(
+	# 	customer=customer,
+	# 	order=order,
+	# 	address=data['shipping']['address'],
+	# 	city=data['shipping']['city'],
+	# 	state=data['shipping']['state'],
+	# 	country=data['shipping']['country'],
+	# 	phone=data['shipping']['phone'],
+
+	# 	)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

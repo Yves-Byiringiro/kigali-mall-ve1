@@ -45,10 +45,7 @@ class ShippingAddressAdmin(admin.ModelAdmin):
 
 
 
-class MomoTranctionIDAdmin(admin.ModelAdmin):
-    list_display = ['transaction_id','date_added','confirmed']
-    list_filter = ['transaction_id','date_added','confirmed']
-    list_per_page = 10
+
 
 
 class SellerDAdmin(admin.ModelAdmin):
@@ -67,7 +64,6 @@ admin.site.register(Wishlist,WishlistAdmin)
 admin.site.register(Order,OrderAdmin)
 admin.site.register(OrderItem,OrderItemAdmin)
 admin.site.register(ShippingAddress,ShippingAddressAdmin)
-admin.site.register(MomoTranctionID, MomoTranctionIDAdmin)
 admin.site.register(Mymomo)
 
 

@@ -65,16 +65,25 @@
                         <div class="row">
                         <div class="col-lg-8">
                         <div class="form-group">
-                            <input required class="form-control" type="text" name="phone" placeholder="Enter Your Phone Number" id="myText">
+                            <input required class="form-control" type="text" name="phone" placeholder="Enter Your Phone Number">
                         </div>
                     </div>
                 </div>
-            
-                        
-                <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
-                </form>
-                     
+                        <button  type="submit" id="form-button">Payment Options</button>
 
+                   
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="box-element hidden" id="momo-payment-info">
+
+                                <p class="confirm-momopay">Do you want to continue using Mobile Money ?</p>
+                                 
+                                <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
+                                </form>
+                            </div> 
+                        </div>
+                       
+                    </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="checkout__order">
@@ -96,6 +105,18 @@
                                     <li>Total <span>{{order.get_cart_total|floatformat:1}} Frw</span></li>
                                 </ul>
                             </div>
+                            <!-- <div class="checkout__order__widget">
+                                <label for="check-payment">
+                                    Cheque payment
+                                    <input type="checkbox" id="check-payment">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="paypal">
+                                    PayPal
+                                    <input type="checkbox" id="paypal">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -172,7 +193,11 @@
             userFormData.name = form.name.value
             userFormData.email = form.email.value
             userFormData.phone = form.phone.value
+
         }
+
+        // console.log('Shipping Info:', shippingInfo)
+        // console.log('User Info:', userFormData)
 
         var url = "/process_order/"
         fetch(url, {
@@ -188,44 +213,58 @@
         .then((data) => {
             console.log('Success:', data);
             
+
             cart = {}
             document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
             window.location.href = "{% url 'homepage' %}"
 
-        })
+            })
+
+}
 
 
-    const testMomo = async()=>{ 
-    my_number = document.getElementById("myText").value
-    code_number = 25
-    number_c = `${code_number}${my_number}`
-  
-    alert(number_c)
-    
-    const reponse = await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
+const testMomo = async()=>{
+    // function uuid() {
+    //     return '"xxxxxxxyxxxxy4xxxyxxxyxxxxxxx"'.replace(/[xy]/g, function(c) {
+    //         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    //         return v.toString(16);
+    //     });
+    //     }
+
+        // var userID="hf3k4mmcjrkwe445jddke74bbcne8bbw36";
+
+        // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        // console.log(userID);
+        // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+
+
+document.getElementById('send_transactionID').addEventListener('click',async()=>{
+const reponse = await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
         method:"POST",
         headers:{
             'Content-Type':'application/json'
         },
         body:JSON.stringify(
             {
-            "telephoneNumber" : "250780490851",
-            "amount" : total,
+            "telephoneNumber" : "250784501827",
+            "amount" : 100.0,
             "organizationId" : "ec1a0d19-d19a-4385-99b2-76a0d1313e2a",
             "description" : "Payment for Printing services",
             "callbackUrl" : "http://myonlineprints.com/payments/callback",
-            "transactionId" : "lle432y8eqfk112sqqy42kfgac1txzt55"
+            "transactionId" : "lle032192fc5a11e8b4a4665af0064a33"
             }
 
         )
     })
+
     const respoData = await reponse.json()
 
-    // alert('Thank You !')
+    alert(respoData)
     console.log(respoData)
-   
-      }
-    testMomo()
+})
 }
+testMomo()
+
+
 </script>
 {% endblock %}
