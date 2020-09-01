@@ -65,42 +65,38 @@
                         <div class="row">
                         <div class="col-lg-8">
                         <div class="form-group">
-                            <input required class="form-control" type="text" name="phone" placeholder="Enter Your Phone Number" id="myText">
+                            <input required class="form-control" type="text" name="phone" placeholder="078 000 0000" id="myText">
                         </div>
                     </div>
                 </div>
-            
-                        
                 <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
                 </form>
-                     
-
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="checkout__order">
-                            <h5>Your order</h5>
-                            <div class="checkout__order__product">
-                                <ul>
-                                    <li>
-                                        <span class="top__text">Product</span>
-                                        <span class="top__text__right">S.Total</span>
-                                    </li>
-                                    {% for item in items %}
-                                        <li>{{item.quantity}}x {{item.product.name}}<span>{{item.product.price|floatformat:2}} Frw</span></li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="checkout__order__total">
-                                <ul>
-                              
-                                    <li>Total <span>{{order.get_cart_total|floatformat:1}} Frw</span></li>
-                                </ul>
-                            </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="checkout__order">
+                        <h5>Your order</h5>
+                        <div class="checkout__order__product">
+                            <ul>
+                                <li>
+                                    <span class="top__text">Product</span>
+                                    <span class="top__text__right">S.Total</span>
+                                </li>
+                                {% for item in items %}
+                                    <li>{{item.quantity}}x {{item.product.name}}<span>{{item.product.price|floatformat:2}} Frw</span></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="checkout__order__total">
+                            <ul>
+                            
+                                <li>Total <span>{{order.get_cart_total|floatformat:1}} Frw</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-        </div>
-    </section>
+            </div>
+    </div>
+</section>
     
 
 <Script type="text/javascript">
@@ -111,7 +107,6 @@
     transctionBtn.addEventListener("click", function(){
         submitFormData1()
     })
-
 
 
     var shipping = '{{order.shipping}}'
@@ -186,11 +181,6 @@
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('Success:', data);
-            
-            cart = {}
-            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-            window.location.href = "{% url 'homepage' %}"
 
         })
 
@@ -201,7 +191,7 @@
     number_c = `${code_number}${my_number}`
   
     alert(number_c)
-    
+
     const reponse = await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
         method:"POST",
         headers:{
@@ -209,7 +199,7 @@
         },
         body:JSON.stringify(
             {
-            "telephoneNumber" : "250780490851",
+            "telephoneNumber" : "250783134078",
             "amount" : total,
             "organizationId" : "ec1a0d19-d19a-4385-99b2-76a0d1313e2a",
             "description" : "Payment for Printing services",
@@ -223,9 +213,20 @@
 
     // alert('Thank You !')
     console.log(respoData)
+
+
    
       }
     testMomo()
 }
 </script>
 {% endblock %}
+
+
+
+
+<!-- console.log('Success:', data);
+            
+cart = {}
+document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/" 
+window.location.href = "{% url 'homepage' %}" -->
