@@ -7,6 +7,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name','category','price','delivery_minutes','seller','date_added']
     list_filter = ['category','seller','date_added','delivery_minutes']
     list_per_page = 10
+    search_fields = ['name','price','delivery_minutes']
 
 
 
@@ -42,6 +43,7 @@ class ShippingAddressAdmin(admin.ModelAdmin):
     list_display = ['customer','order','address','city','state','country','phone','date_added']
     list_filter = ['customer','city','state','date_added']
     list_per_page = 10
+    search_fields = ['state','city','country','phone']
 
 
 
@@ -52,6 +54,7 @@ class SellerDAdmin(admin.ModelAdmin):
     list_display = ['name','phone','date_added']
     list_filter = ['date_added']
     list_per_page = 10
+    search_fields = ['name','phone']
 
 
 
