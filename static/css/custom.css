@@ -130,9 +130,14 @@
 
 
 
+/******************** search results page *************/
 
-
-
+.search-for{
+    color: #ff6a00;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 500;
+}
 
 /********************* about  page **********/
 .about-title{

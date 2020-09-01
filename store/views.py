@@ -344,24 +344,21 @@ def productResults(request):
 	wishlists_counts = data2['wishlists_counts']
 
 
-	query1 =  request.GET.get('category_name')
-	query2 =  request.GET.get('product')
+	query1 =  request.GET.get('product')
+
 	search_results = Product.objects.filter( 
-			Q(category__name__iexact=query1) &  Q(name__icontains=query2)
+			Q(category__name__icontains=query1) |  Q(name__icontains=query1) | Q(sub_category__icontains=query1)
 			)
-	categories = Category.objects.all()
 
 
 
 	template_name = 'store/search_results.html'
 	context = {
 		'search_results':search_results,
+		'query1':query1 , 
 		'cartItems':cartItems,
 		'items':items,
 		'order':order,
-		'categories':categories,
-		'query2':query2,
-		'query1':query1,
 		'wishlists_counts':wishlists_counts
 		}
 	return render(request,template_name, context)

@@ -16,15 +16,11 @@ def about(request):
     items = data['items']
     wishlists_counts = data2['wishlists_counts']
 
-    categories = Category.objects.all()
-
-
 
     context = {
         'cartItems':cartItems,
         'order':order,
         'items':items,
-        'categories':categories,
         'wishlists_counts':wishlists_counts
 
     }
@@ -41,9 +37,6 @@ def contact_us(request):
     items = data['items']
     wishlists_counts = data2['wishlists_counts']
     
-    categories = Category.objects.all()
-
-
 
     form = ContactForm(request.POST)
     if form.is_valid():
@@ -57,7 +50,6 @@ def contact_us(request):
         'cartItems':cartItems,
         'order':order,
         'items':items,
-        'categories':categories,
         'form':form,
         'wishlists_counts':wishlists_counts
     }
@@ -74,14 +66,11 @@ def help(request):
     items = data['items']
     wishlists_counts = data2['wishlists_counts']
 
-    categories = Category.objects.all()
-
 
     context = {
         'cartItems':cartItems,
         'order':order,
         'items':items,
-        'categories':categories,
         'wishlists_counts':wishlists_counts
     }
     return render(request, 'about/help.html',context)
@@ -96,15 +85,11 @@ def privacy_policy(request):
     items = data['items']
     wishlists_counts = data2['wishlists_counts']
 
-    categories = Category.objects.all()
-
-
 
     context = {
         'cartItems':cartItems,
         'order':order,
         'items':items,
-        'categories':categories,
         'wishlists_counts':wishlists_counts
     }
     return render(request, 'about/privacy_policy.html',context)
@@ -119,15 +104,11 @@ def terms_conditions(request):
     items = data['items']
     wishlists_counts = data2['wishlists_counts']
 
-    categories = Category.objects.all()
-
-
 
     context = {
         'cartItems':cartItems,
         'order':order,
         'items':items,
-        'categories':categories,
         'wishlists_counts':wishlists_counts
     }
     return render(request, 'about/terms_conditions.html',context)

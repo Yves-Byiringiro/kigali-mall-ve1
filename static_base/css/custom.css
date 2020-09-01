@@ -130,9 +130,14 @@
 
 
 
+/******************** search results page *************/
 
-
-
+.search-for{
+    color: #ff6a00;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 500;
+}
 
 /********************* about  page **********/
 .about-title{
@@ -142,8 +147,13 @@
   
 /********** checkout related pages  ************/
 
+.confirm-momopay{
+    font-weight: 600;
+
+}
+
 .enter-momo-number{
-    padding: 45px 0px 10px 0px;
+    padding: 50px 0px 10px 0px;
     font-weight: 600;
     color: #ff6a00;
 }

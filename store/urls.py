@@ -20,7 +20,7 @@ urlpatterns = [
 
 
 	path('product_details/<slug>/', productDetails, name="product_details"),
-	path('results/', productResults, name="products_results"),
+	path('search_results/', productResults, name="products_results"),
 
 	
 
@@ -34,8 +34,6 @@ urlpatterns = [
 
 
 	path('shop/', shop, name="shop"),
-
-
 
 ]
 
