@@ -198,7 +198,7 @@
     }
     var transid=uuid();
     // *  //
-    const reponse = await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
+    fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
         method:"POST",
         headers:{
             'Content-Type':'application/json'
@@ -214,15 +214,17 @@
             }
 
         )
-    })
-    const respoData = await reponse.json()
-
-    alert('Thank You For Shopping With Us!')
-    cart = {}
-    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/" 
-    window.location.href = "{% url 'homepage' %}"
+    }).then(response => {
+        if (response.status == 200){
+            alert('Thank You For Shopping With Us!')
+            cart = {}
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/" 
+            window.location.href = "{% url 'homepage' %}"
    
-      }
+        }
+        
+     });
+    }
     testMomo()
 }
 </script>
