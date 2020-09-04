@@ -186,7 +186,7 @@ class ShippingAddress(models.Model):
     city = models.CharField(max_length=200, null=False)
     state = models.CharField(max_length=200, null=False)
     country = models.CharField(max_length=200, null=False)
-    phone = models.CharField(max_length=12, null=True)
+    phone = models.CharField(max_length=12, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
