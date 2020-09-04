@@ -6,7 +6,7 @@ from .models import *
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name','category','price','delivery_minutes','seller','date_added']
     list_filter = ['category','seller','date_added','delivery_minutes']
-    list_per_page = 10
+    list_per_page = 20
     search_fields = ['name','price','delivery_minutes']
 
 
