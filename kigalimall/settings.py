@@ -110,27 +110,27 @@ WSGI_APPLICATION = 'kigalimall.wsgi.application'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'kigalimalldb1',
-#         'USER': 'kigalimalluser1',
-#         'PASSWORD': 'kigalimall127st',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kigalimalldb2',
-        'USER': 'kigalimalluser2',
+        'NAME': 'kigalimalldb1',
+        'USER': 'kigalimalluser1',
         'PASSWORD': 'kigalimall127st',
         'HOST': 'localhost',
         'PORT': '',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'kigalimalldb2',
+#         'USER': 'kigalimalluser2',
+#         'PASSWORD': 'kigalimall127st',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
