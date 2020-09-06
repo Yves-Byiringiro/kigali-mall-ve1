@@ -66,10 +66,6 @@ class Product(models.Model):
         ('Jeans', 'Jeans'),
         ('Phones', 'Phones'),
         ('Laptops', 'Laptops')
-
-
-
-
         )
 
     name = models.CharField(max_length=250,unique=True)
