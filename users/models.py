@@ -43,7 +43,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     gender = models.CharField(max_length=100, choices=GENDER, default='Male')
     phone = models.CharField(max_length=15)
     city = models.CharField(max_length=50)
-    country = CountryField(null=True , blank=True, blank_label='---------------------------------- choose your country ----------------------------------')
+    country = CountryField(null=True , blank=True, blank_label='--- Choose Country ---')
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
