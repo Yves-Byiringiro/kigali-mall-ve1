@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+{% load humanize %}
 {% block title %}{% trans 'Cart' %}{% endblock %}
 
 {% block content %}
@@ -57,14 +58,14 @@
                                       </div>
                                   </div>
                               </td>
-                              <td class="cart__price"><span class="n">{{item.product.price}} Frw</span></td>
+                              <td class="cart__price"><span class="n">{{item.product.price|intcomma}} Frw</span></td>
                               <td class="cart__quantity">{{item.quantity}}
                                 <div class="quantity">
                                   <i data-product='{{item.product.id}}' data-action='add' class="fa fa-plus-square-o chg-quantity update-cart" aria-hidden="true"></i>
                                   <i data-product='{{item.product.id}}' data-action='remove' class="fa fa-minus-square-o chg-quantity update-cart" aria-hidden="true"></i>                                                          
                               </div>
                               </td>
-                              <td class="cart__total"><span class="n">{{item.get_total}} Frw</span></td>
+                              <td class="cart__total"><span class="n">{{item.get_total|intcomma}} Frw</span></td>
                               
                           </tr>
                           {% empty %}
@@ -81,7 +82,7 @@
                 <h6>Cart total</h6>
                 <ul>
                     <!-- <li>Subtotal <span>$ 750.0</span></li> -->
-                    <li>Total <span>{{order.get_cart_total}} Frw</span></li>
+                    <li>Total <span>{{order.get_cart_total|intcomma}} Frw</span></li>
                 </ul>
                 <a href="{% url 'checkout' %}" class="primary-btn">Proceed to checkout</a>
             </div>

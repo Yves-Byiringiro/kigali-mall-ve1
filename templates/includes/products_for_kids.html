@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <style>
 .min-costs{
   margin: 30px 0px;
@@ -15,7 +16,7 @@
                   <div class="instagram__text">
                       
                       <h5>{{product.name}}</h5>
-                      <p>{{product.price}} Frw</p>
+                      <p>{{product.price|intcomma}} Frw</p>
                       <p></p>
                       <a href="{% url 'product_details' product.slug %}" class="view-mincosts">View Details</a>
                   </div>

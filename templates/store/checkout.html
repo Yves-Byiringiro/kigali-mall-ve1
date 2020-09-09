@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
@@ -82,14 +83,14 @@
                                     <span class="top__text__right">S.Total</span>
                                 </li>
                                 {% for item in items %}
-                                    <li>{{item.quantity}}x {{item.product.name}}<span>{{item.product.price|floatformat:2}} Frw</span></li>
+                                    <li>{{item.quantity}}x {{item.product.name}}<span>{{item.product.price|intcomma}} Frw</span></li>
                                 {% endfor %}
                             </ul>
                         </div>
                         <div class="checkout__order__total">
                             <ul>
                             
-                                <li>Total <span>{{order.get_cart_total|floatformat:1}} Frw</span></li>
+                                <li>Total <span>{{order.get_cart_total|intcomma}} Frw</span></li>
                             </ul>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load humanize %}
 {% block title %}{% trans 'Shop - Kigali Mall' %}{% endblock %}
 {% load static %}
 
@@ -97,7 +98,7 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <div class="product__price">{{product.price}} Frw</div>
+                                <div class="product__price">{{product.price|intcomma}} Frw</div>
                             </div>
                         </div>
                     </div>

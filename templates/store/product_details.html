@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-
+{% load humanize %}
 {% block content %}
 <style>
     .reviews li {
@@ -223,7 +223,7 @@
                             <i class="fa fa-star"></i>
                             <span>({{reviews.paginator.count}}) reviews </span>
                         </div>
-                        <div class="product__details__price">{{product.price}} Frw <span>{{product.old_price}} Frw </span></div>
+                        <div class="product__details__price">{{product.price|intcomma}} Frw <span>{{product.old_price|intcomma}} Frw </span></div>
                       
                         <div class="product__details__button">
 
@@ -378,7 +378,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">{{product.price}} Frw</div>
+                            <div class="product__price">{{product.price|intcomma}} Frw</div>
                         </div>
                     </div>
                 </div>

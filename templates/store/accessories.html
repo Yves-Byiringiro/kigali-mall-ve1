@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
+{% load humanize %}
 {% block title %}  Accessories-Kigali Mall {% endblock %}
 
 
@@ -85,7 +86,7 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <div class="product__price">{{product.price}} Frw</div>
+                                <div class="product__price">{{product.price|intcomma}} Frw</div>
                             </div>
                         </div>
                     </div>

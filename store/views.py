@@ -18,6 +18,7 @@ from django.contrib import messages
 
 
 
+
 def homepage(request):
 	data = cartData(request)
 	data2 = wishlistData(request)
