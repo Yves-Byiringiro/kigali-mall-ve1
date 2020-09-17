@@ -11,7 +11,7 @@
                 <div class="breadcrumb__links">
                     <a href="{% url 'homepage' %}"><i class="fa fa-home"></i> Home</a>
                     <a href="{{dashboard_url}}">Dashboard</a>
-                    <span>Cart</span>
+                    <span>Finished Orders</span>
                 </div>
             </div>
         </div>
@@ -22,10 +22,14 @@
         <div class="col-md-4"  style="padding-top: 5%;">
             {% include "users/dashboard_sidebar.html" %}
         </div>
+
+       
         <div class="col-md-8">
-            <h3 class="text-center">{% trans 'Cart' %}</h3>
+            <h3 class="text-center">{% trans 'Finished Orders' %}</h3>
             <div class="table-responsive">
+                
                 <table class="table dash-table">
+                   
                     <thead>
                     <tr>
                         <th scope="col">{% trans 'Image' %}</th>
@@ -36,8 +40,10 @@
                     </tr>
                     </thead>
                     <tbody>
+                        
+                        {% for item in finished_orders %}
                        
-                        {% for item in items %}
+                      
                             <tr>
                                 <th scope="row"><img class="cart-image" src="{{item.product.main_image.url}}"/></th>
                                 <td>{{item.product.name}}</td>
@@ -50,26 +56,19 @@
                                 <td>{{item.product.price}} Frw</td>
                                 <td>{{item.get_total}} Frw</td>
                             </tr>
+                        
                         {% empty %}
                             <tr>
-                                <td class="text-center font-italic" colspan="4">{% trans "You don't have any Product in your cart!" %}</td>
+                                <td class="text-center font-italic" colspan="4">{% trans "You don't have any completed order yet!" %}</td>
                             </tr>
-                        {% endfor %}
-                        
+                            {% endfor %}
+                            
                     </tbody>
+                    
                 </table>
+                
             </div>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col" style="float: left;">{% trans 'Total Items' %}: <span class="dash-totals">{{order.get_cart_items}}</span></th>
-                    <th scope="col" style="float: right;">{% trans 'Total' %}: <span class="dash-totals">$ {{order.get_cart_total}}</span></th>
-                  </tr>
-                  <tr>
-                    <th scope="col" style="float: right;"><a  style="padding:6px" class="btn btn-success" href="{% url 'checkout' %}"><i style="font-size: 22px;" class="fa fa-money" aria-hidden="true"></i> Checkout</a></th>
-                  </tr>
-                </thead>
-            </table>
+           
         </div>
     </div>
 </div>

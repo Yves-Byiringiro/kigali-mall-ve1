@@ -21,6 +21,7 @@ urlpatterns = [
 
 	path('account/', dashboard, name="dashboard"),
 	path('cart/', userCart, name="user_cart"),
+    path('finished_orders/', finished_orders, name="finished_orders"),
 	path('wishlist/', userWishlist, name="user_wishlist"),
 	path('change_password/', change_password, name="user_change_password"),
 	path('update_profile/', update_profile, name="update_profile"),

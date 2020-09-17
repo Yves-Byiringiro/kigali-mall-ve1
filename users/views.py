@@ -95,6 +95,13 @@ def userCart(request):
 
 
 @login_required
+def finished_orders(request):
+    finished_orders = MomoTranctionID.objects.filter(confirmed=False)
+    template_name = 'users/finished_orders.html'
+    context = {'finished_orders': finished_orders}
+    return render(request, template_name, context)
+
+@login_required
 def userWishlist(request):
     data = cartData(request)
     
