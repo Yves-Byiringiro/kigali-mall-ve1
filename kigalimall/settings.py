@@ -39,16 +39,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'k)e4if*2t90zmxqaft_&qhy67rk6t4111o5t@-qc5t09lz1u+3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
 
-# ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64']
-
-# ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64']
+DEBUG = False
+ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64']
 
 
-DEBUG = True
 
-ALLOWED_HOSTS = []
+# DEBUG = True
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -60,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize', 
 
     'store.apps.StoreConfig',
     'about.apps.AboutConfig',
@@ -117,6 +116,17 @@ DATABASES = {
          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
      }
  }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kigalimalldb2',
+        'USER': 'kigalimalluser2',
+        'PASSWORD': 'kigalimall127st',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 # Password validation

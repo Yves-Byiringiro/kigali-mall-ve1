@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+{% load humanize %}
 {% block title %}{% trans 'Wishlist' %}{% endblock %}
 {% block content %}
 <style>
@@ -43,7 +44,7 @@
                 <tr>
                     <td class="cart__product__item"><img src="{{item.product.main_image.url}}" alt="product" class="product-thumbnail"></td>
                     <td>{{item.product.name}}</td>
-                    <td >{{item.product.price}} Frw</td>
+                    <td >{{item.product.price|intcomma}} Frw</td>
                     <td class="float-right">
                         <button data-product={{item.product.id}} data-action='add' class="wishlist-btn update-cart">{% trans 'add to cart' %}</button>
                         {% if request.user.is_authenticated %}

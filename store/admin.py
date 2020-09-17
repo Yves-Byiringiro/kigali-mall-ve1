@@ -6,7 +6,8 @@ from .models import *
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name','category','price','delivery_minutes','seller','date_added']
     list_filter = ['category','seller','date_added','delivery_minutes']
-    list_per_page = 10
+    list_per_page = 20
+    search_fields = ['name','price','delivery_minutes']
 
 
 
@@ -42,19 +43,18 @@ class ShippingAddressAdmin(admin.ModelAdmin):
     list_display = ['customer','order','address','city','state','country','phone','date_added']
     list_filter = ['customer','city','state','date_added']
     list_per_page = 10
+    search_fields = ['state','city','country','phone']
 
 
 
-class MomoTranctionIDAdmin(admin.ModelAdmin):
-    list_display = ['transaction_id','date_added','confirmed']
-    list_filter = ['transaction_id','date_added','confirmed']
-    list_per_page = 10
+
 
 
 class SellerDAdmin(admin.ModelAdmin):
     list_display = ['name','phone','date_added']
     list_filter = ['date_added']
     list_per_page = 10
+    search_fields = ['name','phone']
 
 
 
@@ -67,7 +67,6 @@ admin.site.register(Wishlist,WishlistAdmin)
 admin.site.register(Order,OrderAdmin)
 admin.site.register(OrderItem,OrderItemAdmin)
 admin.site.register(ShippingAddress,ShippingAddressAdmin)
-admin.site.register(MomoTranctionID, MomoTranctionIDAdmin)
 admin.site.register(Mymomo)
 
 

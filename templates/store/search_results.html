@@ -1,57 +1,52 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
+{% load humanize %}
+{% block title %} Search Results - Kigali Mall {% endblock %}
+
 
 {% block content %}
 
-<div class="container">
-    {% if search_results %}
-    {% if  query2 %}
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="result-title">{% trans 'Results for' %}: {{query2}} in {{query1}} category</h2>
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="result-title">Results for : &nbsp;&nbsp;<span class="search-for">{{query1}}</span></h2>
+            </div>
         </div>
-    </div>
-    {% elif  query1 %}
-    <div class="row">
-        <div class="col-md-8">
-            <h2 class="result-title">{% trans 'Results for' %}: {{query1}}</h2>
-        </div>
-    </div>
-    {% endif %}
-
-    {% endif %}
-    <div class="row">
-        {% if search_results %}
-        {% for product in search_results %}
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{{product.main_image.url}}" alt="">
-                </div>
-                <div class="product-body">
-                    <h3 class="product-name"><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h3>
-                    <h4 class="product-price">{{product.price}} Frw<del class="product-old-price">{{product.old_price}} Frw</del></h4>
-                </div>
-                <div class="overlay">
-                    <button type="button" class="btn btn-secondary update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlist">
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                    </button>
-                    <a href="{% url 'product_details' product.slug %}">
-                    <button type="button" class="btn btn-secondary" title="view details">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </button>
-                    </a>
-                    <button data-product='{{product.id}}' data-action='add' type="button" class="btn btn-secondary update-cart" title="add to cart">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </button>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    {% for product in search_results %}
+                    <div class="col-lg-3 col-md-6  column {{product.sub_category}}" id="{{product.sub_category}}">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
+                                <ul class="product__hover">
+                                    <li><a href="{% url 'product_details' product.slug %}"  title="view details"><span class="fa fa-eye"></span></a></li>
+                                    <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
+                                    <li data-product='{{product.id}}' data-action='add' class="update-cart" title="add to carts"><a><span class="fa fa-shopping-cart"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h6>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product__price">{{product.price|intcomma}} Frw</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-      {% endfor %}
-        {% else %}
-            <h2 class="result-title text-center">{% trans 'No products found' %}</h2>
-        {% endif %}
-
     </div>
-</div>
+</section>
+
+
+
 {% endblock %}

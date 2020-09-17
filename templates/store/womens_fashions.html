@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
+{% load humanize %}
 {% block title %} Womens Fashions-Kigali Mall {% endblock %}
 
 
@@ -61,9 +62,9 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
                                 <ul class="product__hover">
-                                    <li><a href="{% url 'product_details' product.slug %}"  title="view details"><span class="arrow_expand"></span></a></li>
+                                    <li><a href="{% url 'product_details' product.slug %}"  title="view details"><span class="fa fa-eye"></span></a></li>
                                     <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
-                                    <li data-product='{{product.id}}' data-action='add' class="update-cart" title="add to carts"><a><span class="icon_bag_alt"></span></a></li>
+                                    <li data-product='{{product.id}}' data-action='add' class="update-cart" title="add to carts"><a><span class="fa fa-shopping-cart"></span></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -75,7 +76,7 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <div class="product__price">{{product.price}} Frw</div>
+                                <div class="product__price">{{product.price|intcomma}} Frw</div>
                             </div>
                         </div>
                     </div>

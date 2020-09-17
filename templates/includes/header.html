@@ -11,7 +11,17 @@
 
 
 
-
+<style>
+    .logins{
+        margin-left: 25px;
+        display: none !important;
+    }
+    @media only screen and (max-width: 768px) {
+    .logins{
+        display: inline-block !important;
+    }
+  }
+</style>
 
 <div class="offcanvas-menu-overlay"></div>
 <div class="offcanvas-menu-wrapper">
@@ -53,7 +63,10 @@
             <div class="col-xl-3 col-lg-2">
                 <div class="header__logo">
                     <a href="{% url 'homepage' %}"><img class="logo-kmall" src="{% static 'img/small-logo.png' %}" alt=""></a>
+                    <a class="logins" href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
+                    <a class="logins" href="{% url 'register' %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Register</a>
                 </div>
+
             </div>
             <div class="col-xl-6 col-lg-7">
                 <nav class="header__menu">

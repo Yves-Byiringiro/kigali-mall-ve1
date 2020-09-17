@@ -1187,7 +1187,7 @@ ol {
 }
 
 .product__hover li:hover a {
-	background: #ca1515;
+	background: #ff6a00;
 }
 
 .product__hover li:hover a span {
@@ -3462,6 +3462,7 @@ ol {
 	.offcanvas__widget li:last-child {
 		margin-right: 0;
 	}
+	
 	.offcanvas__widget li a {
 		font-size: 18px;
 		color: #111111;
@@ -3473,7 +3474,7 @@ ol {
 		top: -11px;
 		height: 18px;
 		width: 18px;
-		background: #111111;
+		background: #ff6a00;
 		font-size: 10px;
 		font-weight: 500;
 		color: #ffffff;

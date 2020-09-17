@@ -8,10 +8,11 @@ from random import shuffle
 from about.models import *
 from django.views.generic import ListView
 from django.db.models import Q
-from .forms import ReviewForm,MomoTranctionIDForm
+from .forms import ReviewForm
 from django.core.paginator import Paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
+
 
 
 
@@ -142,13 +143,7 @@ def checkout(request):
 	items = data['items']
 	wishlists_counts = data2['wishlists_counts']
 
-	if request.method == 'POST':
-		form = MomoTranctionIDForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect('homepage')
-			# messages.success(request, 'Your Transaction ID has been submitted successfully !.')
-	form  = MomoTranctionIDForm()
+
 
 
 	template_name = 'store/checkout.html'
@@ -157,8 +152,8 @@ def checkout(request):
 		'items':items, 
 		'order':order, 
 		'cartItems':cartItems,
-		'wishlists_counts':wishlists_counts,
-		'form':form
+		'wishlists_counts':wishlists_counts
+	
 		
 		}
 	return render(request, template_name, context)
@@ -350,68 +345,24 @@ def productResults(request):
 	wishlists_counts = data2['wishlists_counts']
 
 
-	query1 =  request.GET.get('category_name')
-	query2 =  request.GET.get('product')
+	query1 =  request.GET.get('product')
+
 	search_results = Product.objects.filter( 
-			Q(category__name__iexact=query1) &  Q(name__icontains=query2)
+			Q(category__name__icontains=query1) |  Q(name__icontains=query1) | Q(sub_category__icontains=query1)
 			)
-	categories = Category.objects.all()
 
 
 
 	template_name = 'store/search_results.html'
 	context = {
 		'search_results':search_results,
+		'query1':query1 , 
 		'cartItems':cartItems,
 		'items':items,
 		'order':order,
-		'categories':categories,
-		'query2':query2,
-		'query1':query1,
 		'wishlists_counts':wishlists_counts
 		}
 	return render(request,template_name, context)
-
-
-
-
-
-
-
-def payMobilemoney(request):
-	data = cartData(request)
-	data2 = wishlistData(request)
-
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
-	wishlists_counts = data2['wishlists_counts']
-
-	
-	categories = Category.objects.all()
-	momo = Mymomo.objects.get(pk=1)
-	
-	
-	if request.method == 'POST':
-		form = MomoTranctionIDForm(request.POST)
-		if form.is_valid():
-			form.save()
-			messages.success(request, 'Your Transaction ID has been submitted successfully !.')
-			return redirect('homepage')
-	form  = MomoTranctionIDForm()
-
-	template_name = 'store/pay_mobilemoney.html'
-
-	context = {
-		'cartItems':cartItems,
-		'items':items,
-		'order':order,
-		'categories':categories,
-		'wishlists_counts':wishlists_counts,
-		'momo':momo,
-		'form':form
-	}
-	return render(request, template_name, context)
 
 
 

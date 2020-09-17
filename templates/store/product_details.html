@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-
+{% load humanize %}
 {% block content %}
 <style>
     .reviews li {
@@ -223,7 +223,7 @@
                             <i class="fa fa-star"></i>
                             <span>({{reviews.paginator.count}}) reviews </span>
                         </div>
-                        <div class="product__details__price">{{product.price}} Frw <span>{{product.old_price}} Frw </span></div>
+                        <div class="product__details__price">{{product.price|intcomma}} Frw <span>{{product.old_price|intcomma}} Frw </span></div>
                       
                         <div class="product__details__button">
 
@@ -366,9 +366,9 @@
                         <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
                             <div class="label new">New</div>
                             <ul class="product__hover">
-                                <li><a href="{% url 'product_details' product.slug %}"><span class="arrow_expand"></span></a></li>
+                                <li><a href="{% url 'product_details' product.slug %}"><span class="fa fa-eye""></span></a></li>
                                 <li class="update-wishlist" data-product="{{product.id}}" data-action="add"><a title="add to wishlists"><span class="icon_heart_alt"></span></a></li>
-                                <li  data-product='{{product.id}}' data-action='add' class="update-cart"><a title="add to carts"><span class="icon_bag_alt"></span></a></li>
+                                <li  data-product='{{product.id}}' data-action='add' class="update-cart"><a title="add to carts"><span class="fa fa-shopping-cart"></span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -380,7 +380,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">{{product.price}} Frw</div>
+                            <div class="product__price">{{product.price|intcomma}} Frw</div>
                         </div>
                     </div>
                 </div>
