@@ -718,7 +718,7 @@ ol {
 -----------------------*/
 
 .services {
-	padding-top: 80px;
+	padding-top: 10px;
 	padding-bottom: 50px;
 }
 
@@ -1061,7 +1061,7 @@ ol {
 
 .product {
 	padding-top: 10px;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 }
 
 .filter__controls {
