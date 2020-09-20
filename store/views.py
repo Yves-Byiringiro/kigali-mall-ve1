@@ -80,7 +80,7 @@ def homepage(request):
 
 
 
-	kids_products = Product.objects.filter(category__name='KidsFashions')[:6]
+	kids_products = Product.objects.filter(category__name='KidsFashions')[:4]
 	kids = list(kids_products)
 	shuffle(kids)
 	final = kids
