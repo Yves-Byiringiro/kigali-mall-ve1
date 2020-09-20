@@ -11,6 +11,8 @@ for (i = 0; i< wishlistRemove.length; i++){
         var action = this.dataset.action
         if (user == 'AnonymousUser'){
             // console.log('not logged in wishlist')
+            alert('sign in to continue')
+			window.location.href="http://kigalimall.com/user/login";
         }
         else{
             destroyWishlistitems(productId,action)

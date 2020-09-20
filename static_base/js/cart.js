@@ -6,7 +6,9 @@ for (i = 0; i < updateBtns.length; i++) {
 		var action = this.dataset.action
 
 		if (user == 'AnonymousUser'){
-			addCookieItem(productId, action)
+			alert('sign in to continue')
+			window.location.href="http://kigalimall.com/user/login";
+			// addCookieItem(productId, action)
 		}else{
 			updateUserOrder(productId, action)
 		}

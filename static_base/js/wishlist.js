@@ -9,7 +9,9 @@ for (i = 0; i < wishlistBtns.length; i++) {
 
 
 		if (user == 'AnonymousUser'){
-            addCookieWishlistItem(productId, action)
+			alert('sign in to continue')
+			window.location.href="http://kigalimall.com/user/login";
+            // addCookieWishlistItem(productId, action)
 		}else{
 			updateUserWishlist(productId, action)
 		}
@@ -59,7 +61,6 @@ function addCookieWishlistItem(productId, action){
 	// 		delete cart[productId];
 	// 	}
 	// }
-	console.log('WISHLIST:', wishlist)
 	document.cookie ='wishlist=' + JSON.stringify(wishlist) + ";domain=;path=/"
 	
 	location.reload()
