@@ -173,6 +173,19 @@
         flex-direction: column;
         justify-content: flex-end;
     }
+    .card-head{
+        background: #36a300; 	
+        font-size: 12px;
+        color: #ffffff;
+        font-weight: 500;
+        display: inline-block;
+        padding: 2px 8px;
+        text-transform: uppercase;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+                      
+    }
      
 </style>
     <div class="breadcrumb-option">
@@ -357,7 +370,7 @@
                     </div>
                 </div>
                 {% for product in my_list %}
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-3 col-md-4 col-sm-6 d-none d-md-block d-lg-block d-xl-block">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
                             <div class="label new">New</div>
@@ -380,6 +393,32 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- for small screen -->
+                <div class="col-lg-3 col-6 col-md-4  d-block d-md-none d-lg-none d-xl-none mix">
+                    <div class="product__item sale">
+                        <a href="{% url 'product_details' product.slug %}"  title="view details">
+                        <div class="card set-bg">
+                          <div class="label card-head new">New</div>
+                          <div class="card-imge">
+                              <img src="{{product.main_image.url}}" alt="{{product.name}}">
+                          </div>
+                        </div>
+                        </a>
+                        <div class="product__item__text">
+                            <h6><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">{{product.price|intcomma}} Frw <span>{{product.old_price|intcomma}} Frw</span></div>
+                        </div>
+                
+                    </div>
+                </div>            
                 {% endfor %}
             </div>
         </div>
