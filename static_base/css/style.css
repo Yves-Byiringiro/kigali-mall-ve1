@@ -718,7 +718,7 @@ ol {
 -----------------------*/
 
 .services {
-	padding-top: 80px;
+	padding-top: 10px;
 	padding-bottom: 50px;
 }
 
@@ -1060,8 +1060,8 @@ ol {
 -----------------------*/
 
 .product {
-	padding-top: 60px;
-	padding-bottom: 50px;
+	padding-top: 10px;
+	padding-bottom: 20px;
 }
 
 .filter__controls {
@@ -1108,9 +1108,8 @@ ol {
 }
 
 .product__item.sale .product__item__pic .label {
-	background: #36a300;
+	background: #36a300;;
 }
-
 
 .product__item.sale .product__item__text .product__price {
 	color: red;
@@ -3093,6 +3092,7 @@ ol {
 .contact__map iframe {
 	width: 100%;
 }
+
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 

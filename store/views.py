@@ -50,10 +50,25 @@ def homepage(request):
 	final = hot
 
 	#new products
-	new_products = Product.objects.order_by('-id')[:12]
-	new = list(new_products)
-	shuffle(new)
-	final = new
+	new_products_w = Product.objects.filter(category__name='WomensFashions').order_by('-id')[:4]
+	new_w = list(new_products_w)
+	shuffle(new_w)
+	final = new_w
+
+	new_products_m = Product.objects.filter(category__name='MensFashions').order_by('-id')[:4]
+	new_m = list(new_products_m)
+	shuffle(new_m)
+	final = new_m
+
+	new_products_a = Product.objects.filter(category__name='Accessories').order_by('-id')[:4]
+	new_a = list(new_products_a)
+	shuffle(new_a)
+	final = new_a
+
+	new_products_k = Product.objects.filter(category__name='KidsFashions').order_by('-id')[:4]
+	new_k = list(new_products_k)
+	shuffle(new_k)
+	final = new_k
 	
 	# categories products
 	womens_fashions = Product.objects.filter(category__name='WomensFashions').count()
@@ -86,7 +101,10 @@ def homepage(request):
 	template_name = 'store/homepage.html'
 	context = {
 		
-		'new':new, 
+		'new_w':new_w,
+		'new_m':new_m,
+		'new_k':new_k,
+		'new_a':new_a,
 		'items':items,
 		'order':order,
 		'cartItems':cartItems,
