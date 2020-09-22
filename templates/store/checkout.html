@@ -198,8 +198,8 @@
     });
     }
     var transid=uuid();
-    // *  //
-    fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
+
+    const response =   await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
         method:"POST",
         headers:{
             'Content-Type':'application/json'
@@ -213,18 +213,24 @@
             "callbackUrl" : "http://myonlineprints.com/payments/callback",
             "transactionId" : transid
             }
+     )
+    })
 
-        )
-    }).then(response => {
-        if (response.status == 200){
-            alert('Thank You For Shopping With Us!')
+    const serverData = await  response.json()
+    if (response.ok){
+        console.log(serverData)
+        if (serverData.code==200){
+            alert("Thank You For Shopping With Us, Check Your Phone to Proceed With Payment !")
             cart = {}
             document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/" 
             window.location.href = "{% url 'homepage' %}"
-   
         }
-        
-     });
+        if (serverData.code==401){
+            alert(serverData.description)
+        }
+    }
+
+ 
     }
     testMomo()
 }
