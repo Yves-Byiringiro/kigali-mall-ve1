@@ -227,6 +227,8 @@
         }
         if (serverData.code==401){
             alert(serverData.description)
+            window.location.href = "{% url 'homepage' %}"
+
         }
     }
 
