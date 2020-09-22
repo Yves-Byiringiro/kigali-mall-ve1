@@ -64,12 +64,12 @@
       
       .reviews-pagination li:hover {
         background-color: #E4E7ED;
-        color: #D10024;
+        color: #ff6a00;
       }
       
       .reviews-pagination li.active {
-        background-color: #D10024;
-        border-color:#D10024;
+        background-color: #ff6a00;
+        border-color:#ff6a00;
         color: #FFF;
         cursor: default;
       }
@@ -108,10 +108,12 @@
       .product-details .product__details__button .add-to-cart-btn {
         position: relative;
         border: 2px solid transparent;
-        height: 40px;
-        padding: 0 30px;
-        background-color: #D10024;
+        margin-bottom: 10px;
+        font-size: 12px;
+        height: 35px;
+        background-color: #ff6a00;
         color: #FFF;
+        padding: 0 10px;
         text-transform: uppercase;
         font-weight: 700;
         border-radius: 40px;
@@ -126,16 +128,16 @@
         width: 40px;
         height: 40px;
         line-height: 38px;
-        color: #D10024;
+        color: #ff6a00;
         opacity: 0;
         visibility: hidden;
       }
       
       .product-details .product__details__button .add-to-cart-btn:hover {
         background-color: #FFF;
-        color:#D10024;
-        border-color:#D10024;
-        padding: 0px 30px 0px 50px;
+        color:#ff6a00;
+        border-color:#ff6a00;
+        padding: 0px 20px 0px 40px;
       }
       
       .product-details .product__details__button .add-to-cart-btn:hover>i {
@@ -145,7 +147,7 @@
       .primary-btn {
         display: inline-block;
         padding: 12px 30px;
-        background-color: #D10024;
+        background-color: #ff6a00;
         border: none;
         border-radius: 40px;
         color: #FFF;
@@ -240,7 +242,7 @@
                       
                         <div class="product__details__button">
                             <button data-product='{{product.id}}' data-action='add' class="add-to-cart-btn update-cart"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            <button class="update-wishlist add-to-cart-btn" data-product="{{product.id}}" data-action="add"><i class="fa fa-shopping-cart"></i>add to wishlist</button>
+                            <button class="update-wishlist add-to-cart-btn" data-product="{{product.id}}" data-action="add"><i class="fa fa-heart"></i>add to wishlist</button>
                         </div>
                         <div class="product__details__widget">
                             <ul>
