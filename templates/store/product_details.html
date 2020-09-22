@@ -239,9 +239,8 @@
                         <div class="product__details__price">{{product.price|intcomma}} Frw <span>{{product.old_price|intcomma}} Frw </span></div>
                       
                         <div class="product__details__button">
-
                             <button data-product='{{product.id}}' data-action='add' class="add-to-cart-btn update-cart"><i class="fa fa-shopping-cart"></i> add to cart</button>
-
+                            <button class="update-wishlist add-to-cart-btn" data-product="{{product.id}}" data-action="add"><i class="fa fa-shopping-cart"></i>add to wishlist</button>
                         </div>
                         <div class="product__details__widget">
                             <ul>
