@@ -53,28 +53,53 @@
             <div class="col-lg-9 col-md-9">
                 <div class="row">
                     {% for product in cosmetics %}
-                    <div class="col-lg-4 col-md-6  column {{product.sub_category}}" id="{{product.sub_category}}">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
-                                <ul class="product__hover">
-                                    <li><a href="{% url 'product_details' product.slug %}"  title="view details"><span class="fa fa-eye"></span></a></li>
-                                    <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
-                                    <li data-product='{{product.id}}' data-action='add' class="update-cart" title="add to carts"><a><span class="fa fa-shopping-cart"></span></a></li>
-                                </ul>
+                   <!--for large screen -->
+                   <div class="col-lg-4 col-md-6 d-none d-md-block d-lg-block d-xl-block {{product.sub_category}}" id="{{product.sub_category}}">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{{product.main_image.url}}">
+                            <ul class="product__hover">
+                                <li><a href="{% url 'product_details' product.slug %}"  title="view details"><span class="fa fa-eye"></span></a></li>
+                                <li class="update-wishlist" data-product="{{product.id}}" data-action="add" title="add to wishlists"><a><span class="icon_heart_alt"></span></a></li>
+                                <li data-product='{{product.id}}' data-action='add' class="update-cart" title="add to carts"><a><span class="fa fa-shopping-cart"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__item__text">
-                                <h6><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h6>
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product__price">{{product.price|intcomma}} Frw</div>
-                            </div>
+                            <div class="product__price">{{product.price|intcomma}} Frw</div>
                         </div>
                     </div>
+                </div>
+
+                <!--for small screen -->
+                <div class="col-lg-3 col-6 col-md-4  d-block d-md-none d-lg-none d-xl-none mix {{product.sub_category}}" id="{{product.sub_category}}">
+                    <div class="product__item sale">
+                        <a href="{% url 'product_details' product.slug %}"  title="view details">
+                        <div class="card set-bg">
+                          <div class="card-imge">
+                              <img src="{{product.main_image.url}}" alt="{{product.name}}">
+                          </div>
+                        </div>
+                        </a>
+                        <div class="product__item__text">
+                            <h6><a href="{% url 'product_details' product.slug %}">{{product.name}}</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">{{product.price|intcomma}} Frw <span>{{product.old_price|intcomma}} Frw</span></div>
+                        </div>
+                    </div>
+                </div>       
                     {% endfor %}
 
   
