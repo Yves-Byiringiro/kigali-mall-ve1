@@ -151,7 +151,15 @@
     font-weight: 600;
 
 }
-
+.pay-btn{
+    width: 150px;
+    height: 36px;
+    background: #ff6a00;
+    color: white;
+    font-weight: 700;
+    border-radius: 21px;
+    border: none;
+}
 .enter-momo-number{
     padding: 50px 0px 10px 0px;
     font-weight: 600;
