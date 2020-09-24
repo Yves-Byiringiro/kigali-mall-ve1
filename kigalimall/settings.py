@@ -40,12 +40,12 @@ SECRET_KEY = 'k)e4if*2t90zmxqaft_&qhy67rk6t4111o5t@-qc5t09lz1u+3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG = False
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64']
 
 
 
-DEBUG = True
+# DEBUG = True
 # ALLOWED_HOSTS = []
 
 
@@ -110,12 +110,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kigalimall.wsgi.application'
 
 
-DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.sqlite3',
-           'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-       }
-   }
+# DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#        }
+#    }
 
 
 # DATABASES = {
@@ -130,19 +130,16 @@ DATABASES = {
 # }
 
 
-
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'kigalimalldb2',
-#         'USER': 'kigalimalluser2',
-#         'PASSWORD': 'kigalimall127st',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kigalimalldb2',
+        'USER': 'kigalimalluser2',
+        'PASSWORD': 'kigalimall127st',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 # Password validation
