@@ -5,7 +5,7 @@
 
 {% block content %}
 <style>
-    .hidden{
+    .show-hidden, .payment{
         display:none;
     }
 </style>
@@ -60,12 +60,21 @@
                                 <input required class="form-control" type="text" name="country" placeholder="Country">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3 mx-auto">
-                                <button class="pay-btn">Pay</button>
+                        <div class="row justify-content-center">
+                            <div class="">
+                                <button id="show-hidden" class="pay-btn">Pay</button>
+                            </div>
+                        </div>
+                        <div class="row pt-5 justify-content-center">
+                            <div class="col-3 show-hidden">
+                                <img src="{% static 'img/mobile_money_logo.jpg' %}">
+                            </div>
+                            <div class="col-3 show-hidden">
+                                <img src="{% static 'img/tigo_airtel_pay.png' %}">
                             </div>
                         </div>
 
+                    <div class="payment">
                         <h6 class="enter-momo-number">Enter Your Mobile Money Number To Continue</h6>
                 <div class="row">
                     <div class="col-lg-8">
@@ -73,11 +82,12 @@
                             <input required class="form-control" type="text" name="phone" placeholder="0780000000" id="myText">
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <button type="submit" id="send_transactionID">Pay with Mobile Money</button>
+                    <div class="col-lg-4">
+                        <button type="submit" class="pay-btn id="send_transactionID">Confirm</button>
 
                     </div>
 
+                </div>
                 </div>
                 </form>
                 </div>
@@ -109,6 +119,21 @@
     
 
 <Script type="text/javascript">
+
+
+
+    $(document).ready(function() {
+        $('#show-hidden').click(function() {
+          $('.show-hidden').slideToggle("slow");
+        });
+      });
+      $(document).ready(function() {
+        $('.show-hidden').click(function() {
+          $('.payment').slideToggle("slow");
+        });
+      });
+
+
     var total = '{{order.get_cart_total|floatformat:1}}'
     
     var transctionBtn = document.getElementById('send_transactionID')
