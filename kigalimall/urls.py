@@ -12,7 +12,7 @@ urlpatterns = [
     path('kigalimall/interface/', admin.site.urls),
     path('', include('store.urls')),
     path('user/', include('users.urls')),
-    # path('api/', include('api.urls')),
+    path('api/', include('api.urls')),
 
 
 
