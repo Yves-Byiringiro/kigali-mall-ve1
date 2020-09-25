@@ -81,7 +81,6 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=False,null=True,blank=True)
     description = models.TextField(blank=True)
     slug  = models.SlugField(blank=True, null=True, max_length=250)
-    filter = models.CharField(max_length=50, help_text='Enter: men , women , kid , accessories , cosmetic', null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True, blank=True)
 

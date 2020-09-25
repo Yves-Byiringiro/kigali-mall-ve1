@@ -32,7 +32,7 @@ def homepage(request):
 
 	##########   products types   ####################
 	#1. most liked
-	most_liked = Product.objects.order_by('id')[0:3]
+	most_liked = Product.objects.order_by('-id')[0:3]
 	most = list(most_liked)
 	shuffle(most)
 	final = most
@@ -44,7 +44,7 @@ def homepage(request):
 	final = best
 
 	#3. hot trend
-	hot_trend = Product.objects.order_by('name')[0:3]
+	hot_trend = Product.objects.order_by('name')[4:7]
 	hot = list(hot_trend)
 	shuffle(hot)
 	final = hot
@@ -135,7 +135,6 @@ def cart(request):
 	items = data['items']
 	wishlists_counts = data2['wishlists_counts']
 
-	categories = Category.objects.all()
 
 
 	template_name = 'store/cart.html'
@@ -144,7 +143,6 @@ def cart(request):
 		'items':items, 
 		'order':order, 
 		'cartItems':cartItems,
-		'categories':categories,
 		'wishlists_counts':wishlists_counts
 		
 		}
