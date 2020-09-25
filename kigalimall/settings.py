@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'about.apps.AboutConfig',
     'users.apps.UsersConfig',
-    'api.apps.ApiConfig',
+    # 'api.apps.ApiConfig',
 
 
     # 3rd party
@@ -72,7 +72,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'django_countries',
-    'rest_framework'
+    # 'rest_framework'
 ]
 
 MIDDLEWARE = [
