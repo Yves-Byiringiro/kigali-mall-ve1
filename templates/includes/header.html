@@ -13,7 +13,8 @@
 
 <style>
     .logins{
-        margin-left: 10px;
+        margin-left: 8px;
+        font-size: 15px;
         display: none !important;
     }
     @media only screen and (max-width: 768px) {
@@ -21,7 +22,7 @@
         display: inline-block !important;
     }}
     @media only screen and (max-width: 320px) {
-    .carts{
+    .wishlists{
         display: none !important;
     }
   }
@@ -80,9 +81,15 @@
             <div class="col-xl-3 col-lg-2">
                 <div class="header__logo">
                     <a href="{% url 'homepage' %}"><img class="logo-kmall" src="{% static 'img/small-logo.png' %}" alt=""></a>
-                    <a class="logins" href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
-                    <a class="logins" href="{% url 'register' %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Register</a>
-                    <a class="logins carts" href="{% url 'cart' %}"><i class="fa fa-cart-plus" aria-hidden="true"></i><span class="cart-counts">{{cartItems}}</span>Cart</a>
+                    <a class="logins" href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i>Account</a>
+                    <a class="logins wishlists" href="{% url 'wishlist' %}"><i class="fa fa-heart" aria-hidden="true"></i><span class="cart-counts">
+                        {% if request.user.is_authenticated  %}
+                            {{wishlists_counts}}                                
+                        {% else %}
+                            0
+                        {% endif %}
+                    </span>Wishlist</a>
+                    <a class="logins" href="{% url 'cart' %}"><i class="fa fa-cart-plus" aria-hidden="true"></i><span class="cart-counts">{{cartItems}}</span>Cart</a>
                 </div>
 
             </div>
