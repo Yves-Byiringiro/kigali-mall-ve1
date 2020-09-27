@@ -79,7 +79,7 @@
                         <div class="row">
                             <div class="col-lg-9">
                                 <div class="form-group">
-                                    <input required class="form-control" type="text" name="phone" placeholder="0780000000 / 0720000000000" id="myText">
+                                    <input required class="form-control" type="text" name="phone" placeholder="0700000000" id="myText">
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -216,8 +216,13 @@
 
         })
 
+    var phoneNumber= document.getElementById("myText").value;
 
-    const testMomo = async()=>{ 
+    if (phoneNumber.length >10){
+        alert("Maximum phone number must be 10!")
+    }
+    else{
+        const testMomo = async()=>{ 
     var my_number = document.getElementById("myText").value
     var code_number = "25"
     var number_c = code_number + my_number
@@ -266,6 +271,9 @@
  
     }
     testMomo()
+    }
+
+
 }
 </script>
 
