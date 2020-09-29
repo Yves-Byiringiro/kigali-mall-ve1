@@ -12,107 +12,99 @@
 
 
 <style>
-    .logins{
+    .logins {
         margin-left: 8px;
         font-size: 15px;
         display: none !important;
     }
+
     @media only screen and (max-width: 768px) {
-    .logins{
-        display: inline-block !important;
-    }}
-    @media only screen and (max-width: 320px) {
-    .wishlists{
-        display: none !important;
+        .logins {
+            display: inline-block !important;
+        }
     }
-  }
-  .cart-counts{
-    position: absolute;
-    top: 19px;
-    height: 18px;
-    width: 18px;
-    background: #ff6a00;
-    font-size: 13px;
-    font-weight: 500;
-    color: #ffffff;
-    line-height: 18px;
-    text-align: center;
-    border-radius: 50%;
-  }
+
+    @media only screen and (max-width: 320px) {
+        .wishlists {
+            display: none !important;
+        }
+    }
+
+    .cart-counts {
+        position: absolute;
+        top: 19px;
+        height: 18px;
+        width: 18px;
+        background: #ff6a00;
+        font-size: 13px;
+        font-weight: 500;
+        color: #ffffff;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .offcanvas-menu-wrapper {
+        margin-top: 1.5cm !important;
+    }
 </style>
 
 <div class="offcanvas-menu-overlay"></div>
-<div class="offcanvas-menu-wrapper">
-    <div class="offcanvas__close">+</div>
+<div class="offcanvas-menu-wrapper mt-5">
     <ul class="offcanvas__widget">
         <li><span class="icon_search search-switch"></span></li>
-        <li><a href="{% url 'wishlist' %}"><span class="icon_heart_alt"></span>
-            <div class="tip">
-                {% if request.user.is_authenticated  %}
-                    {{wishlists_counts}}                                
-                {% else %}
-                    0
-                {% endif %}
-            </div>
-        </a></li>
-        <li><a href="{% url 'cart' %}"><span class="icon_bag_alt"></span>
-            <div class="tip">{{cartItems}}</div>
-        </a></li>
     </ul>
-    <div class="offcanvas__logo" style="width:40%;">
-        <a href="{% url 'homepage' %}"><img class="logo-kmall" style="width:100%;" src="{% static 'img/small-logo.png' %}" alt=""></a>
-    </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__auth">
         {% if user.is_authenticated %}
-            <a href="{% url 'dashboard' %}">{% trans 'Welcome' %}  {{user.get_short_name}}</a>
+        <a href="{% url 'dashboard' %}">{% trans 'Welcome' %} {{user.get_short_name}}</a>
         {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
         {% endif %}
     </div>
+    <div class="offcanvas__close">+</div>
 </div>
 
 
 <!-- Header Section Begin -->
-<header class="header">
+<header class="header d-none d-lg-block d-xl-block">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-3 col-lg-2">
                 <div class="header__logo">
-                    <a href="{% url 'homepage' %}"><img class="logo-kmall" src="{% static 'img/small-logo.png' %}" alt=""></a>
-                    <a class="logins" href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i>Account</a>
-                    <a class="logins wishlists" href="{% url 'wishlist' %}"><i class="fa fa-heart" aria-hidden="true"></i><span class="cart-counts">
-                        {% if request.user.is_authenticated  %}
-                            {{wishlists_counts}}                                
-                        {% else %}
-                            0
-                        {% endif %}
-                    </span>Wishlist</a>
-                    <a class="logins" href="{% url 'cart' %}"><i class="fa fa-cart-plus" aria-hidden="true"></i><span class="cart-counts">{{cartItems}}</span>Cart</a>
+                    <a href="{% url 'homepage' %}"><img class="logo-kmall" src="{% static 'img/small-logo.png' %}"
+                            alt=""></a>
                 </div>
 
             </div>
             <div class="col-xl-6 col-lg-7">
                 <nav class="header__menu">
                     <ul>
-                        <li class="{% if request.path == home_url %} active {% endif %}"><a href="{{home_url}}">Home</a></li>
-                        <li class="{% if request.path == shop_url %} active {% endif %}"><a href="{{shop_url}}">Shop</a></li>
-                        
-                        <li class="{% if request.path == womensFashions_url %} active {% endif %}"><a href="{{womensFashions_url}}">Womens</a></li>
-                        <li class="{% if request.path == mensFashions_url %} active {% endif %}"><a href="{{mensFashions_url}}">Mens</a></li>
-                        <li class="{% if request.path == kidsFashions_url %} active {% endif %}"><a href="{{kidsFashions_url}}">Kids</a></li>
-                        <li class="{% if request.path == about_url %} active {% endif %}"><a href="{{about_url}}">About</a></li>
-                        <li class="{% if request.path == contact_us_url %} active {% endif %}"><a href="{{contact_us_url}}">Contact</a></li>
+                        <li class="{% if request.path == home_url %} active {% endif %}"><a href="{{home_url}}">Home</a>
+                        </li>
+                        <li class="{% if request.path == shop_url %} active {% endif %}"><a href="{{shop_url}}">Shop</a>
+                        </li>
+
+                        <li class="{% if request.path == womensFashions_url %} active {% endif %}"><a
+                                href="{{womensFashions_url}}">Womens</a></li>
+                        <li class="{% if request.path == mensFashions_url %} active {% endif %}"><a
+                                href="{{mensFashions_url}}">Mens</a></li>
+                        <li class="{% if request.path == kidsFashions_url %} active {% endif %}"><a
+                                href="{{kidsFashions_url}}">Kids</a></li>
+                        <li class="{% if request.path == about_url %} active {% endif %}"><a
+                                href="{{about_url}}">About</a></li>
+                        <li class="{% if request.path == contact_us_url %} active {% endif %}"><a
+                                href="{{contact_us_url}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__right">
                     <div class="header__right__auth">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'dashboard' %}">{% trans 'Welcome' %}  {{user.get_short_name}}</a>
-                    {% else %}
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'dashboard' %}">{% trans 'Welcome' %} {{user.get_short_name}}</a>
+                        {% else %}
                         <a href="{% url 'login' %}">Login</a>
                         <a href="{% url 'register' %}">Register</a>
                     </div>
@@ -120,23 +112,57 @@
                     <ul class="header__right__widget">
                         <li><span class="icon_search search-switch"></span></li>
                         <li><a href="{% url 'wishlist' %}"><span class="icon_heart_alt"></span>
-                            <div class="tip">
-                                {% if request.user.is_authenticated  %}
-                                        {{wishlists_counts}}                                
+                                <div class="tip">
+                                    {% if request.user.is_authenticated  %}
+                                    {{wishlists_counts}}
                                     {% else %}
-                                        0
+                                    0
                                     {% endif %}
-                            </div></a>
+                                </div>
+                            </a>
                         </li>
                         <li><a href="{% url 'cart' %}"><span class="icon_bag_alt"></span>
-                            <div class="tip">{{cartItems}}</div></a>
+                                <div class="tip">{{cartItems}}</div>
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="canvas__open">
-            <i class="fa fa-bars"></i>
+    </div>
+</header>
+
+<!-- Header Section Begin -->
+<header class="header d-block d-lg-none d-xl-none fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="{% url 'homepage' %}"><img class="logo-kmall" src="{% static 'img/small-logo.png' %}"
+                            alt=""></a>
+
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="text-dark">{{user.get_short_name}}</a>
+                    {% else %}
+                    <a class="logins text-dark" href="{% url 'login' %}"><i class="fa fa-user"
+                            aria-hidden="true"></i>Account</a>
+                    {% endif %}
+
+                    <a class="logins wishlists text-dark" href="{% url 'wishlist' %}"><span class="cart-counts">
+                            {% if request.user.is_authenticated  %}
+                            {{wishlists_counts}}
+                            {% else %}
+                            0
+                            {% endif %}
+                        </span><span class="icon_heart_alt"></span>Wishlist</a>
+                    <a class="logins text-dark" href="{% url 'cart' %}"><span
+                            class="cart-counts">{{cartItems}}</span><span class="icon_bag_alt"></span>Cart</a>
+                </div>
+
+            </div>
+            <div class="canvas__open text-dark">
+                <i class="fa fa-bars"></i>
+            </div>
         </div>
     </div>
 </header>

@@ -5,8 +5,15 @@
 
 {% block content %}
 <style>
-    .show-hidden, .payment{
-        display:none;
+    .show-hidden,
+    .payment {
+        display: none;
+    }
+
+    @media only screen and (max-width: 320px) {
+        .breadcrumb {
+            margin-top: 3cm;
+        }
     }
 </style>
 
@@ -28,58 +35,59 @@
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <h5 id="bill-detail">Billing detail</h5>
-                    <form id="form">
-                        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-7">
+                <h5 id="bill-detail">Billing detail</h5>
+                <form id="form">
+                    {% csrf_token %}
 
-                        <div class="row" id="user-info">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input required class="form-control" type="text" name="name" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input required class="form-control" type="email" name="email" placeholder="Email">
-                                </div>
+                    <div class="row" id="user-info">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input required class="form-control" type="text" name="name" placeholder="Name">
                             </div>
                         </div>
-                        <div id="shipping-info">
+                        <div class="col-lg-6">
                             <div class="form-group">
-                                <input required class="form-control" type="text" name="address" placeholder="Address">
-                            </div>
-                            <div class="form-group">
-                                <input required class="form-control" type="text" name="city" placeholder="City">
-                            </div>
-                            <div class="form-group">
-                                <input required class="form-control" type="text" name="state" placeholder="State">
-                            </div>
-                            <div class="form-group">
-                                <input required class="form-control" type="text" name="country" placeholder="Country">
+                                <input required class="form-control" type="email" name="email" placeholder="Email">
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="">
-                                <button id="show-hidden" class="pay-btn">Pay</button>
-                            </div>
+                    </div>
+                    <div id="shipping-info">
+                        <div class="form-group">
+                            <input required class="form-control" type="text" name="address" placeholder="Address">
                         </div>
-                        <div class="row pt-5 justify-content-center">
-                            <div class="col-3 show-hidden">
-                                <img src="{% static 'img/mobile_money_logo.jpg' %}">
-                            </div>
-                            <div class="col-3 show-hidden">
-                                <img src="{% static 'img/tigo_airtel_pay.png' %}">
-                            </div>
+                        <div class="form-group">
+                            <input required class="form-control" type="text" name="city" placeholder="City">
                         </div>
+                        <div class="form-group">
+                            <input required class="form-control" type="text" name="state" placeholder="State">
+                        </div>
+                        <div class="form-group">
+                            <input required class="form-control" type="text" name="country" placeholder="Country">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="">
+                            <button id="show-hidden" class="pay-btn">Pay</button>
+                        </div>
+                    </div>
+                    <div class="row pt-5 justify-content-center">
+                        <div class="col-3 show-hidden">
+                            <img src="{% static 'img/mobile_money_logo.jpg' %}">
+                        </div>
+                        <div class="col-3 show-hidden">
+                            <img src="{% static 'img/tigo_airtel_pay.png' %}">
+                        </div>
+                    </div>
 
                     <div class="payment">
                         <h6 class="enter-momo-number">Enter Your Number To Continue</h6>
                         <div class="row">
                             <div class="col-lg-9">
                                 <div class="form-group">
-                                    <input required class="form-control" type="text" name="phone" placeholder="0780000000 / 0720000000000" id="myText">
+                                    <input required class="form-control" type="text" name="phone"
+                                        placeholder="0780000000 / 0720000000000" id="myText">
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -88,105 +96,106 @@
                         </div>
                     </div>
                 </form>
-                </div>
-                <div class="col-lg-5">
-                    <div class="checkout__order">
-                        <h5>Your order</h5>
-                        <div class="checkout__order__product">
-                            <ul>
-                                <li>
-                                    <span class="top__text">Product</span>
-                                    <span class="top__text__right">S.Total</span>
-                                </li>
-                                {% for item in items %}
-                                    <li>{{item.quantity}}x {{item.product.name}}<span>{{item.product.price|intcomma}} Frw</span></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="checkout__order__total">
-                            <ul>
-                            
-                                <li>Total <span>{{order.get_cart_total|intcomma}} Frw</span></li>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="checkout__order">
+                    <h5>Your order</h5>
+                    <div class="checkout__order__product">
+                        <ul>
+                            <li>
+                                <span class="top__text">Product</span>
+                                <span class="top__text__right">S.Total</span>
+                            </li>
+                            {% for item in items %}
+                            <li>{{item.quantity}}x {{item.product.name}}<span>{{item.product.price|intcomma}} Frw</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="checkout__order__total">
+                        <ul>
+
+                            <li>Total <span>{{order.get_cart_total|intcomma}} Frw</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </section>
-    
+
 
 <Script type="text/javascript">
 
 
 
-    $(document).ready(function() {
-        $('#show-hidden').click(function() {
-          $('.show-hidden').slideToggle("slow");
+    $(document).ready(function () {
+        $('#show-hidden').click(function () {
+            $('.show-hidden').slideToggle("slow");
         });
-      });
-      $(document).ready(function() {
-        $('.show-hidden').click(function() {
-          $('.payment').slideToggle("slow");
+    });
+    $(document).ready(function () {
+        $('.show-hidden').click(function () {
+            $('.payment').slideToggle("slow");
         });
-      });
+    });
 
 
     var total = '{{order.get_cart_total|floatformat:1}}'
-    
+
     var transctionBtn = document.getElementById('send_transactionID')
 
-    transctionBtn.addEventListener("click", function(){
+    transctionBtn.addEventListener("click", function () {
         submitFormData1()
     })
 
 
     var shipping = '{{order.shipping}}'
 
-    if (shipping == 'False'){
-         document.getElementById('shipping-info').innerHTML = ''
+    if (shipping == 'False') {
+        document.getElementById('shipping-info').innerHTML = ''
     }
 
-    if (user != 'AnonymousUser'){
-         document.getElementById('user-info').innerHTML = ''
-         
-     }
+    if (user != 'AnonymousUser') {
+        document.getElementById('user-info').innerHTML = ''
 
-    if (shipping == 'False' && user != 'AnonymousUser'){
+    }
+
+    if (shipping == 'False' && user != 'AnonymousUser') {
         //Hide entire form if user is logged in and shipping is false
-            document.getElementById('form-wrapper').classList.add("hidden");
+        document.getElementById('form-wrapper').classList.add("hidden");
     }
 
     var form = document.getElementById('form')
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit', function (e) {
         e.preventDefault()
 
-   
+
         document.getElementById('form-button').classList.add("hidden");
         document.getElementById('momo-payment-info').classList.remove("hidden");
-        
-    })
-   
 
-    
-    function submitFormData1(){
+    })
+
+
+
+    function submitFormData1() {
 
         var userFormData = {
-            'name':null,
-            'email':null,
-            'phone':null,
-            'total':total,
+            'name': null,
+            'email': null,
+            'phone': null,
+            'total': total,
         }
 
         var shippingInfo = {
-            'address':null,
-            'city':null,
-            'state':null,
-            'country':null,
-            'phone':null,
+            'address': null,
+            'city': null,
+            'state': null,
+            'country': null,
+            'phone': null,
         }
 
-        if (shipping != 'False'){
+        if (shipping != 'False') {
             shippingInfo.address = form.address.value
             shippingInfo.city = form.city.value
             shippingInfo.state = form.state.value
@@ -195,7 +204,7 @@
 
         }
 
-        if (user == 'AnonymousUser'){
+        if (user == 'AnonymousUser') {
             userFormData.name = form.name.value
             userFormData.email = form.email.value
             userFormData.phone = form.phone.value
@@ -203,73 +212,70 @@
 
         var url = "/process_order/"
         fetch(url, {
-            method:'POST',
-            headers:{
-                'Content-Type':'applicaiton/json',
-                'X-CSRFToken':csrftoken,
-            }, 
-            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
-            
-        })
-        .then((response) => response.json())
-        .then((data) => {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'applicaiton/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify({ 'form': userFormData, 'shipping': shippingInfo }),
 
         })
+            .then((response) => response.json())
+            .then((data) => {
+
+            })
 
 
-    const testMomo = async()=>{ 
-    var my_number = document.getElementById("myText").value
-    var code_number = "25"
-    var number_c = code_number + my_number
-    // * //
-    function uuid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-    });
-    }
-    var transid=uuid();
-
-    const response =   await fetch('https://opay-api.oltranz.com/opay/paymentrequest',{
-        method:"POST",
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(
-            {
-            "telephoneNumber" : number_c,
-            "amount" : total,
-            "organizationId" : "ec1a0d19-d19a-4385-99b2-76a0d1313e2a",
-            "description" : "Payment for Printing services",
-            "callbackUrl" : "http://myonlineprints.com/payments/callback",
-            "transactionId" : transid
+        const testMomo = async () => {
+            var my_number = document.getElementById("myText").value
+            var code_number = "25"
+            var number_c = code_number + my_number
+            // * //
+            function uuid() {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
             }
-     )
-    })
+            var transid = uuid();
 
-    const serverData = await  response.json()
-    if (response.ok){
-        console.log(serverData)
-        if (serverData.code==200){
-            alert("Thank You For Shopping With Us, Check Your Phone to Proceed With Payment !")
-            cart = {}
-            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/" 
-            window.location.href = "{% url 'homepage' %}"
+            const response = await fetch('https://opay-api.oltranz.com/opay/paymentrequest', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        "telephoneNumber": number_c,
+                        "amount": total,
+                        "organizationId": "ec1a0d19-d19a-4385-99b2-76a0d1313e2a",
+                        "description": "Payment for Printing services",
+                        "callbackUrl": "http://myonlineprints.com/payments/callback",
+                        "transactionId": transid
+                    }
+                )
+            })
+
+            const serverData = await response.json()
+            if (response.ok) {
+                console.log(serverData)
+                if (serverData.code == 200) {
+                    alert("Thank You For Shopping With Us, Check Your Phone to Proceed With Payment !")
+                    cart = {}
+                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+                    window.location.href = "{% url 'homepage' %}"
+                }
+                if (serverData.code == 401) {
+                    alert(serverData.description)
+                    window.location.href = "{% url 'homepage' %}"
+
+                }
+            }
+
+
         }
-        if (serverData.code==401){
-            alert(serverData.description)
-            window.location.href = "{% url 'homepage' %}"
-
-        }
+        testMomo()
     }
-
- 
-    }
-    testMomo()
-}
 </script>
 
 {% endblock %}
-
-
-
