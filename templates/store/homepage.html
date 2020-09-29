@@ -2,140 +2,140 @@
 {% load static %}
 
 {% block content %}
-  <style>
-      .text-light{
-          text-shadow:1px 1px 3px black;
-      }
-  </style>
-  
-<div class="overdue container register-notification">
-  {% for message in messages %}
-      <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
+<style>
+    .text-light {
+        text-shadow: 1px 1px 3px black;
+    }
+</style>
+
+<div class="overdue container register-notification mt-sm-5">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissible fade show text-center" role="alert">
         {{ message }}
-      </div>
-  {% endfor %}
+    </div>
+    {% endfor %}
 </div>
 
 
-          <!--for small screen-->
-<section class="categories d-block d-lg-none d-xl-none ">
-  
-  <div class="container-fluid">
-    <div class="">
-        <div class="section-title">
-            <h4>Categories</h4>
+<!--for small screen-->
+<section class="categories d-block d-lg-none d-xl-none " style="padding-top: 3cm;">
+
+    <div class="container-fluid">
+        <div class="">
+            <div class="section-title">
+                <h4>Categories</h4>
+            </div>
+        </div>
+        <div class="row mb-3">
+
+            <div class="col-6">
+                <div class="set-bg card p-3" data-setbg="{% static 'img/banner/w.jpg' %}">
+                    <div class="categories__text">
+                        <h4 class="text-light">Women</h4>
+                        <p class="text-light"> {{womens_fashions}} items</p>
+                        <a class="text-light" href="{% url 'womensFashions' %}">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="set-bg card p-3" data-setbg="{% static 'img/banner/m.jpg' %}">
+                    <div class="categories__text">
+                        <h4 class="text-light">Men</h4>
+                        <p class="text-light">{{mens_fashions}} items</p>
+                        <a class="text-light" href="{% url 'mensFashions' %}">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="set-bg card p-3" data-setbg="{% static 'img/banner/kid.jpg' %}">
+                    <div class="categories__text">
+                        <h4 class="text-light">Kid<br></h4>
+                        <p class="text-light">{{kids_fashions}} items</p>
+                        <a class="text-light" href="{% url 'kidsFashions' %}">Shop now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+
+                <div class="set-bg card p-3" data-setbg="{% static 'img/banner/ac.jpg' %}">
+                    <div class="categories__text">
+                        <h4 class="text-light">Accessories <br></h4>
+                        <p class="text-light">{{accessories}} items</p>
+                        <a class="text-light" href="{% url 'accessories' %}">Shop now</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-      <div class="row mb-3">
-      
-          <div class="col-6">
-              <div class="set-bg card p-3" data-setbg="{% static 'img/banner/w.jpg' %}">
-              <div class="categories__text">
-                  <h4 class="text-light">Women</h4>
-                  <p class="text-light"> {{womens_fashions}} items</p>
-                  <a class="text-light" href="{% url 'womensFashions' %}">Shop now</a>
-              </div>
-          </div>
-      </div>
-      <div class="col-6">
-                  <div class="set-bg card p-3" data-setbg="{% static 'img/banner/m.jpg' %}">
-                      <div class="categories__text">
-                          <h4 class="text-light">Men</h4>
-                          <p class="text-light">{{mens_fashions}} items</p>
-                          <a class="text-light" href="{% url 'mensFashions' %}">Shop now</a>
-                      </div>
-                  </div>
-              </div>
-      </div>
-     
-      <div class="row">
-        <div class="col-6">
-                  <div class="set-bg card p-3" data-setbg="{% static 'img/banner/kid.jpg' %}">
-                      <div class="categories__text">
-                          <h4 class="text-light">Kid<br></h4>
-                          <p class="text-light">{{kids_fashions}} items</p>
-                          <a class="text-light"href="{% url 'kidsFashions' %}">Shop now</a>
-                      </div>
-                  </div>
-              </div>
-    
-        <div class="col-6">
-              
-                  <div class="set-bg card p-3" data-setbg="{% static 'img/banner/ac.jpg' %}">
-                      <div class="categories__text">
-                          <h4 class="text-light">Accessories <br></h4>
-                          <p class="text-light">{{accessories}} items</p>
-                          <a  class="text-light" href="{% url 'accessories' %}">Shop now</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
 
 
 </section>
 
-          <!--for large screen-->
+<!--for large screen-->
 <section class="categories d-none d-lg-block d-xl-block">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="categories__item categories__large__item set-bg"
-                data-setbg="{% static 'img/banner/w.jpg' %}">
-                <div class="categories__text">
-                    <h1 class="text-light">Women’s fashion</h1>
-                    <p class="text-light">
-                        <!-- Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
+                    data-setbg="{% static 'img/banner/w.jpg' %}">
+                    <div class="categories__text">
+                        <h1 class="text-light">Women’s fashion</h1>
+                        <p class="text-light">
+                            <!-- Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
                     edolore magna aliquapendisse ultrices gravida. -->
-                  </p>
-                    <p class="text-light"> {{womens_fashions}} items</p>
-                    <a class="text-light" href="{% url 'womensFashions' %}">Shop now</a>
+                        </p>
+                        <p class="text-light"> {{womens_fashions}} items</p>
+                        <a class="text-light" href="{% url 'womensFashions' %}">Shop now</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                    <div class="categories__item set-bg" data-setbg="{% static 'img/banner/m.jpg' %}">
-                        <div class="categories__text">
-                            <h4 class="text-light">Men’s fashion</h4>
-                            <p class="text-light">{{mens_fashions}} items</p>
-                            <a class="text-light" href="{% url 'mensFashions' %}">Shop now</a>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                        <div class="categories__item set-bg" data-setbg="{% static 'img/banner/m.jpg' %}">
+                            <div class="categories__text">
+                                <h4 class="text-light">Men’s fashion</h4>
+                                <p class="text-light">{{mens_fashions}} items</p>
+                                <a class="text-light" href="{% url 'mensFashions' %}">Shop now</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6  p-0">
-                    <div class="categories__item set-bg" data-setbg="{% static 'img/banner/kid.jpg' %}">
-                        <div class="categories__text">
-                            <h4 class="text-light">Kid’s fashion</h4>
-                            <p class="text-light">{{kids_fashions}} items</p>
-                            <a class="text-light"href="{% url 'kidsFashions' %}">Shop now</a>
+                    <div class="col-lg-6 col-md-6 col-sm-6  p-0">
+                        <div class="categories__item set-bg" data-setbg="{% static 'img/banner/kid.jpg' %}">
+                            <div class="categories__text">
+                                <h4 class="text-light">Kid’s fashion</h4>
+                                <p class="text-light">{{kids_fashions}} items</p>
+                                <a class="text-light" href="{% url 'kidsFashions' %}">Shop now</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                    <div class="categories__item set-bg" data-setbg="{% static 'img/banner/c.jpg' %}">
-                        <div class="categories__text">
-                            <h4 class="text-light">Cosmetics</h4>
-                            <p class="text-light">{{cosmetics}} items</p>
-                            <a class="text-light" href="{% url 'cosmetics' %}">Shop now</a>
+                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                        <div class="categories__item set-bg" data-setbg="{% static 'img/banner/c.jpg' %}">
+                            <div class="categories__text">
+                                <h4 class="text-light">Cosmetics</h4>
+                                <p class="text-light">{{cosmetics}} items</p>
+                                <a class="text-light" href="{% url 'cosmetics' %}">Shop now</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                    <div class="categories__item set-bg" data-setbg="{% static 'img/banner/ac.jpg' %}">
-                        <div class="categories__text">
-                            <h4 class="text-light">Accessories</h4>
-                            <p class="text-light">{{accessories}} items</p>
-                            <a  class="text-light" href="{% url 'accessories' %}">Shop now</a>
+                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                        <div class="categories__item set-bg" data-setbg="{% static 'img/banner/ac.jpg' %}">
+                            <div class="categories__text">
+                                <h4 class="text-light">Accessories</h4>
+                                <p class="text-light">{{accessories}} items</p>
+                                <a class="text-light" href="{% url 'accessories' %}">Shop now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
-  </section>
+</section>
 
 {% include 'includes/new_products.html' %}
 
@@ -143,70 +143,70 @@
 
 <section class="services spad">
     <div class="container">
-      <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="services__item">
-                  <i class="fa fa-car"></i>
-                  <h6>Free Shipping</h6>
-                  <p>For all orders in Kigali City</p>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="services__item">
-                  <i class="fa fa-money"></i>
-                  <h6>Money Back Guarantee</h6>
-                  <p>If goods have Problems</p>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="services__item">
-                  <i class="fa fa-support"></i>
-                  <h6>Online Support 24/7</h6>
-                  <p>Dedicated support</p>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="services__item">
-                  <i class="fa fa-headphones"></i>
-                  <h6>Payment Secure</h6>
-                  <p>100% secure payment</p>
-              </div>
-          </div>
-      </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-car"></i>
+                    <h6>Free Shipping</h6>
+                    <p>For all orders in Kigali City</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-money"></i>
+                    <h6>Money Back Guarantee</h6>
+                    <p>If goods have Problems</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-support"></i>
+                    <h6>Online Support 24/7</h6>
+                    <p>Dedicated support</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-headphones"></i>
+                    <h6>Payment Secure</h6>
+                    <p>100% secure payment</p>
+                </div>
+            </div>
+        </div>
     </div>
-    </section>
+</section>
 
 
 <section class="banner set-bg" data-setbg="{% static 'img/banner/banner-1.jpg' %}">
-<div class="container">
-  <div class="row">
-      <div class="col-xl-7 col-lg-8 m-auto">
-          <div class="banner__slider owl-carousel">
-              <div class="banner__item">
-                  <div class="banner__text">
-                      <span>Get Your</span>
-                      <h1>Womens Fashions</h1>
-                      <a href="{% url 'womensFashions' %}">Shop now</a>
-                  </div>
-              </div>
-              <div class="banner__item">
-                  <div class="banner__text">
-                      <span>Get Your</span>
-                      <h1>Mens Fashions</h1>
-                      <a href="{% url 'mensFashions' %}">Shop now</a>
-                  </div>
-              </div>
-              <div class="banner__item">
-                  <div class="banner__text">
-                      <span>Get Yours for your kid</span>
-                      <h1>Kids Fashions</h1>
-                      <a href="{% url 'kidsFashions' %}">Shop now</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-8 m-auto">
+                <div class="banner__slider owl-carousel">
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span>Get Your</span>
+                            <h1>Womens Fashions</h1>
+                            <a href="{% url 'womensFashions' %}">Shop now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span>Get Your</span>
+                            <h1>Mens Fashions</h1>
+                            <a href="{% url 'mensFashions' %}">Shop now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span>Get Yours for your kid</span>
+                            <h1>Kids Fashions</h1>
+                            <a href="{% url 'kidsFashions' %}">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- Banner  End -->
 

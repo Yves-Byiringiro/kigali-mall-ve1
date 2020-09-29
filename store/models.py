@@ -72,7 +72,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete = models.SET_NULL, null=True, blank=True,related_name='products')
     sub_category = models.CharField(max_length=200,choices=SUB_CATEGORIES, default='Shoes', blank=True, null=True)
     price = models.DecimalField( max_digits=10, decimal_places=1)
-    price_dollar = models.DecimalField( max_digits=7, decimal_places=2, default=1, null=True, blank=True)
+    # price_dollar = models.DecimalField( max_digits=7, decimal_places=2, default=1, null=True, blank=True)
     digital = models.BooleanField(default=False,null=True,blank=True)
     main_image = models.ImageField(upload_to='products')
     color = models.CharField(max_length=200,choices=COLOR, default='Black', blank=True, null=True)
@@ -91,9 +91,9 @@ class Product(models.Model):
         old_price = self.price + 1500
         return old_price
 
-    def rate(self):
-        rate = self.price / self.price_dollar
-        return rate
+    # def rate(self):
+    #     rate = self.price / self.price_dollar
+    #     return rate
 
     class Meta:
         ordering = ["-date_added"]
