@@ -26,13 +26,13 @@ class RegistrationView(CreateView):
     template_name = 'registration/register.html'
     form_class = RegistrationForm
     
+    # def form_valid(self, form):
+
+    #     return super().form_valid(form)
 
     def get_context_data(self, *args, **kwargs):
         context = super(RegistrationView, self).get_context_data(*args, **kwargs)
         context['next'] = self.request.GET.get('next')
-        context['categories'] = Category.objects.all()
-
-
         return context
 
     def get_success_url(self):

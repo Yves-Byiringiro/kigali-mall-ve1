@@ -219,10 +219,11 @@
     var phoneNumber= document.getElementById("myText").value;
 
     if (phoneNumber.length >10){
-        alert("Maximum phone number must be 10!")
+        alert("Maximum phone number must be 10!");
+        return false;
     }
-    else{
-        const testMomo = async()=>{ 
+    
+    const testMomo = async()=>{ 
     var my_number = document.getElementById("myText").value
     var code_number = "25"
     var number_c = code_number + my_number
@@ -271,9 +272,7 @@
  
     }
     testMomo()
-    }
-
-
+    
 }
 </script>
 
