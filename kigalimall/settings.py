@@ -72,6 +72,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'django_countries',
+    'ckeditor', 
+    'ckeditor_uploader', 
     # 'rest_framework'
 ]
 
@@ -114,6 +116,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kigalimall.wsgi.application'
 
 
+
+# DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#        }
+#    }
 
 # DATABASES = {
 #     'default': {
@@ -201,3 +210,23 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+
+
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    
+    'default': {
+        'toolbar':'Custom',
+        'width':1100,
+        'toolbar_Custom':[
+            ['Styles','Format','Bold','Italic','Underline','Strike','SpellChecker','Undo','Redo'],
+            ['Link','Unlink','Anchor'],
+            ['TextColor','BGColor'],
+            ['Smiley','SpecialChar'],
+            ['Source']            
+        ],
+
+        
+    }
+}

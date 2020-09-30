@@ -6,6 +6,9 @@ from django.db.models.signals import pre_save, post_save
 from django.conf import settings
 from django.core.exceptions import ValidationError
 
+from django.utils.html import mark_safe
+from ckeditor_uploader.fields import RichTextUploadingField
+
 User = settings.AUTH_USER_MODEL
 
 
@@ -79,7 +82,7 @@ class Product(models.Model):
     size = models.CharField(max_length=50,null=True, blank=True,default='not specified')
     delivery_minutes = models.CharField(max_length=50, default='2 hours')
     in_stock = models.BooleanField(default=False,null=True,blank=True)
-    description = models.TextField(blank=True)
+    description = RichTextUploadingField(blank=True,null=True)
     slug  = models.SlugField(blank=True, null=True, max_length=250)
     date_added = models.DateTimeField(auto_now_add=True)
     seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True, blank=True)
