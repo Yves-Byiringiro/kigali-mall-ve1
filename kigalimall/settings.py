@@ -213,20 +213,20 @@ MESSAGE_TAGS = {
 
 
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_CONFIGS = {
+# CKEDITOR_UPLOAD_PATH = 'uploads/'
+# CKEDITOR_CONFIGS = {
     
-    'default': {
-        'toolbar':'Custom',
-        'width':1100,
-        'toolbar_Custom':[
-            ['Styles','Format','Bold','Italic','Underline','Strike','SpellChecker','Undo','Redo'],
-            ['Link','Unlink','Anchor'],
-            ['TextColor','BGColor'],
-            ['Smiley','SpecialChar'],
-            ['Source']            
-        ],
+#     'default': {
+#         'toolbar':'Custom',
+#         'width':1100,
+#         'toolbar_Custom':[
+#             ['Styles','Format','Bold','Italic','Underline','Strike','SpellChecker','Undo','Redo'],
+#             ['Link','Unlink','Anchor'],
+#             ['TextColor','BGColor'],
+#             ['Smiley','SpecialChar'],
+#             ['Source']            
+#         ],
 
         
-    }
-}
+#     }
+# }
