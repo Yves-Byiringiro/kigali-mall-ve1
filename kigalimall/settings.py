@@ -40,13 +40,13 @@ SECRET_KEY = 'k)e4if*2t90zmxqaft_&qhy67rk6t4111o5t@-qc5t09lz1u+3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
-ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64']
+# DEBUG = False
+# ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64']
 
 
 
-# DEBUG = True
-# ALLOWED_HOSTS = []
+DEBUG = True
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -72,8 +72,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'django_countries',
-    'ckeditor', 
-    'ckeditor_uploader', 
+
     # 'rest_framework'
 ]
 
@@ -124,28 +123,28 @@ WSGI_APPLICATION = 'kigalimall.wsgi.application'
 #        }
 #    }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'kigalimalldb1',
-#         'USER': 'kigalimalluser1',
-#         'PASSWORD': 'kigalimall127st',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kigalimalldb2',
-        'USER': 'kigalimalluser2',
+        'NAME': 'kigalimalldb1',
+        'USER': 'kigalimalluser1',
         'PASSWORD': 'kigalimall127st',
         'HOST': 'localhost',
         'PORT': '',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'kigalimalldb2',
+#         'USER': 'kigalimalluser2',
+#         'PASSWORD': 'kigalimall127st',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
@@ -211,22 +210,3 @@ MESSAGE_TAGS = {
 }
 
 
-
-
-# CKEDITOR_UPLOAD_PATH = 'uploads/'
-# CKEDITOR_CONFIGS = {
-    
-#     'default': {
-#         'toolbar':'Custom',
-#         'width':1100,
-#         'toolbar_Custom':[
-#             ['Styles','Format','Bold','Italic','Underline','Strike','SpellChecker','Undo','Redo'],
-#             ['Link','Unlink','Anchor'],
-#             ['TextColor','BGColor'],
-#             ['Smiley','SpecialChar'],
-#             ['Source']            
-#         ],
-
-        
-#     }
-# }
