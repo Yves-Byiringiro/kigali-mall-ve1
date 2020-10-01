@@ -32,40 +32,40 @@ def homepage(request):
 
 	##########   products types   ####################
 	#1. most liked
-	most_liked = Product.objects.order_by('-id')[0:3]
+	most_liked = Product.objects.order_by('-id')[0:8]
 	most = list(most_liked)
 	shuffle(most)
 	final = most
 
 	#2. best seller
-	best_seller = Product.objects.order_by('name')[0:3]
+	best_seller = Product.objects.order_by('name')[0:8]
 	best = list(best_seller)
 	shuffle(best)
 	final = best
 
 	#3. hot trend
-	hot_trend = Product.objects.order_by('name')[4:7]
+	hot_trend = Product.objects.order_by('name')[8:17]
 	hot = list(hot_trend)
 	shuffle(hot)
 	final = hot
 
 	#new products
-	new_products_w = Product.objects.filter(category__name='WomensFashions').order_by('-id')[:4]
+	new_products_w = Product.objects.filter(category__name='WomensFashions').order_by('-id')[:8]
 	new_w = list(new_products_w)
 	shuffle(new_w)
 	final = new_w
 
-	new_products_m = Product.objects.filter(category__name='MensFashions').order_by('-id')[:4]
+	new_products_m = Product.objects.filter(category__name='MensFashions').order_by('-id')[:8]
 	new_m = list(new_products_m)
 	shuffle(new_m)
 	final = new_m
 
-	new_products_a = Product.objects.filter(category__name='Accessories').order_by('-id')[:4]
+	new_products_a = Product.objects.filter(category__name='Accessories').order_by('-id')[:12]
 	new_a = list(new_products_a)
 	shuffle(new_a)
 	final = new_a
 
-	new_products_k = Product.objects.filter(category__name='KidsFashions').order_by('-id')[:4]
+	new_products_k = Product.objects.filter(category__name='KidsFashions').order_by('-id')[:8]
 	new_k = list(new_products_k)
 	shuffle(new_k)
 	final = new_k
