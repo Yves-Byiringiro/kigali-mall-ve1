@@ -396,8 +396,9 @@ def womensFashions(request):
 	wishlists_counts = data2['wishlists_counts']
 
 	
-	categories = Category.objects.all()
-	womens_fashions = Product.objects.filter(category__name='WomensFashions')
+	shoes = Product.objects.filter(category__name='WomensFashions').filter(sub_category='Shoes')
+	clothes = Product.objects.filter(category__name='WomensFashions').filter(sub_category='Clothes')
+	handbags = Product.objects.filter(category__name='WomensFashions').filter(sub_category='Handbags')
 
 
 	template_name = 'store/womens_fashions.html'
@@ -405,9 +406,10 @@ def womensFashions(request):
 		'cartItems':cartItems,
 		'items':items,
 		'order':order,
-		'categories':categories,
-		'womens_fashions':womens_fashions,
-		'wishlists_counts':wishlists_counts
+		'wishlists_counts':wishlists_counts,
+		'shoes':shoes,
+		'clothes':clothes,
+		'handbags':handbags
 	}
 	return render(request,template_name,context)
 
@@ -424,8 +426,14 @@ def mensFashions(request):
 	wishlists_counts = data2['wishlists_counts']
 
 	
-	categories = Category.objects.all()
-	mens_fashions = Product.objects.filter(category__name='MensFashions')
+	shoes = Product.objects.filter(category__name='MensFashions').filter(sub_category='Shoes')
+	clothes = Product.objects.filter(category__name='MensFashions').filter(sub_category='Clothes')
+	sutes = Product.objects.filter(category__name='MensFashions').filter(sub_category='Sutes')
+	shirts = Product.objects.filter(category__name='MensFashions').filter(sub_category='Shirts')
+	tshirts = Product.objects.filter(category__name='MensFashions').filter(sub_category='TShirts')
+	jeans = Product.objects.filter(category__name='MensFashions').filter(sub_category='Jeans')
+
+
 
 
 	template_name = 'store/mens_fashions.html'
@@ -433,9 +441,13 @@ def mensFashions(request):
 		'cartItems':cartItems,
 		'items':items,
 		'order':order,
-		'categories':categories,
-		'mens_fashions':mens_fashions,
-		'wishlists_counts':wishlists_counts
+		'wishlists_counts':wishlists_counts,
+		'shoes':shoes,
+		'clothes':clothes,
+		'sutes':sutes,
+		'shirts':shirts,
+		'tshirts':tshirts,
+		'jeans':jeans
 	}
 	return render(request,template_name,context)
 
@@ -452,8 +464,12 @@ def kidsFashions(request):
 	wishlists_counts = data2['wishlists_counts']
 
 	
-	categories = Category.objects.all()
-	kids_fashions = Product.objects.filter(category__name='KidsFashions')
+
+	shoes = Product.objects.filter(category__name='KidsFashions').filter(sub_category='Shoes')
+	clothes = Product.objects.filter(category__name='KidsFashions').filter(sub_category='Clothes')
+	dresses = Product.objects.filter(category__name='KidsFashions').filter(sub_category='Dresses')
+	sutes = Product.objects.filter(category__name='KidsFashions').filter(sub_category='Sutes')
+
 
 
 	template_name = 'store/kids_fashions.html'
@@ -461,9 +477,11 @@ def kidsFashions(request):
 		'cartItems':cartItems,
 		'items':items,
 		'order':order,
-		'categories':categories,
-		'kids_fashions':kids_fashions,
-		'wishlists_counts':wishlists_counts
+		'wishlists_counts':wishlists_counts,
+		'shoes':shoes,
+		'clothes':clothes,
+		'dresses':dresses,
+		'sutes':sutes
 	}
 	return render(request,template_name,context)
 
@@ -508,7 +526,8 @@ def accessories(request):
 	wishlists_counts = data2['wishlists_counts']
 
 	
-	accessories = Product.objects.filter(category__name='Accessories')
+	phones = Product.objects.filter(category__name='Accessories').filter(sub_category='Phones')
+
 
 
 
@@ -517,8 +536,8 @@ def accessories(request):
 		'cartItems':cartItems,
 		'items':items,
 		'order':order,
-		'accessories':accessories,
-		'wishlists_counts':wishlists_counts
+		'wishlists_counts':wishlists_counts,
+		'phones':phones
 	}
 	return render(request,template_name,context)
 
@@ -531,7 +550,13 @@ def shop(request):
 	order = data['order']
 	items = data['items']
 	wishlists_counts = data2['wishlists_counts']
-	products = Product.objects.all().order_by('-id')
+
+	accessories_products = Product.objects.filter(category__name='Accessories')
+	men_products = Product.objects.filter(category__name='MensFashions')
+	women_products = Product.objects.filter(category__name='WomensFashions')
+	kids_products = Product.objects.filter(category__name='KidsFashions')
+	cosmetics_products = Product.objects.filter(category__name='Cosmetics')
+
 
 
 
@@ -540,7 +565,12 @@ def shop(request):
 		'items':items,
 		'order':order,
 		'wishlists_counts':wishlists_counts,
-		'products':products,
-	}
+		'accessories_products':accessories_products,
+		'men_products':men_products,
+		'women_products':women_products,
+		'kids_products':kids_products,
+		'cosmetics_products':cosmetics_products
+		
+		}
 
 	return render(request, 'store/shop.html',context)

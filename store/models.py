@@ -64,8 +64,13 @@ class Product(models.Model):
         ('Shirts', 'Shirts'),
         ('TShirts', 'TShirts'),
         ('Jeans', 'Jeans'),
+        ('Handbags', 'Handbags'),
+        ('Dresses', 'Dresses'),
         ('Phones', 'Phones'),
-        ('Laptops', 'Laptops')
+        ('Laptops', 'Laptops'),
+        ('Headsets', 'Headsets'),
+        ('Speakers', 'Speakers'),
+
         )
 
     name = models.CharField(max_length=250,unique=True)
