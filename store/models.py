@@ -46,14 +46,13 @@ class Product(models.Model):
         ('Gray', 'Gray'),
         ('Yellow', 'Yellow'),
         ('Pink', 'Pink'),
+        ('Greenn', 'Green'),
         ('Dark blue', 'Dark blue'),
         ('Light blue', 'Light blue'),
         ('Black and white', 'Black and white'),
         ('Gold', 'Gold'),
-        ('Not Specified', 'Not Specified'),
-
-
-
+        ('N/S', 'N/S'),
+        ('All colors', 'All  colors'),
 
         )
 
@@ -76,14 +75,16 @@ class Product(models.Model):
     name = models.CharField(max_length=250,unique=True)
     category = models.ForeignKey(Category, on_delete = models.SET_NULL, null=True, blank=True,related_name='products')
     sub_category = models.CharField(max_length=200,choices=SUB_CATEGORIES, default='Shoes', blank=True, null=True)
+    cost = models.DecimalField( max_digits=10, decimal_places=1,default=0000.0)
+    supplier_fee = models.DecimalField( max_digits=10, decimal_places=1,default=0000.0)
+    operation_fee = models.DecimalField( max_digits=10, decimal_places=1,default=0000.0)
     price = models.DecimalField( max_digits=10, decimal_places=1)
-    # price_dollar = models.DecimalField( max_digits=7, decimal_places=2, default=1, null=True, blank=True)
     digital = models.BooleanField(default=False,null=True,blank=True)
     main_image = models.ImageField(upload_to='products')
     color = models.CharField(max_length=200,choices=COLOR, default='Black', blank=True, null=True)
-    size = models.CharField(max_length=50,null=True, blank=True,default='not specified')
-    delivery_minutes = models.CharField(max_length=50, default='2 hours')
-    in_stock = models.BooleanField(default=False,null=True,blank=True)
+    size = models.CharField(max_length=50,null=True, blank=True,default='N/S')
+    delivery_minutes = models.CharField(max_length=50, default='12 days')
+    in_stock = models.BooleanField(default=True,null=True,blank=True)
     description = models.TextField(blank=True)
     slug  = models.SlugField(blank=True, null=True, max_length=250)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -92,6 +93,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+    def price(self):
+        self.price = self.cost +  self.supplier_fee  + self.operation_fee
+        return self.price
+
     def old_price(self):
         old_price = self.price + 1500
         return old_price
