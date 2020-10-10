@@ -44,7 +44,7 @@ def homepage(request):
 	final = best
 
 	#3. hot trend
-	hot_trend = Product.objects.order_by('name')[8:17]
+	hot_trend = Product.objects.order_by('name')[8:16]
 	hot = list(hot_trend)
 	shuffle(hot)
 	final = hot
