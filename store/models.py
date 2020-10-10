@@ -78,7 +78,7 @@ class Product(models.Model):
     cost = models.DecimalField( max_digits=10, decimal_places=1,default=0000.0)
     supplier_fee = models.DecimalField( max_digits=10, decimal_places=1,default=0000.0)
     operation_fee = models.DecimalField( max_digits=10, decimal_places=1,default=0000.0)
-    price = models.DecimalField( max_digits=10, decimal_places=1)
+    price = models.DecimalField( max_digits=10, decimal_places=1,null=True,blank=True)
     digital = models.BooleanField(default=False,null=True,blank=True)
     main_image = models.ImageField(upload_to='products')
     color = models.CharField(max_length=200,choices=COLOR, default='Black', blank=True, null=True)
@@ -93,9 +93,11 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
-    def price(self):
+    def save(self):
         self.price = self.cost +  self.supplier_fee  + self.operation_fee
-        return self.price
+        # return self.price
+        return super(Product, self).save()
+
 
     def old_price(self):
         old_price = self.price + 1500
