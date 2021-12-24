@@ -43,13 +43,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
-ALLOWED_HOSTS = ['kigalimall.com','www.kigalimall.com','139.59.139.64','127.0.0.1']
+# 'kigalimall.com','www.kigalimall.com',
 
-
-
-# DEBUG = True
-# ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['157.245.85.154','127.0.0.1']
 
 
 # Application definition
@@ -118,23 +115,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kigalimall.wsgi.application'
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'kigalimalldb',
-#         'USER': 'kigalimalluser',
-#         'PASSWORD': 'kigalimall127st',
-#         'HOST': 'localhost',
-#         'PORT': '',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kigalimalldb',
+        'USER': 'kigalimalluser',
+        'PASSWORD': 'kigalimall127st',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 # Password validation
