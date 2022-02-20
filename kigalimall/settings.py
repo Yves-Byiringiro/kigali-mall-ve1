@@ -46,7 +46,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # 'kigalimall.com','www.kigalimall.com',
 
 DEBUG = False
-ALLOWED_HOSTS = ['157.245.85.154','127.0.0.1']
+ALLOWED_HOSTS = ['167.172.150.35','127.0.0.1']
 
 
 # Application definition
